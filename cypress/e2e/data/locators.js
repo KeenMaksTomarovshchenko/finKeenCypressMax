@@ -1,4 +1,4 @@
-
+require('cypress-xpath');
 class Locators {
 
     visitLoginPage() {
