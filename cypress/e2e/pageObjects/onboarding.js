@@ -174,9 +174,17 @@ class onboarding{
         this.counterparties_1_creating()
         this.counterparties_2_creating()
         locators.getNextButton2().click()
+        cy.wait(1000)
     }
     //Сотрудники
+
     employee_1_creating(){
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+        const day = String(currentDate.getDate()).padStart(2, "0");
+        const formattedDate = `${day}/${month}/${year}`;
+
         locators.getCreateNewButton().eq(0).click()
         locators.getSubTitle().should('contain','Введите данные сотрудника')
         cy.wait(500)
@@ -188,53 +196,79 @@ class onboarding{
         locators.getSelector().eq(2).click()
         locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
         locators.getDatapickerInput().click()
+        locators.getDatapickerInput().type(formattedDate)
         locators.getButton().click()
         cy.wait(1000)
     }
-    employee_2_creating() {
-        locators.getCreateNewButton().eq(0).click()
-        locators.getSubTitle().should('contain', 'Введите данные сотрудника')
-        cy.wait(500)
+    employee_2_creating(){
 
-        locators.getInputField().eq(0).type(credentials.employee_first_name.employee_first_name)
-        locators.getInputField().eq(1).type(credentials.employee_last_name.employee_last_name_2)
-        locators.getSelector().eq(1).click()
-        locators.getSelector().eq(1).type(credentials.expense_item_category.expense_item_category_2)
-        locators.getSelector().eq(2).click()
-        locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
-        locators.getDatapickerInput().click()
-        locators.getButton().click()
-        cy.wait(1000)
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    const formattedDate = `${day}/${month}/${year}`;
+
+    locators.getCreateNewButton().eq(0).click()
+                locators.getSubTitle().should('contain','Введите данные сотрудника')
+                cy.wait(500)
+
+                locators.getInputField().eq(0).type(credentials.employee_first_name.employee_first_name)
+                locators.getInputField().eq(1).type(credentials.employee_last_name.employee_last_name_2)
+                locators.getSelector().eq(1).click()
+                locators.getSelector().eq(1).type(credentials.expense_item_category.expense_item_category_2)
+                locators.getSelector().eq(2).click()
+                locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
+                locators.getDatapickerInput().click()
+                locators.getDatapickerInput().type(formattedDate)
+                locators.getButton().click()
+                cy.wait(1000)
     }
-    employee_3_creating() {
-        locators.getCreateNewButton().eq(0).click()
-        locators.getSubTitle().should('contain', 'Введите данные сотрудника')
-        cy.wait(500)
+    employee_3_creating(){
 
-        locators.getInputField().eq(0).type(credentials.employee_first_name.employee_first_name)
-        locators.getInputField().eq(1).type(credentials.employee_last_name.employee_last_name_3)
-        locators.getSelector().eq(1).click()
-        locators.getSelector().eq(1).type(credentials.expense_item_category.expense_item_category_3)
-        locators.getSelector().eq(2).click()
-        locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
-        locators.getDatapickerInput().click()
-        locators.getButton().click()
-        cy.wait(1000)
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    const formattedDate = `${day}/${month}/${year}`;
+
+                locators.getCreateNewButton().eq(0).click()
+                locators.getSubTitle().should('contain','Введите данные сотрудника')
+                cy.wait(500)
+
+                locators.getInputField().eq(0).type(credentials.employee_first_name.employee_first_name)
+                locators.getInputField().eq(1).type(credentials.employee_last_name.employee_last_name_3)
+                locators.getSelector().eq(1).click()
+                locators.getSelector().eq(1).type(credentials.expense_item_category.expense_item_category_3)
+                locators.getSelector().eq(2).click()
+                locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
+                locators.getDatapickerInput().click()
+                locators.getDatapickerInput().type(formattedDate)
+                locators.getButton().click()
+                cy.wait(1000)
     }
-    employee_4_creating() {
-        locators.getCreateNewButton().eq(0).click()
-        locators.getSubTitle().should('contain', 'Введите данные сотрудника')
-        cy.wait(500)
+    employee_4_creating(){
 
-        locators.getInputField().eq(0).type(credentials.employee_first_name.employee_first_name)
-        locators.getInputField().eq(1).type(credentials.employee_last_name.employee_last_name_4)
-        locators.getSelector().eq(1).click()
-        locators.getSelector().eq(1).type(credentials.expense_item_category.expense_item_category_4)
-        locators.getSelector().eq(2).click()
-        locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
-        cy.wait(1000)
-        locators.getDatapickerInput().click()
-        locators.getButton().click()
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    const formattedDate = `${day}/${month}/${year}`;
+
+
+    locators.getCreateNewButton().eq(0).click()
+                locators.getSubTitle().should('contain','Введите данные сотрудника')
+                cy.wait(500)
+
+                locators.getInputField().eq(0).type(credentials.employee_first_name.employee_first_name)
+                locators.getInputField().eq(1).type(credentials.employee_last_name.employee_last_name_4)
+                locators.getSelector().eq(1).click()
+                locators.getSelector().eq(1).type(credentials.expense_item_category.expense_item_category_4)
+                locators.getSelector().eq(2).click()
+                locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
+                locators.getDatapickerInput().click()
+                locators.getDatapickerInput().type(formattedDate)
+                locators.getButton().click()
+                cy.wait(1000)
     }
     page8(){
         locators.getTitle().should('contain','Сотрудники')

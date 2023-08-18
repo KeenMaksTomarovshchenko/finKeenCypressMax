@@ -50,7 +50,7 @@ class Locators {
         return cy.get('[class="main-button stretch-button"]')
     }
     getDatapickerInput(){
-        return cy.xpath('/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/form[1]/div[2]/div[3]/div[1]/div[1]/span[2]/input[1]') }
+        return cy.get('[class="react-datepicker__input-container "]') }
     getCheckbox(){
         return cy.get('[type="checkbox"]')
     }
