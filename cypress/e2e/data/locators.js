@@ -34,6 +34,9 @@ class Locators {
     getSelector(){
         return cy.get('.mt-react-select__input-container')
     }
+    getSelectorValue(){
+        return cy.get('.mt-react-select__single-value')
+    }
     getBurgerMenu(){
         return cy.get('[class="expand-icon"]')
     }

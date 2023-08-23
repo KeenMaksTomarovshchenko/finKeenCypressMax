@@ -37,10 +37,10 @@ module.exports = {
         income_item_2_name: 'Статья дохода 2',
     },
     expense_item_category:{
-        expense_item_category_1: 'Административные{enter}',
-        expense_item_category_2: 'Себестоимость{enter}',
-        expense_item_category_3: 'Коммерческие{enter}',
-        expense_item_category_4: 'Общие{enter}',},
+        expense_item_category_1: 'Административные',
+        expense_item_category_2: 'Себестоимость',
+        expense_item_category_3: 'Коммерческие',
+        expense_item_category_4: 'Общие',},
     expense_item_name:{
         expense_item_1_name:'Статья расхода 1',
         expense_item_2_name:'Статья расхода 2',
