@@ -8,6 +8,9 @@ module.exports = {
     password:{
         password: '11111'
     },
+    textLink:{
+        textLinkCreateNewAccount: 'Создать аккаунт'
+    },
     company_full_name:{
         company_full_name: 'Test_company',
     },

@@ -5,17 +5,15 @@ const locators = new Locators()
 class User_creation {
 
     user_creation(){
-        locators.visitUserCreationPage()
+        locators.visitLoginPage()
+        locators.getTextLink().should('contain',credentials.textLink.textLinkCreateNewAccount).click()
         locators.getInputField().eq(0).type(credentials.name.name)
-        cy.wait(1000)
         locators.getInputField().eq(1).type(credentials.email.email)
-        cy.wait(1000)
         locators.getInputField().eq(2).type(credentials.password.password)
-        cy.wait(1000)
         locators.getInputField().eq(3).type(credentials.password.password)
         cy.wait(1000)
-        locators.getAgreeWithTermOfUse().click()
+        locators.getCheckbox().trigger('click');
+        cy.wait(1000)
         locators.getButton().eq(0).click()
-
     }}
 export default User_creation

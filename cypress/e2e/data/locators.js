@@ -4,14 +4,11 @@ class Locators {
     visitLoginPage() {
         cy.visit('https://dev.fin-consult.com/login')
     }
-    visitUserCreationPage(){
-        cy.visit('https://dev.fin-consult.com/signup')
+    getTextLink(){
+        return cy.get('[class="text-component link-accent bold pointer regular"]')
     }
     getInputField() {
         return cy.get('[class="input-field"]')
-    }
-    getAgreeWithTermOfUse(){
-        return cy.get('[type="checkbox"]')
     }
     getButton() {
         return cy.get('[class="main-button"]')
@@ -44,7 +41,7 @@ class Locators {
         return cy.get('[class="text-component pointer regular"]')
     }
     getModalWindow(){
-        return cy.get('[class="modal-content-wrapper"]')
+        return cy.get('[class="modal-block-wrapper"]')
     }
     getStretchButton(){
         return cy.get('[class="main-button stretch-button"]')
