@@ -40,7 +40,10 @@ module.exports = {
         expense_item_category_1: 'Административные',
         expense_item_category_2: 'Себестоимость',
         expense_item_category_3: 'Коммерческие',
-        expense_item_category_4: 'Общие',},
+        expense_item_category_4: 'Общие',
+        expense_item_category_5: 'Послеоперационные',
+        expense_item_category_6: 'Погашение НДС',
+    },
     expense_item_name:{
         expense_item_1_name:'Статья расхода 1',
         expense_item_2_name:'Статья расхода 2',
@@ -64,6 +67,12 @@ module.exports = {
         employee_last_name_3:"Ккк",
         employee_last_name_4:"Ооо",
     },
+    employee_full_name: {
+        employee_full_name_1: 'Сотрудник Ааа',
+        employee_full_name_2: 'Сотрудник Ссс',
+        employee_full_name_3: 'Сотрудник Ккк',
+        employee_full_name_4: 'Сотрудник Ооо',
+    },
     employee_status:{
         employee_status_1:'Работает{enter}',
         employee_status_2:'Не работает{enter}',
@@ -79,5 +88,11 @@ module.exports = {
         unit_2:'кг{enter}',
         unit_3:'л{enter}',
         unit_4:'ящик{enter}',
+    },
+    taxes:{
+        social_tax:'Социальный налог',
+        income_tax:'Подоходный налог',
+        profit_tax:'Налог на прибыль',
+        Value_added_tax:'Налог на добавленную стоимость',
     }
 }
