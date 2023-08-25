@@ -95,5 +95,11 @@ module.exports = {
         income_tax:'Подоходный налог',
         profit_tax:'Налог на прибыль',
         Value_added_tax:'Налог на добавленную стоимость',
+    },
+    credits:{
+        credit_name_1:'Кредит 1 краткосрочный',
+        credit_name_2:'Кредит 2 краткосрочный',
+        credit_name_3:'Кредит 3 долгосрочный',
+        credit_name_4:'Кредит 4 долгосрочный',
     }
 }
