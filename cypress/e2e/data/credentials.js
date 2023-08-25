@@ -43,6 +43,7 @@ module.exports = {
         expense_item_category_4: 'Общие',
         expense_item_category_5: 'Послеоперационные',
         expense_item_category_6: 'Погашение НДС',
+        expense_item_category_7: 'Возмещение НДС',
     },
     expense_item_name:{
         expense_item_1_name:'Статья расхода 1',
