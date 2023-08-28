@@ -344,6 +344,7 @@ class onboarding{
             locators.getCreateNewButton().eq(0).click()
             locators.getModalWindow().should('contain', 'Задолженность перед поставщиками')
             locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
+            cy.wait(1000)
             locators.getSelector().eq(3).type(credentials.expense_item_name.expense_item_1_name + '{enter}');
             locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_1)
             locators.getInputField().type('100')
@@ -352,6 +353,7 @@ class onboarding{
             locators.getCreateNewButton().eq(0).click()
             locators.getModalWindow().should('contain', 'Задолженность перед поставщиками')
             locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
+            cy.wait(1000)
             locators.getSelector().eq(3).type(credentials.expense_item_name.expense_item_2_name + '{enter}');
             locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_2)
             locators.getInputField().type('100')
@@ -360,6 +362,7 @@ class onboarding{
             locators.getCreateNewButton().eq(0).click()
             locators.getModalWindow().should('contain', 'Задолженность перед поставщиками')
             locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
+            cy.wait(1000)
             locators.getSelector().eq(3).type(credentials.expense_item_name.expense_item_3_name + '{enter}');
             locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_3)
             locators.getInputField().type('100')
@@ -368,51 +371,58 @@ class onboarding{
             locators.getCreateNewButton().eq(0).click()
             locators.getModalWindow().should('contain', 'Задолженность перед поставщиками')
             locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
+            cy.wait(1000)
             locators.getSelectorValue().eq(3).should("contain", credentials.expense_item_name.expense_item_4_name);
             locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_4)
             locators.getInputField().type('100')
             locators.getButton().click()
 
-        ////
+            ////
 
         locators.getCreateNewButton().eq(0).click()
         locators.getModalWindow().should('contain', 'Задолженность перед поставщиками')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_2 + '{enter}');
+            cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.expense_item_name.expense_item_1_name + '{enter}');
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_1)
         locators.getInputField().type('100')
         locators.getButton().click()
 
-        locators.getCreateNewButton().eq(0).click()
+            locators.getCreateNewButton().eq(0).click()
         locators.getModalWindow().should('contain', 'Задолженность перед поставщиками')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_2 + '{enter}');
+            cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.expense_item_name.expense_item_2_name + '{enter}');
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_2)
         locators.getInputField().type('100')
         locators.getButton().click()
 
-        locators.getCreateNewButton().eq(0).click()
+            locators.getCreateNewButton().eq(0).click()
         locators.getModalWindow().should('contain', 'Задолженность перед поставщиками')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_2 + '{enter}');
+            cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.expense_item_name.expense_item_3_name + '{enter}');
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_3)
         locators.getInputField().type('100')
         locators.getButton().click()
 
-        locators.getCreateNewButton().eq(0).click()
+            locators.getCreateNewButton().eq(0).click()
         locators.getModalWindow().should('contain', 'Задолженность перед поставщиками')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_2 + '{enter}');
+            cy.wait(1000)
         locators.getSelectorValue().eq(3).should("contain", credentials.expense_item_name.expense_item_4_name);
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_4)
         locators.getInputField().type('100')
         locators.getButton().click()
-    }
+
+        }
 //Авансы покупателей
 
     BuyersAdvances() {
         locators.getCreateNewButton().eq(1).click()
         locators.getModalWindow().should('contain', 'Авансы покупателей')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
+        cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.income_item.income_item_1_name + '{enter}');
         locators.getSelectorValue().eq(2).should("contain", "Выручка")
         locators.getInputField().type('200')
@@ -421,6 +431,7 @@ class onboarding{
         locators.getCreateNewButton().eq(1).click()
         locators.getModalWindow().should('contain', 'Авансы покупателей')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should("contain", credentials.income_item.income_item_2_name);
         locators.getSelectorValue().eq(2).should("contain", "Выручка")
         locators.getInputField().type('200')
@@ -429,6 +440,7 @@ class onboarding{
         locators.getCreateNewButton().eq(1).click()
         locators.getModalWindow().should('contain', 'Авансы покупателей')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_2 + '{enter}');
+        cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.income_item.income_item_1_name + '{enter}');
         locators.getSelectorValue().eq(2).should("contain", "Выручка")
         locators.getInputField().type('200')
@@ -437,16 +449,19 @@ class onboarding{
         locators.getCreateNewButton().eq(1).click()
         locators.getModalWindow().should('contain', 'Авансы покупателей')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_2 + '{enter}');
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should("contain", credentials.income_item.income_item_2_name);
         locators.getSelectorValue().eq(2).should("contain", "Выручка")
         locators.getInputField().type('200')
         locators.getButton().click()
+
     }
 //Задолженность сотрудникам
     DebtToEmployees() {
         locators.getCreateNewButton().eq(2).click()
         locators.getModalWindow().should('contain', 'Задолженность сотрудникам')
         locators.getSelector().eq(1).type(credentials.employee_full_name.employee_full_name_1 + '{enter}');
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should("contain", "Зарплата")
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_1)
         locators.getInputField().type('300')
@@ -455,6 +470,7 @@ class onboarding{
         locators.getCreateNewButton().eq(2).click()
         locators.getModalWindow().should('contain', 'Задолженность сотрудникам')
         locators.getSelector().eq(1).type(credentials.employee_full_name.employee_full_name_2 + '{enter}');
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should("contain", "Зарплата")
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_2)
         locators.getInputField().type('300')
@@ -463,6 +479,7 @@ class onboarding{
         locators.getCreateNewButton().eq(2).click()
         locators.getModalWindow().should('contain', 'Задолженность сотрудникам')
         locators.getSelector().eq(1).type(credentials.employee_full_name.employee_full_name_3 + '{enter}');
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should("contain", "Зарплата")
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_3)
         locators.getInputField().type('300')
@@ -471,10 +488,12 @@ class onboarding{
         locators.getCreateNewButton().eq(2).click()
         locators.getModalWindow().should('contain', 'Задолженность сотрудникам')
         locators.getSelector().eq(1).type(credentials.employee_full_name.employee_full_name_4 + '{enter}');
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should("contain", "Зарплата")
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_4)
         locators.getInputField().type('300')
         locators.getButton().click()
+
     }
 //Задолженность по налогам
     TaxDebt(){
@@ -482,6 +501,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain','Задолженность по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.social_tax+'{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(2).type(credentials.expense_item_category.expense_item_category_1+'{enter}')
         locators.getSelectorValue().eq(3).should("contain",credentials.taxes.social_tax)
         locators.getInputField().type('50')
@@ -490,6 +510,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain','Задолженность по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.social_tax+'{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(2).type(credentials.expense_item_category.expense_item_category_2+'{enter}')
         locators.getSelectorValue().eq(3).should("contain",credentials.taxes.social_tax)
         locators.getInputField().type('50')
@@ -498,6 +519,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain','Задолженность по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.social_tax+'{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(2).type(credentials.expense_item_category.expense_item_category_3+'{enter}')
         locators.getSelectorValue().eq(3).should("contain",credentials.taxes.social_tax)
         locators.getInputField().type('50')
@@ -506,6 +528,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain','Задолженность по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.social_tax+'{enter}')
+        cy.wait(1000)
         locators.getSelectorValue().eq(2).should("contain",credentials.expense_item_category.expense_item_category_4)
         locators.getSelectorValue().eq(3).should("contain",credentials.taxes.social_tax)
         locators.getInputField().type('50')
@@ -516,6 +539,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain','Задолженность по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.income_tax+'{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(2).type(credentials.expense_item_category.expense_item_category_1+'{enter}')
         locators.getSelectorValue().eq(3).should("contain",credentials.taxes.income_tax)
         locators.getInputField().type('50')
@@ -524,6 +548,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain','Задолженность по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.income_tax+'{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(2).type(credentials.expense_item_category.expense_item_category_2+'{enter}')
         locators.getSelectorValue().eq(3).should("contain",credentials.taxes.income_tax)
         locators.getInputField().type('50')
@@ -532,6 +557,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain','Задолженность по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.income_tax+'{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(2).type(credentials.expense_item_category.expense_item_category_3+'{enter}')
         locators.getSelectorValue().eq(3).should("contain",credentials.taxes.income_tax)
         locators.getInputField().type('50')
@@ -540,6 +566,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain','Задолженность по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.income_tax+'{enter}')
+        cy.wait(1000)
         locators.getSelectorValue().eq(2).should("contain",credentials.expense_item_category.expense_item_category_4)
         locators.getSelectorValue().eq(3).should("contain",credentials.taxes.income_tax)
         locators.getInputField().type('50')
@@ -550,6 +577,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain','Задолженность по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.profit_tax+'{enter}')
+        cy.wait(1000)
         locators.getSelectorValue().eq(2).should("contain",credentials.expense_item_category.expense_item_category_5)
         locators.getSelectorValue().eq(3).should("contain",credentials.taxes.profit_tax)
         locators.getInputField().type('50')
@@ -560,10 +588,12 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain','Задолженность по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.Value_added_tax+'{enter}')
+        cy.wait(1000)
         locators.getSelectorValue().eq(2).should("contain",credentials.expense_item_category.expense_item_category_1)
         locators.getSelectorValue().eq(3).should("contain",credentials.expense_item_category.expense_item_category_6)
         locators.getInputField().type('50')
         locators.getButton().click()
+
     }
         page11() {
         locators.getTitle().should("contain", 'Кредиторская задолженность')
@@ -580,6 +610,7 @@ class onboarding{
         locators.getCreateNewButton().eq(0).click()
         locators.getModalWindow().should('contain', 'Задолженность клиентов')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_1 + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.income_item.income_item_1_name + '{enter}')
         locators.getSelectorValue().eq(2).should('contain', 'Выручка')
         locators.getInputField().type('100')
@@ -588,6 +619,7 @@ class onboarding{
         locators.getCreateNewButton().eq(0).click()
         locators.getModalWindow().should('contain', 'Задолженность клиентов')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_1 + '{enter}')
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should('contain', credentials.income_item.income_item_2_name)
         locators.getSelectorValue().eq(2).should('contain', 'Выручка')
         locators.getInputField().type('100')
@@ -596,6 +628,7 @@ class onboarding{
         locators.getCreateNewButton().eq(0).click()
         locators.getModalWindow().should('contain', 'Задолженность клиентов')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_2 + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.income_item.income_item_1_name + '{enter}')
         locators.getSelectorValue().eq(2).should('contain', 'Выручка')
         locators.getInputField().type('100')
@@ -604,10 +637,12 @@ class onboarding{
         locators.getCreateNewButton().eq(0).click()
         locators.getModalWindow().should('contain', 'Задолженность клиентов')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_2 + '{enter}')
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should('contain', credentials.income_item.income_item_2_name)
         locators.getSelectorValue().eq(2).should('contain', 'Выручка')
         locators.getInputField().type('100')
         locators.getButton().click()
+
     }
 
         ///////////////////////////////Авансы поставщикам/////////////////////////////////
@@ -615,6 +650,7 @@ class onboarding{
         locators.getCreateNewButton().eq(1).click()
         locators.getModalWindow().should('contain', 'Авансы поставщикам')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_1 + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.expense_item_name.expense_item_1_name + '{enter}')
         locators.getSelectorValue().eq(2).should('contain', credentials.expense_item_category.expense_item_category_1)
         locators.getInputField().type('50')
@@ -623,6 +659,7 @@ class onboarding{
         locators.getCreateNewButton().eq(1).click()
         locators.getModalWindow().should('contain', 'Авансы поставщикам')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_1 + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.expense_item_name.expense_item_2_name + '{enter}')
         locators.getSelectorValue().eq(2).should('contain', credentials.expense_item_category.expense_item_category_2)
         locators.getInputField().type('50')
@@ -631,6 +668,7 @@ class onboarding{
         locators.getCreateNewButton().eq(1).click()
         locators.getModalWindow().should('contain', 'Авансы поставщикам')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_1 + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.expense_item_name.expense_item_3_name + '{enter}')
         locators.getSelectorValue().eq(2).should('contain', credentials.expense_item_category.expense_item_category_3)
         locators.getInputField().type('50')
@@ -639,6 +677,7 @@ class onboarding{
         locators.getCreateNewButton().eq(1).click()
         locators.getModalWindow().should('contain', 'Авансы поставщикам')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_1 + '{enter}')
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should('contain', credentials.expense_item_name.expense_item_4_name)
         locators.getSelectorValue().eq(2).should('contain', credentials.expense_item_category.expense_item_category_4)
         locators.getInputField().type('50')
@@ -649,6 +688,7 @@ class onboarding{
         locators.getCreateNewButton().eq(1).click()
         locators.getModalWindow().should('contain', 'Авансы поставщикам')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_2 + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.expense_item_name.expense_item_1_name + '{enter}')
         locators.getSelectorValue().eq(2).should('contain', credentials.expense_item_category.expense_item_category_1)
         locators.getInputField().type('50')
@@ -657,6 +697,7 @@ class onboarding{
         locators.getCreateNewButton().eq(1).click()
         locators.getModalWindow().should('contain', 'Авансы поставщикам')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_2 + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.expense_item_name.expense_item_2_name + '{enter}')
         locators.getSelectorValue().eq(2).should('contain', credentials.expense_item_category.expense_item_category_2)
         locators.getInputField().type('50')
@@ -665,6 +706,7 @@ class onboarding{
         locators.getCreateNewButton().eq(1).click()
         locators.getModalWindow().should('contain', 'Авансы поставщикам')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_2 + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(3).type(credentials.expense_item_name.expense_item_3_name + '{enter}')
         locators.getSelectorValue().eq(2).should('contain', credentials.expense_item_category.expense_item_category_3)
         locators.getInputField().type('50')
@@ -673,6 +715,7 @@ class onboarding{
         locators.getCreateNewButton().eq(1).click()
         locators.getModalWindow().should('contain', 'Авансы поставщикам')
         locators.getSelector().eq(1).type(credentials.counterparties_name.counterparties_name_2 + '{enter}')
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should('contain', credentials.expense_item_name.expense_item_4_name)
         locators.getSelectorValue().eq(2).should('contain', credentials.expense_item_category.expense_item_category_4)
         locators.getInputField().type('50')
@@ -684,6 +727,7 @@ class onboarding{
         locators.getCreateNewButton().eq(2).click()
         locators.getModalWindow().should('contain', 'Авансы сотрудникам')
         locators.getSelector().eq(1).type(credentials.employee_full_name.employee_full_name_1 + '{enter}');
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should("contain", "Зарплата")
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_1)
         locators.getInputField().type('200')
@@ -692,6 +736,7 @@ class onboarding{
         locators.getCreateNewButton().eq(2).click()
         locators.getModalWindow().should('contain', 'Авансы сотрудникам')
         locators.getSelector().eq(1).type(credentials.employee_full_name.employee_full_name_2 + '{enter}');
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should("contain", "Зарплата")
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_2)
         locators.getInputField().type('200')
@@ -700,6 +745,7 @@ class onboarding{
         locators.getCreateNewButton().eq(2).click()
         locators.getModalWindow().should('contain', 'Авансы сотрудникам')
         locators.getSelector().eq(1).type(credentials.employee_full_name.employee_full_name_3 + '{enter}');
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should("contain", "Зарплата")
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_3)
         locators.getInputField().type('200')
@@ -708,6 +754,7 @@ class onboarding{
         locators.getCreateNewButton().eq(2).click()
         locators.getModalWindow().should('contain', 'Авансы сотрудникам')
         locators.getSelector().eq(1).type(credentials.employee_full_name.employee_full_name_4 + '{enter}');
+        cy.wait(1000)
         locators.getSelectorValue().eq(3).should("contain", "Зарплата")
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_4)
         locators.getInputField().type('200')
@@ -719,6 +766,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain', 'Авансы по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.social_tax + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(2).type(credentials.expense_item_category.expense_item_category_1 + '{enter}')
         locators.getSelectorValue().eq(3).should("contain", credentials.taxes.social_tax)
         locators.getInputField().type('50')
@@ -727,6 +775,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain', 'Авансы по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.social_tax + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(2).type(credentials.expense_item_category.expense_item_category_2 + '{enter}')
         locators.getSelectorValue().eq(3).should("contain", credentials.taxes.social_tax)
         locators.getInputField().type('50')
@@ -735,6 +784,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain', 'Авансы по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.social_tax + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(2).type(credentials.expense_item_category.expense_item_category_3 + '{enter}')
         locators.getSelectorValue().eq(3).should("contain", credentials.taxes.social_tax)
         locators.getInputField().type('50')
@@ -743,6 +793,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain', 'Авансы по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.social_tax + '{enter}')
+        cy.wait(1000)
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_4)
         locators.getSelectorValue().eq(3).should("contain", credentials.taxes.social_tax)
         locators.getInputField().type('50')
@@ -753,6 +804,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain', 'Авансы по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.income_tax + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(2).type(credentials.expense_item_category.expense_item_category_1 + '{enter}')
         locators.getSelectorValue().eq(3).should("contain", credentials.taxes.income_tax)
         locators.getInputField().type('50')
@@ -761,6 +813,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain', 'Авансы по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.income_tax + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(2).type(credentials.expense_item_category.expense_item_category_2 + '{enter}')
         locators.getSelectorValue().eq(3).should("contain", credentials.taxes.income_tax)
         locators.getInputField().type('50')
@@ -769,6 +822,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain', 'Авансы по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.income_tax + '{enter}')
+        cy.wait(1000)
         locators.getSelector().eq(2).type(credentials.expense_item_category.expense_item_category_3 + '{enter}')
         locators.getSelectorValue().eq(3).should("contain", credentials.taxes.income_tax)
         locators.getInputField().type('50')
@@ -777,6 +831,7 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain', 'Авансы по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.income_tax + '{enter}')
+        cy.wait(1000)
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_4)
         locators.getSelectorValue().eq(3).should("contain", credentials.taxes.income_tax)
         locators.getInputField().type('50')
@@ -787,20 +842,25 @@ class onboarding{
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain', 'Авансы по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.profit_tax + '{enter}')
+        cy.wait(1000)
         locators.getSelectorValue().eq(2).should("contain", credentials.expense_item_category.expense_item_category_5)
         locators.getSelectorValue().eq(3).should("contain", credentials.taxes.profit_tax)
         locators.getInputField().type('50')
         locators.getButton().click()
+
 
         //НДС
 
         locators.getCreateNewButton().eq(3).click()
         locators.getModalWindow().should('contain', 'Авансы по налогам')
         locators.getSelector().eq(1).type(credentials.taxes.Value_added_tax + '{enter}')
+        cy.wait(1000)
         locators.getSelectorValue().eq(2).should("contain", 'Выручка')
         locators.getSelectorValue().eq(3).should("contain", credentials.expense_item_category.expense_item_category_7)
         locators.getInputField().type('50')
         locators.getButton().click()
+
+
     }
     page12() {
         locators.getTitle().should("contain", 'Дебиторская задолженность')
@@ -856,23 +916,18 @@ class onboarding{
     //Основные средства
     page14(){
         locators.getTitle().should("contain",'Основные средства')
-        locators.getAmountGreen().should('contain.value','28800')
 
         locators.getNextButton2().click()
     }
     //Все готово
     page15(){
         locators.getTitle().should("contain",'Все готово')
+        locators.getAmountGreen().should('contain.text','28 800')
         locators.getNextButton2().click()
     }
-    DeleteAllData(){
+    GetDashboard(){
         locators.getSubTitle().should('contain','Выручка')
-        locators.getBurgerMenu().click()
-        locators.getCreateNewButton().eq(6).click()
-        locators.getMenuPage().eq(3).should('contain','Сбросить все данные').click()
-        locators.getModalWindow()
-        locators.getSubTitle().should('contain','Сбросить все данные')
-        locators.getStretchButton().should('contain','Удалить все данные').click()
+        cy.url().should('eq', 'https://dev.fin-consult.com/home');
     }
 }
 export default onboarding

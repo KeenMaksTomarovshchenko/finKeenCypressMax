@@ -37,17 +37,8 @@ class Locators {
     getSelectorValue(){
         return cy.get('.mt-react-select__single-value')
     }
-    getBurgerMenu(){
-        return cy.get('[class="expand-icon"]')
-    }
-    getMenuPage(){
-        return cy.get('[class="text-component pointer regular"]')
-    }
     getModalWindow(){
         return cy.get('[class="modal-block-wrapper"]')
-    }
-    getStretchButton(){
-        return cy.get('[class="main-button stretch-button"]')
     }
     getDatapickerInput(){
         return cy.get('[class="react-datepicker__input-container "]') }
@@ -61,7 +52,7 @@ class Locators {
         return cy.get('[class="main-button add-btn"]')
     }
     getAmountGreen(){
-        return cy.get('[class="text-component amount big bold link-accent regular"]')
+        return cy.get('.text-component.amount.big.bold.link-accent.regular')
     }
 }
 
