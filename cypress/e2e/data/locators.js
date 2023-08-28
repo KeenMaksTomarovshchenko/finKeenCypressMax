@@ -60,6 +60,9 @@ class Locators {
     getGreenButton(){
         return cy.get('[class="main-button add-btn"]')
     }
+    getAmountGreen(){
+        return cy.get('[class="text-component amount big bold link-accent regular"]')
+    }
 }
 
 export default Locators

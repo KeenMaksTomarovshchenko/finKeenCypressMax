@@ -567,10 +567,10 @@ class onboarding{
     }
         page11() {
         locators.getTitle().should("contain", 'Кредиторская задолженность')
-    //this.DebtToSuppliers()
-    //this.BuyersAdvances()
-    //this.DebtToEmployees()
-    //this.TaxDebt()
+    this.DebtToSuppliers()
+    this.BuyersAdvances()
+    this.DebtToEmployees()
+    this.TaxDebt()
         locators.getNextButton2().click()
 
 }   ////////////////////////////////Дебиторская задолженность//////////////////////////////////////////////////
@@ -804,14 +804,13 @@ class onboarding{
     }
     page12() {
         locators.getTitle().should("contain", 'Дебиторская задолженность')
-        //this.CustomerDebt()
-        //this.AdvancesToSuppliers()
-        //this.AdvancesToEmployees()
-        //this.TaxAdvances()
+        this.CustomerDebt()
+        this.AdvancesToSuppliers()
+        this.AdvancesToEmployees()
+        this.TaxAdvances()
     locators.getNextButton2().click()
 }    //Кредиты и займы
     page13(){
-        cy.visit('https://dev.fin-consult.com/onboarding/13')
         locators.getTitle().should("contain",'Кредиты и займы')
         locators.getCreateNewButton().eq(0).click()
         locators.getInputField().eq(0).type(credentials.credits.credit_name_1)
@@ -832,11 +831,33 @@ class onboarding{
         cy.get('.custom-month-cell-wrapper').contains('декабрь').click({force: true});
         locators.getGreenButton().click()
 
+        locators.getCreateNewButton().eq(0).click()
+        locators.getInputField().eq(0).type(credentials.credits.credit_name_3)
+        locators.getSelector().eq(0).type(credentials.counterparties_name.counterparties_name_2+'{enter}')
+        locators.getInputField().eq(1).type('0003')
+        locators.getInputField().eq(2).type('3000')
+        locators.getDatapickerInput().click()
+        cy.get('.unstyled-button.right').click({force: true})
+        cy.get('.custom-month-cell-wrapper').contains('январь').click({force: true});
+        locators.getGreenButton().click()
+
+        locators.getCreateNewButton().eq(0).click()
+        locators.getInputField().eq(0).type(credentials.credits.credit_name_4)
+        locators.getSelector().eq(0).type(credentials.counterparties_name.counterparties_name_2+'{enter}')
+        locators.getInputField().eq(1).type('0004')
+        locators.getInputField().eq(2).type('4000')
+        locators.getDatapickerInput().click()
+        cy.get('.unstyled-button.right').dblclick({force: true})
+        cy.get('.custom-month-cell-wrapper').contains('январь').click({force: true});
+        locators.getGreenButton().click()
+
         locators.getNextButton2().click()
     }
     //Основные средства
     page14(){
         locators.getTitle().should("contain",'Основные средства')
+        locators.getAmountGreen().should('contain.value','28800')
+
         locators.getNextButton2().click()
     }
     //Все готово
