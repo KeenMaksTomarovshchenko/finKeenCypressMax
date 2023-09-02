@@ -28,10 +28,6 @@ module.exports = {
         account_name_1: 'Счёт 1',
         account_name_2: 'Счёт 2'
     },
-    account_starting_balance:{
-        account_starting_balance_1: '10000',
-        account_starting_balance_2: '20000'
-    },
     income_item:{
         income_item_1_name: 'Статья дохода 1',
         income_item_2_name: 'Статья дохода 2',

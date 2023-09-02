@@ -42,6 +42,9 @@ class Locators {
     }
     getDatapickerInput(){
         return cy.get('[class="react-datepicker__input-container "]') }
+    getDatapickerValue(){
+        return cy.get('input[value]')
+    }
     getCheckbox(){
         return cy.get('[type="checkbox"]')
     }

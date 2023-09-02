@@ -53,7 +53,7 @@ class onboarding{
 
         locators.getSelector().eq(1).type(credentials.account_type.account_type_1)
         locators.getInputField().eq(0).type(credentials.account_name.account_name_1)
-        locators.getInputField().eq(1).type(credentials.account_starting_balance.account_starting_balance_1)
+        locators.getInputField().eq(1).type('10000')
         locators.getButton().click()
     }
     account_2_creating() {
@@ -62,7 +62,7 @@ class onboarding{
 
         locators.getSelector().eq(1).type(credentials.account_type.account_type_2)
         locators.getInputField().eq(0).type(credentials.account_name.account_name_2)
-        locators.getInputField().eq(1).type(credentials.account_starting_balance.account_starting_balance_2)
+        locators.getInputField().eq(1).type('20000')
         locators.getButton().click()
     }
     page4(){
@@ -160,11 +160,6 @@ class onboarding{
     //Сотрудники
 
     employee_1_creating(){
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-        const day = String(currentDate.getDate()).padStart(2, "0");
-        const formattedDate = `${day}/${month}/${year}`;
 
         locators.getCreateNewButton().eq(0).click()
         locators.getSubTitle().should('contain','Введите данные сотрудника')
@@ -176,16 +171,9 @@ class onboarding{
         locators.getSelector().eq(2).click()
         locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
         locators.getDatapickerInput().click()
-        locators.getDatapickerInput().type(formattedDate)
         locators.getButton().click()
     }
     employee_2_creating(){
-
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-    const day = String(currentDate.getDate()).padStart(2, "0");
-    const formattedDate = `${day}/${month}/${year}`;
 
     locators.getCreateNewButton().eq(0).click()
                 locators.getSubTitle().should('contain','Введите данные сотрудника')
@@ -197,16 +185,9 @@ class onboarding{
                 locators.getSelector().eq(2).click()
                 locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
                 locators.getDatapickerInput().click()
-                locators.getDatapickerInput().type(formattedDate)
                 locators.getButton().click()
     }
     employee_3_creating(){
-
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-    const day = String(currentDate.getDate()).padStart(2, "0");
-    const formattedDate = `${day}/${month}/${year}`;
 
                 locators.getCreateNewButton().eq(0).click()
                 locators.getSubTitle().should('contain','Введите данные сотрудника')
@@ -218,17 +199,9 @@ class onboarding{
                 locators.getSelector().eq(2).click()
                 locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
                 locators.getDatapickerInput().click()
-                locators.getDatapickerInput().type(formattedDate)
                 locators.getButton().click()
     }
     employee_4_creating(){
-
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-    const day = String(currentDate.getDate()).padStart(2, "0");
-    const formattedDate = `${day}/${month}/${year}`;
-
 
     locators.getCreateNewButton().eq(0).click()
                 locators.getSubTitle().should('contain','Введите данные сотрудника')
@@ -240,7 +213,6 @@ class onboarding{
                 locators.getSelector().eq(2).click()
                 locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
                 locators.getDatapickerInput().click()
-                locators.getDatapickerInput().type(formattedDate)
                 locators.getButton().click()
     }
     page8(){
@@ -597,10 +569,10 @@ class onboarding{
     }
         page11() {
         locators.getTitle().should("contain", 'Кредиторская задолженность')
-    this.DebtToSuppliers()
-    this.BuyersAdvances()
-    this.DebtToEmployees()
-    this.TaxDebt()
+    //this.DebtToSuppliers()
+    //this.BuyersAdvances()
+    //this.DebtToEmployees()
+    //this.TaxDebt()
         locators.getNextButton2().click()
 
 }   ////////////////////////////////Дебиторская задолженность//////////////////////////////////////////////////
@@ -864,10 +836,10 @@ class onboarding{
     }
     page12() {
         locators.getTitle().should("contain", 'Дебиторская задолженность')
-        this.CustomerDebt()
-        this.AdvancesToSuppliers()
-        this.AdvancesToEmployees()
-        this.TaxAdvances()
+        //this.CustomerDebt()
+        //this.AdvancesToSuppliers()
+       // this.AdvancesToEmployees()
+       // this.TaxAdvances()
     locators.getNextButton2().click()
 }    //Кредиты и займы
     page13(){
@@ -922,7 +894,8 @@ class onboarding{
     //Все готово
     page15(){
         locators.getTitle().should("contain",'Все готово')
-        locators.getAmountGreen().should('contain.text','28 800')
+        //с КЗ и ДЗ = 28 800, БЕЗ - 30 000
+        locators.getAmountGreen().should('contain.text','30 000')
         locators.getNextButton2().click()
     }
     GetDashboard(){

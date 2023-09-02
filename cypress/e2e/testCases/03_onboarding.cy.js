@@ -20,5 +20,5 @@ it ('pass onboarding', function (){
     Onboarding.page13()
     Onboarding.page14()
     Onboarding.page15()
-    Onboarding.DeleteAllData()
+    Onboarding.GetDashboard()
 })
