@@ -1,6 +1,5 @@
 import Locators from "../data/locators";
 import credentials, {counterparties_name, counterparties_type, employee_last_name, taxes} from "../data/credentials"
-import employeeData from "../data/credentials";
 const locators = new Locators()
 
 class onboarding{
@@ -310,7 +309,7 @@ class onboarding{
         this.waterhouse_3_creating()
         locators.getNextButton2().click()
     }
-    //Кредиторская задолженность
+    /////////////////Кредиторская задолженность 3300////////////////////////////
 //Задолженность перед поставщиками
         DebtToSuppliers() {
             locators.getCreateNewButton().eq(0).click()
@@ -569,13 +568,13 @@ class onboarding{
     }
         page11() {
         locators.getTitle().should("contain", 'Кредиторская задолженность')
-    //this.DebtToSuppliers()
-    //this.BuyersAdvances()
-    //this.DebtToEmployees()
-    //this.TaxDebt()
+    this.DebtToSuppliers()
+    this.BuyersAdvances()
+    this.DebtToEmployees()
+    this.TaxDebt()
         locators.getNextButton2().click()
 
-}   ////////////////////////////////Дебиторская задолженность//////////////////////////////////////////////////
+}   ////////////////////////////////Дебиторская задолженность 2100//////////////////////////////////////////////////
 
         ////////////////////////////////////Задолженность клиентов////////////////////////////////////////
     CustomerDebt() {
@@ -836,10 +835,10 @@ class onboarding{
     }
     page12() {
         locators.getTitle().should("contain", 'Дебиторская задолженность')
-        //this.CustomerDebt()
-        //this.AdvancesToSuppliers()
-       // this.AdvancesToEmployees()
-       // this.TaxAdvances()
+       this.CustomerDebt()
+       this.AdvancesToSuppliers()
+       this.AdvancesToEmployees()
+       this.TaxAdvances()
     locators.getNextButton2().click()
 }    //Кредиты и займы
     page13(){
@@ -848,7 +847,7 @@ class onboarding{
         locators.getInputField().eq(0).type(credentials.credits.credit_name_1)
         locators.getSelector().eq(0).type(credentials.counterparties_name.counterparties_name_1+'{enter}')
         locators.getInputField().eq(1).type('0001')
-        locators.getInputField().eq(2).type('1000')
+        locators.getInputField().eq(2).type('1100')
         locators.getDatapickerInput().click()
         cy.get('.custom-month-cell-wrapper').contains('декабрь').click({force: true});
         locators.getGreenButton().click()
@@ -857,7 +856,7 @@ class onboarding{
         locators.getInputField().eq(0).type(credentials.credits.credit_name_2)
         locators.getSelector().eq(0).type(credentials.counterparties_name.counterparties_name_1+'{enter}')
         locators.getInputField().eq(1).type('0002')
-        locators.getInputField().eq(2).type('2000')
+        locators.getInputField().eq(2).type('2200')
         locators.getDatapickerInput().click()
         cy.get('.unstyled-button.right').click({force: true})
         cy.get('.custom-month-cell-wrapper').contains('декабрь').click({force: true});
@@ -867,7 +866,7 @@ class onboarding{
         locators.getInputField().eq(0).type(credentials.credits.credit_name_3)
         locators.getSelector().eq(0).type(credentials.counterparties_name.counterparties_name_2+'{enter}')
         locators.getInputField().eq(1).type('0003')
-        locators.getInputField().eq(2).type('3000')
+        locators.getInputField().eq(2).type('3300')
         locators.getDatapickerInput().click()
         cy.get('.unstyled-button.right').click({force: true})
         cy.get('.custom-month-cell-wrapper').contains('январь').click({force: true});
@@ -877,7 +876,7 @@ class onboarding{
         locators.getInputField().eq(0).type(credentials.credits.credit_name_4)
         locators.getSelector().eq(0).type(credentials.counterparties_name.counterparties_name_2+'{enter}')
         locators.getInputField().eq(1).type('0004')
-        locators.getInputField().eq(2).type('4000')
+        locators.getInputField().eq(2).type('4400')
         locators.getDatapickerInput().click()
         cy.get('.unstyled-button.right').dblclick({force: true})
         cy.get('.custom-month-cell-wrapper').contains('январь').click({force: true});
@@ -894,8 +893,8 @@ class onboarding{
     //Все готово
     page15(){
         locators.getTitle().should("contain",'Все готово')
-        //с КЗ и ДЗ = 28 800, БЕЗ - 30 000
-        locators.getAmountGreen().should('contain.text','30 000')
+        //с КЗ и ДЗ = 27 800, БЕЗ - 29 000
+        locators.getAmountGreen().should('contain.text','29 000')
         locators.getNextButton2().click()
     }
     GetDashboard(){

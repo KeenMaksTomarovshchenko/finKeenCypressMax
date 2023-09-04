@@ -42,9 +42,6 @@ class Locators {
     }
     getDatapickerInput(){
         return cy.get('[class="react-datepicker__input-container "]') }
-    getDatapickerValue(){
-        return cy.get('input[value]')
-    }
     getCheckbox(){
         return cy.get('[type="checkbox"]')
     }
@@ -57,6 +54,39 @@ class Locators {
     getAmountGreen(){
         return cy.get('.text-component.amount.big.bold.link-accent.regular')
     }
+    //Дашборд
+    getCardTitle(){
+        return cy.get('[class="main-indicator-card__title"]')
+    }
+    getCardValue(){
+        return cy.get('[class="home-indicator__value"]')
+    }
+    getCardRow(){
+        return cy.get('[class="main-indicator-card__content-row"]')
+    }
+    getSecondaryCardTitle(){
+        return cy.get('[class="secondary-indicator-card__title-cell"]')
+    }
+    getSecondaryCardCell(){
+        return cy.get('[class="secondary-indicator-card__content-cell"]')
+    }
+    getAccountName(){
+        return cy.get('[class="account-name"]')
+    }
+    getAccountValue(){
+        return cy.get('[class="account-value"]')
+    }
+    OpenBurgerMenu(){
+        return cy.get('[class="expand-icon"]').click()
+    }
+    OpenMenuСhapter(){
+        return cy.get('[class="text-component bold regular"]')
+    }
+
+    OpenMenuPage(){
+        return cy.get('[class="text-component pointer regular"]')
+    }
+
 }
 
 export default Locators

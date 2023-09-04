@@ -1,5 +1,5 @@
 import onboarding from "../pageObjects/onboarding";
-import login from "../pageObjects/login";
+import Login from "../pageObjects/login";
 const Onboarding = new onboarding()
 
 it ('pass onboarding', function (){
