@@ -1,5 +1,4 @@
 import Login from "../pageObjects/login"
-
 const login = new Login
 
 

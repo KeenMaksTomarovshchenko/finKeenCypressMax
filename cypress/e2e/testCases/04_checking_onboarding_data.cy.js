@@ -1,10 +1,9 @@
 import checking_onboarding_data from "../pageObjects/checking_onboarding_data";
-import Login from "../pageObjects/login";
-
 const Checking_onboarding_data = new checking_onboarding_data()
-
+import Login from "../pageObjects/login";
+const login = new Login
 it('Check all data entered during onboarding',function (){
-    Checking_onboarding_data.login()
+    login.login()
     Checking_onboarding_data.dashboard_revenue()
     Checking_onboarding_data.dashboard_expense()
     Checking_onboarding_data.dashboard_profit()

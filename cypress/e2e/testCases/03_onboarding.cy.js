@@ -1,9 +1,10 @@
 import onboarding from "../pageObjects/onboarding";
 import Login from "../pageObjects/login";
 const Onboarding = new onboarding()
+const login = new Login
 
 it ('pass onboarding', function (){
-    Onboarding.login()
+    login.login()
     Onboarding.page0()
     Onboarding.page1()
     Onboarding.page2()

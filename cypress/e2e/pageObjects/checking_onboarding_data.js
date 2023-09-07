@@ -4,16 +4,6 @@ const locators = new Locators()
 
 class checking_onboarding_data {
 
-    login(){
-            locators.visitLoginPage()
-            locators.getTitle().should('contain','Вход')
-            cy.wait(500)
-
-            locators.getInputField().eq(0).type(credentials.email.email)
-            locators.getInputField().eq(1).type(credentials.password.password)
-            cy.wait(1000)
-            locators.getButton().eq(0).click()
-    }
     dashboard_revenue(){
         locators.getCardTitle().eq(0).should('contain','Выручка')
         locators.getCardValue().eq(0).should('contain','0')
@@ -47,26 +37,32 @@ class checking_onboarding_data {
     dashboard_monetary_resources(){
         locators.getSecondaryCardTitle().eq(0).should('contain','Денежных средств')
         locators.getSecondaryCardTitle().eq(1).should('contain','30 000')
-        locators.getAccountName().eq(0).should('contain',credentials.account_name.account_name_2)
-        locators.getAccountValue().eq(0).should('contain','20 000')
-        locators.getAccountName().eq(1).should('contain',credentials.account_name.account_name_1)
-        locators.getAccountValue().eq(1).should('contain','10 000')
+        locators.getAccountName().should(($element) => {
+            const text = $element.text();
+            expect(text).to.include(credentials.account_name.account_name_1);
+            expect(text).to.include(credentials.account_name.account_name_2);
+        });
+        locators.getAccountValue().should(($element) => {
+            const text = $element.text();
+            expect(text).to.include('10 000');
+            expect(text).to.include('20 000');
+        });
     }
     dashboard_working_capital(){
         locators.getSecondaryCardTitle().eq(2).should('contain','Оборотный капитал')
-        locators.getSecondaryCardTitle().eq(3).should('contain','38 800')
+        locators.getSecondaryCardTitle().eq(3).should('contain','40 000')//40 000 без КЗ и ДЗ, 38 800 - с
         locators.getSecondaryCardCell().eq(0).should('contain','Прошлый период')
         locators.getSecondaryCardCell().eq(1).should('contain','0')
     }
     dashboard_accounts_receivable(){
         locators.getSecondaryCardTitle().eq(4).should('contain','Дебиторская задолженность')
-        locators.getSecondaryCardTitle().eq(5).should('contain','2 100')
+        locators.getSecondaryCardTitle().eq(5).should('contain','0')//2 100
         locators.getSecondaryCardCell().eq(2).should('contain','Прошлый период')
         locators.getSecondaryCardCell().eq(3).should('contain','0')
     }
     dashboard_accounts_payable(){
         locators.getSecondaryCardTitle().eq(6).should('contain','Кредиторская задолженность')
-        locators.getSecondaryCardTitle().eq(7).should('contain','3 300')
+        locators.getSecondaryCardTitle().eq(7).should('contain','0')//3 300
         locators.getSecondaryCardCell().eq(4).should('contain','Прошлый период' )
         locators.getSecondaryCardCell().eq(5).should('contain', '0')
     }

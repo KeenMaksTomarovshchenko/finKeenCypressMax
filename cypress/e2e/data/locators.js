@@ -29,7 +29,7 @@ class Locators {
         return cy.get('h2')
     }
     getCreateNewButton(){
-        return cy.get('[class="text-component bold regular"]')
+        return cy.get('[class="text-component bold"]')
     }
     getSelector(){
         return cy.get('.mt-react-select__input-container')
@@ -80,11 +80,23 @@ class Locators {
         return cy.get('[class="expand-icon"]').click()
     }
     OpenMenuСhapter(){
-        return cy.get('[class="text-component bold regular"]')
+        return cy.get('[class="text-component bold"]')
     }
 
     OpenMenuPage(){
-        return cy.get('[class="text-component pointer regular"]')
+        return cy.get('[class="text-component pointer"]')
+    }
+    getSubmitButton(){
+        return cy.get('[class="unstyled-button round-submit-button"]')
+    }
+    getCancelButton(){
+        return cy.get('[class="unstyled-button round-cansel-button"]')
+    }
+    getQuantity(){
+        return cy.get('[name="quantity"]')
+    }
+    getPrice(){
+        return cy.get('[name="price"]')
     }
 
 }
