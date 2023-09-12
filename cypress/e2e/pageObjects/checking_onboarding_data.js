@@ -50,19 +50,19 @@ class checking_onboarding_data {
     }
     dashboard_working_capital(){
         locators.getSecondaryCardTitle().eq(2).should('contain','Оборотный капитал')
-        locators.getSecondaryCardTitle().eq(3).should('contain','40 000')//40 000 без КЗ и ДЗ, 38 800 - с
+        locators.getSecondaryCardTitle().eq(3).should('contain','38 800')//40 000 без КЗ и ДЗ, 38 800 - с
         locators.getSecondaryCardCell().eq(0).should('contain','Прошлый период')
         locators.getSecondaryCardCell().eq(1).should('contain','0')
     }
     dashboard_accounts_receivable(){
         locators.getSecondaryCardTitle().eq(4).should('contain','Дебиторская задолженность')
-        locators.getSecondaryCardTitle().eq(5).should('contain','0')//2 100
+        locators.getSecondaryCardTitle().eq(5).should('contain','2 100')//2 100
         locators.getSecondaryCardCell().eq(2).should('contain','Прошлый период')
         locators.getSecondaryCardCell().eq(3).should('contain','0')
     }
     dashboard_accounts_payable(){
         locators.getSecondaryCardTitle().eq(6).should('contain','Кредиторская задолженность')
-        locators.getSecondaryCardTitle().eq(7).should('contain','0')//3 300
+        locators.getSecondaryCardTitle().eq(7).should('contain','3 300')//3 300
         locators.getSecondaryCardCell().eq(4).should('contain','Прошлый период' )
         locators.getSecondaryCardCell().eq(5).should('contain', '0')
     }

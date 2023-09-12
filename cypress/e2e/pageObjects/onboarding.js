@@ -568,10 +568,10 @@ class onboarding{
     }
         page11() {
         locators.getTitle().should("contain", 'Кредиторская задолженность')
-    //this.DebtToSuppliers()
-    //this.BuyersAdvances()
-    //this.DebtToEmployees()
-    //this.TaxDebt()
+    this.DebtToSuppliers()
+    this.BuyersAdvances()
+    this.DebtToEmployees()
+    this.TaxDebt()
         locators.getNextButton2().click()
 
 }   ////////////////////////////////Дебиторская задолженность 2100//////////////////////////////////////////////////
@@ -835,10 +835,10 @@ class onboarding{
     }
     page12() {
         locators.getTitle().should("contain", 'Дебиторская задолженность')
-    //   this.CustomerDebt()
-    //   this.AdvancesToSuppliers()
-    //   this.AdvancesToEmployees()
-    //   this.TaxAdvances()
+       this.CustomerDebt()
+       this.AdvancesToSuppliers()
+       this.AdvancesToEmployees()
+       this.TaxAdvances()
     locators.getNextButton2().click()
 }    //Кредиты и займы
     page13(){
@@ -894,7 +894,7 @@ class onboarding{
     page15(){
         locators.getTitle().should("contain",'Все готово')
         //с КЗ и ДЗ = 27 800, БЕЗ - 29 000
-        locators.getAmountGreen().should('contain.text','29 000')
+        locators.getAmountGreen().should('contain.text','27 800')
         locators.getNextButton2().click()
     }
     GetDashboard(){
