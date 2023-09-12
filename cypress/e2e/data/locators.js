@@ -52,7 +52,7 @@ class Locators {
         return cy.get('[class="main-button add-btn"]')
     }
     getAmountGreen(){
-        return cy.get('.text-component.amount.big.bold.link-accent.regular')
+        return cy.get('[class="text-component amount big bold link-accent"]')
     }
     //Дашборд
     getCardTitle(){

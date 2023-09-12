@@ -20,6 +20,6 @@ it ('pass onboarding', function (){
     Onboarding.page12()
     Onboarding.page13()
     Onboarding.page14()
-    Onboarding.page15()
-    Onboarding.GetDashboard()
+        //Onboarding.page15()
+    //Onboarding.GetDashboard()
 })

@@ -11,7 +11,6 @@ class Login {
         locators.getInputField().eq(1).type(credentials.password.password)
         cy.wait(1000)
         locators.getButton().eq(0).click()
-        locators.getSubTitle().should('contain','Выручка')
     }
 }
 

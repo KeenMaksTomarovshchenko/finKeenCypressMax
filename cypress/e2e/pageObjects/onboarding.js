@@ -169,7 +169,6 @@ class onboarding{
         locators.getSelector().eq(1).type(credentials.expense_item_category.expense_item_category_1+'{enter}')
         locators.getSelector().eq(2).click()
         locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
-        locators.getDatapickerInput().click()
         locators.getButton().click()
     }
     employee_2_creating(){
@@ -183,7 +182,6 @@ class onboarding{
                 locators.getSelector().eq(1).type(credentials.expense_item_category.expense_item_category_2+'{enter}')
                 locators.getSelector().eq(2).click()
                 locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
-                locators.getDatapickerInput().click()
                 locators.getButton().click()
     }
     employee_3_creating(){
@@ -197,7 +195,6 @@ class onboarding{
                 locators.getSelector().eq(1).type(credentials.expense_item_category.expense_item_category_3+'{enter}')
                 locators.getSelector().eq(2).click()
                 locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
-                locators.getDatapickerInput().click()
                 locators.getButton().click()
     }
     employee_4_creating(){
@@ -211,7 +208,6 @@ class onboarding{
                 locators.getSelector().eq(1).type(credentials.expense_item_category.expense_item_category_4+'{enter}')
                 locators.getSelector().eq(2).click()
                 locators.getSelector().eq(2).type(credentials.employee_status.employee_status_1)
-                locators.getDatapickerInput().click()
                 locators.getButton().click()
     }
     page8(){
