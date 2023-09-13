@@ -31,11 +31,14 @@ class Locators {
     getCreateNewButton(){
         return cy.get('[class="text-component bold"]')
     }
-    getSelector(){
+    getDropdown(){
         return cy.get('.mt-react-select__input-container')
     }
-    getSelectorValue(){
+    getDropdownValue(){
         return cy.get('.mt-react-select__single-value')
+    }
+    getDropdownOption(){
+        return cy.get('[class="tooltip-sign"]')
     }
     getModalWindow(){
         return cy.get('[class="modal-block-wrapper"]')
@@ -95,8 +98,8 @@ class Locators {
     getQuantity(){
         return cy.get('[name="quantity"]')
     }
-    getPrice(){
-        return cy.get('[name="price"]')
+    getGreenAmount(){
+        return cy.get('[class="text-component bold amount"]')
     }
 
 }

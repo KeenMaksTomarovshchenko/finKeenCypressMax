@@ -70,6 +70,12 @@ module.exports = {
         employee_full_name_3: 'Сотрудник Ккк',
         employee_full_name_4: 'Сотрудник Ооо',
     },
+    employee_full_name_trim: {
+        employee_full_name_1: 'Сотрудник А.',
+        employee_full_name_2: 'Сотрудник С.',
+        employee_full_name_3: 'Сотрудник К.',
+        employee_full_name_4: 'Сотрудник О.',
+    },
     employee_status:{
         employee_status_1:'Работает{enter}',
         employee_status_2:'Не работает{enter}',
