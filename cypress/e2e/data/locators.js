@@ -101,7 +101,21 @@ class Locators {
     getGreenAmount(){
         return cy.get('[class="text-component bold amount"]')
     }
-
+    getAdressMask(){
+        return cy.get('[class="input-field input-field-mask"]')
+    }
+    getBoldText(){
+        return cy.get('b')
+    }
+    getHugeBoldNumber(){
+        return cy.get('[class="text-component amount huge bold link-accent"]')
+    }
+    getAccountsAndCurrentNumber(){
+        return cy.get('[class="text-component option-text-wrapper"]')
+    }
+    getRowDocument(){
+        return cy.get('[class="row"]')
+    }
 }
 
 export default Locators

@@ -269,18 +269,21 @@ class onboarding{
     waterhouse_2_creating(){
         locators.getCreateNewButton().eq(1).click()
         locators.getName().should('contain','Склад №2')
+        locators.getCheckbox().eq(1).click()
         locators.getCreateNewButton().eq(1).click()
         locators.getInputField().eq(0).type(credentials.product_name.product_2_name)
+        locators.getAdressMask().type('11.A.111')
         locators.getDropdown().eq(0).click()
-        locators.getDropdown().eq(0).type('a{backspace}' + credentials.units.unit_2.toLowerCase())
+        locators.getDropdown().eq(0).type('a{backspace}' + credentials.units.unit_2)
         locators.getInputField().eq(1).type('200')
         locators.getInputField().eq(2).type('10')
         locators.getGreenButton().click()
 
         locators.getCreateNewButton().eq(1).click()
         locators.getInputField().eq(0).type(credentials.product_name.product_3_name)
+        locators.getAdressMask().type('22.B.222')
         locators.getDropdown().eq(0).click()
-        locators.getDropdown().eq(0).type('a{backspace}' + credentials.units.unit_3.toLowerCase())
+        locators.getDropdown().eq(0).type('a{backspace}' + credentials.units.unit_3)
         locators.getInputField().eq(1).type('300')
         locators.getInputField().eq(2).type('10')
         locators.getGreenButton().click()
@@ -301,8 +304,11 @@ class onboarding{
     page10(){
         locators.getTitle().should("contain",'Склады')
         this.waterhouse_1_creating()
+        cy.wait(1000)
         this.waterhouse_2_creating()
+        cy.wait(1000)
         this.waterhouse_3_creating()
+        cy.wait(1000)
         locators.getNextButton2().click()
     }
     /////////////////Кредиторская задолженность 3300////////////////////////////

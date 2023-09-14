@@ -20,6 +20,8 @@ class creating_operations{
         locators.getGreenAmount().should('contain','21 000')
         locators.getButton().click()
 
+        cy.wait(1000)
+
         locators.OpenMenuPage().contains('Денежная транзакция').click()
         locators.getDropdown().eq(1).type(credentials.account_name.account_name_2+'{enter}')
         cy.wait(1000)
@@ -334,6 +336,20 @@ class creating_operations{
 
         locators.getButton().click()
     }
+        operation_with_self_capital(){
+            cy.wait(1000)
+            locators.OpenMenuPage().contains('С собственным капиталом').click()
 
+            locators.getBoldText().eq(0).should("contain",'25 960')
+            locators.getHugeBoldNumber().eq(0).should("contain",'27 800')
+            locators.getHugeBoldNumber().eq(1).should("contain",'-1 840')
+            locators.getDropdown().eq(0).click()
+            locators.getAccountsAndCurrentNumber().contains(credentials.account_name.account_name_1+' / 8 150').click()
+            locators.getInputField().eq(0).type('150')
+            locators.getButton().click()
+            locators.getBoldText().eq(0).should("contain",'25 810')
+            locators.getHugeBoldNumber().eq(0).should("contain",'27 650')
+            locators.getRowDocument().eq(0).should("contain",'Выплата'+'Дивиденды'+'150')
+        }
 }
 export default creating_operations
