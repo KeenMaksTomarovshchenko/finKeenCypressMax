@@ -349,7 +349,28 @@ class creating_operations{
             locators.getButton().click()
             locators.getBoldText().eq(0).should("contain",'25 810')
             locators.getHugeBoldNumber().eq(0).should("contain",'27 650')
-            locators.getRowDocument().eq(0).should("contain",'Выплата'+'Дивиденды'+'150')
+            locators.getRowDocument().eq(0).should("contain", 'Выплата').and("contain", 'Дивиденды').and("contain", '150')
+
+        }
+        operations_with_credits(){
+            cy.wait(1000)
+            locators.OpenMenuPage().contains('С кредитом / займом').click()
+            locators.getDropdown().eq(0).type(credentials.counterparties_name.counterparties_name_1+'{enter}')
+            locators.getDropdown().eq(1).type('Соглашение'+'{enter}')
+            locators.getInputField().eq(0).type('1001')
+
+            locators.getCreateNewButton().eq(2).click()
+            locators.getDropdown().eq(3).type(credentials.account_name.account_name_1+'{enter}')
+            locators.getInputField().eq(1).type('5000')
+            locators.getGreenButton().click()
+
+            locators.getInputField().eq(1).type(credentials.credits.credit_name_5)
+            locators.getDatapickerInput().eq(1).click()
+            cy.get('.unstyled-button.right').dblclick()
+            cy.get('.custom-month-cell-wrapper').contains('октябрь').click();
+            locators.getInputField().eq(2).type('5000')
+
+            locators.getButton().click()
         }
 }
 export default creating_operations

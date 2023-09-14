@@ -13,4 +13,5 @@ it('create new operations',function (){
     Creating_operations.operation_with_taxes_1()
     Creating_operations.operation_with_taxes_2()
     Creating_operations.operation_with_self_capital()
+    Creating_operations.operations_with_credits()
 })
