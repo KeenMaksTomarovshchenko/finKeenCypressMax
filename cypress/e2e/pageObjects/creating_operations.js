@@ -8,7 +8,7 @@ class creating_operations{
         cy.wait(1000)
         locators.OpenBurgerMenu()
         cy.wait(1000)
-        locators.OpenMenuСhapter().contains('Новая операция').click()
+        locators.BoldText2().contains('Новая операция').click()
     }
     money_transaction(){
         locators.OpenMenuPage().contains('Денежная транзакция').click()
@@ -17,7 +17,7 @@ class creating_operations{
         locators.getInputField().eq(1).type('1000')
         locators.getDropdown().eq(2).type(credentials.account_name.account_name_2+'{enter}')
         locators.getDropdownValue().eq(2).should('contain',credentials.account_name.account_name_2+' / 20 000')
-        locators.getGreenAmount().should('contain','21 000')
+        locators.getAmountGreen1().should('contain','21 000')
         locators.getButton().click()
 
         cy.wait(1000)
@@ -29,7 +29,7 @@ class creating_operations{
         locators.getInputField().eq(1).type('1000')
         locators.getDropdown().eq(2).type(credentials.account_name.account_name_1+'{enter}')
         locators.getDropdownValue().eq(2).should('contain',credentials.account_name.account_name_1+' / 9 000')
-        locators.getGreenAmount().should('contain','10 000')
+        locators.getAmountGreen1().should('contain','10 000')
         locators.getButton().click()
     }
     operations_with_doc_sell(){
@@ -349,7 +349,7 @@ class creating_operations{
             locators.getButton().click()
             locators.getBoldText().eq(0).should("contain",'25 810')
             locators.getHugeBoldNumber().eq(0).should("contain",'27 650')
-            locators.getRowDocument().eq(0).should("contain", 'Выплата').and("contain", 'Дивиденды').and("contain", '150')
+            locators.getRowDocument().eq(1).should("contain", 'Выплата').and("contain", 'Дивиденды').and("contain", '150')
 
         }
         operations_with_credits(){

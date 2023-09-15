@@ -54,7 +54,7 @@ class Locators {
     getGreenButton(){
         return cy.get('[class="main-button add-btn"]')
     }
-    getAmountGreen(){
+    getAmountGreen1(){
         return cy.get('[class="text-component amount big bold link-accent"]')
     }
     //Дашборд
@@ -82,7 +82,7 @@ class Locators {
     OpenBurgerMenu(){
         return cy.get('[class="expand-icon"]').click()
     }
-    OpenMenuСhapter(){
+    BoldText2(){
         return cy.get('[class="text-component bold"]')
     }
 
@@ -98,7 +98,7 @@ class Locators {
     getQuantity(){
         return cy.get('[name="quantity"]')
     }
-    getGreenAmount(){
+    getAmountGreen2(){
         return cy.get('[class="text-component bold amount"]')
     }
     getAdressMask(){
@@ -115,6 +115,15 @@ class Locators {
     }
     getRowDocument(){
         return cy.get('[class="row"]')
+    }
+    getAmountGreen3(){
+        return cy.get('[class="text-component bold link-accent"]')
+    }
+    getBalanceConvergenceRow(){
+        return cy.get('[class="custom-row balance-convergence"]')
+    }
+    getRowCell(){
+        return cy.get('[class="r-cell resizable"]')
     }
 }
 

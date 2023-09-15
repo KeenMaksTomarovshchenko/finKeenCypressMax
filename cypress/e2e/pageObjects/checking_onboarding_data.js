@@ -1,5 +1,6 @@
 import Locators from "../data/locators";
 import credentials from "../data/credentials";
+import {setupHooks} from "cypress/mount-utils";
 const locators = new Locators()
 
 class checking_onboarding_data {
@@ -68,7 +69,7 @@ class checking_onboarding_data {
     }
     transaction_registry_accounts_receivable(){
         locators.OpenBurgerMenu()
-        locators.OpenMenuСhapter().contains('Реестры').click()
+        locators.BoldText2().contains('Реестры').click()
         locators.OpenMenuPage().contains('Денежные транзакции').click()
     }
     transaction_registry_accounts_payable(){
@@ -97,7 +98,7 @@ class checking_onboarding_data {
         cy.wait(1000)
     }
     report_flow_of_funds_onboarding(){
-        locators.OpenMenuСhapter().contains('Отчеты').click()
+        locators.BoldText2().contains('Отчеты').click()
         locators.OpenMenuPage().contains('Движение денежных средств').click()
         cy.wait(1000)
     }
@@ -108,14 +109,21 @@ class checking_onboarding_data {
     report_balance_onboarding(){
         locators.OpenMenuPage().contains('Баланс').click()
         cy.wait(1000)
+            cy.get('[class="white-block balance-report"]')
+                .find(locators.getBalanceConvergenceRow())
+                .find(locators.getRowCell())
+                .last()
+                .should('contain','0')
     }
     report_accounts_receivable_onboarding(){
         locators.OpenMenuPage().contains('Дебиторская задолженность').click()
         cy.wait(1000)
+        locators.getAmountGreen3().should("contain",'2 100')
     }
     report_accounts_payable_onboarding(){
         locators.OpenMenuPage().contains('Кредиторская задолженность').click()
         cy.wait(1000)
+        locators.getAmountGreen3().should("contain",'3 300')
     }
     report_warehouses_and_products(){
         locators.OpenMenuPage().contains('Товарные запасы').click()

@@ -844,7 +844,7 @@ class onboarding{
     page15(){
         locators.getTitle().should("contain",'Все готово')
         //с КЗ и ДЗ = 27 800, БЕЗ - 29 000
-        locators.getAmountGreen().should('contain.text','27 800')
+        locators.getAmountGreen1().should('contain.text','27 800')
         locators.getNextButton2().click()
     }
     GetDashboard(){
