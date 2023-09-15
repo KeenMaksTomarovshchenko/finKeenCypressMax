@@ -109,11 +109,66 @@ class checking_onboarding_data {
     report_balance_onboarding(){
         locators.OpenMenuPage().contains('Баланс').click()
         cy.wait(1000)
-            cy.get('[class="white-block balance-report"]')
-                .find(locators.getBalanceConvergenceRow())
-                .find(locators.getRowCell())
-                .last()
-                .should('contain','0')
+
+        cy.get('[class="custom-row assets"]')
+            .find('[class="r-cell resizable"]')
+            .last()
+            .should('contain', '42 100')
+
+        cy.get('[class="custom-row stocks"]')
+            .find('[class="item-header opened"]')
+            .find('[class="r-cell resizable"]')
+            .last()
+            .should('contain', '10 000')
+
+        cy.get('[class="custom-row funds"]')
+            .find('[class="item-header opened"]')
+            .find('[class="r-cell resizable"]')
+            .last()
+            .should('contain', '30 000')
+
+        cy.get('[class="custom-row accounts-receivable"]')
+            .find('[class="item-header opened"]')
+            .find('[class="r-cell resizable"]')
+            .last()
+            .should('contain', '2 100')
+
+        cy.get('[class="custom-row passive"]')
+            .find('[class="r-cell resizable"]')
+            .last()
+            .should('contain', '42 100')
+
+        cy.get('[class="custom-row equity"]')
+            .find('[class="item-header opened"]')
+            .find('[class="r-cell resizable"]')
+            .last()
+            .should('contain', '27 800')
+
+        cy.get('[class="custom-row long-term"]')
+            .find('[class="item-header opened"]')
+            .find('[class="r-cell resizable"]')
+            .last()
+            .should('contain', '6 600')
+
+        cy.get('[class="custom-row short-term"]')
+            .find('[class="item-header opened"]')
+            .find('[class="r-cell resizable"]')
+            .last()
+            .should('contain', '4 400')
+
+        cy.get('[class="custom-row accounts-payable"]')
+            .find('[class="item-header opened"]')
+            .find('[class="r-cell resizable"]')
+            .last()
+            .should('contain', '3 300')
+
+
+        cy.get('[class="custom-row balance-convergence"]')
+            .find('[class="r-cell resizable"]')
+            .last()
+            .should('contain', '0')
+
+
     }
     report_accounts_receivable_onboarding(){
         locators.OpenMenuPage().contains('Дебиторская задолженность').click()
