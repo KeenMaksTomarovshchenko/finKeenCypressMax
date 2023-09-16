@@ -1,16 +1,18 @@
-import Locators from "../data/locators";
 import credentials from "../data/credentials";
-const locators = new Locators()
 
+
+const CSSInput = '.input-field'
+const CSSButton = '[class="main-button"]'
+const LoginPage = 'https://dev.fin-consult.com/login'
 class Login {
     login() {
-        locators.visitLoginPage()
-        locators.getInputField().eq(0).clear()
-        locators.getInputField().eq(0).type(credentials.email.email)
+        cy.visit(LoginPage)
+       cy.get(CSSInput).eq(0).clear()
+       cy.get(CSSInput).eq(0).type(credentials.email.email)
         cy.wait(1000)
-        locators.getInputField().eq(1).type(credentials.password.password)
+       cy.get(CSSInput).eq(1).type(credentials.password.password)
         cy.wait(1000)
-        locators.getButton().eq(0).click()
+       cy.get(CSSButton).eq(0).click()
     }
 }
 

@@ -1,19 +1,23 @@
-import Locators from "../data/locators";
 import credentials from "../data/credentials"
-const locators = new Locators()
 
+
+const CSSInput = '.input-field'
+const CSSCheckbox = '[type="checkbox"]'
+const CSSButton = '[class="main-button"]'
+const LoginPage = 'https://dev.fin-consult.com/login'
+const CSSTextLink = '[class="text-component link-accent bold pointer regular"]'
 class User_creation {
 
     user_creation(){
-        locators.visitLoginPage()
-        locators.getTextLink().should('contain',credentials.textLink.textLinkCreateNewAccount).click()
-        locators.getInputField().eq(0).type(credentials.name.name)
-        locators.getInputField().eq(1).type(credentials.email.email)
-        locators.getInputField().eq(2).type(credentials.password.password)
-        locators.getInputField().eq(3).type(credentials.password.password)
+        cy.visit(LoginPage)
+        cy.get(CSSTextLink).should('contain',credentials.textLink.textLinkCreateNewAccount).click()
+       cy.get(CSSInput).eq(0).type(credentials.name.name)
+       cy.get(CSSInput).eq(1).type(credentials.email.email)
+       cy.get(CSSInput).eq(2).type(credentials.password.password)
+       cy.get(CSSInput).eq(3).type(credentials.password.password)
         cy.wait(1000)
-        locators.getCheckbox().trigger('click');
+        cy.get(CSSCheckbox).trigger('click');
         cy.wait(1000)
-        locators.getButton().eq(0).click()
+       cy.get(CSSButton).eq(0).click()
     }}
 export default User_creation
