@@ -6,8 +6,10 @@ const CSSMenuPage = '[class="text-component pointer"]'
 const CSSCardTitleBold = '[class="main-indicator-card__title"]'
 const CSSCardTitleCell = '[class="home-indicator__value"]'
 const CSSCardRow = '[class="main-indicator-card__content-row"]'
-const CSSTableRow = '[class="item-header opened"]'
+const CSSTableHeaderRow = '[class="item-header opened"]'
+const CSSTableContentChapter = '[class="item-content opened"]'
 const CSSTableCell = '[class="r-cell resizable"]'
+const CSSTableContentRow = '[class="custom-row"]'
 const CSSSecondaryCardTitleBold = '[class="secondary-indicator-card__title-cell"]'
 const CSSSecondaryCardCell = '[class="secondary-indicator-card__content-cell"]'
 const CSSGreenNumber = '[class="text-component bold link-accent"]'
@@ -139,22 +141,95 @@ class checking_onboarding_data {
             .should('contain', '42 100')
 
         cy.get('[class="custom-row stocks"]')
-            .find(CSSTableRow)
+            .find(CSSTableHeaderRow)
             .find(CSSTableCell)
             .last()
             .should('contain', '10 000')
 
+                        cy.get('[class="custom-row stocks"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'1 000')
+
+                        cy.get('[class="custom-row stocks"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'5 000')
+
+                        cy.get('[class="custom-row stocks"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'4 000')
+                    
+
         cy.get('[class="custom-row funds"]')
-            .find(CSSTableRow)
+            .find(CSSTableHeaderRow)
             .find(CSSTableCell)
             .last()
             .should('contain', '30 000')
 
+                        cy.get('[class="custom-row funds"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'10 000')
+
+                        cy.get('[class="custom-row funds"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'20 000')
+
         cy.get('[class="custom-row accounts-receivable"]')
-            .find(CSSTableRow)
+            .find(CSSTableHeaderRow)
             .find(CSSTableCell)
             .last()
             .should('contain', '2 100')
+
+                        cy.get('[class="custom-row accounts-receivable"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'400')
+
+                        cy.get('[class="custom-row accounts-receivable"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'400')
+
+                        cy.get('[class="custom-row accounts-receivable"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'800')
+
+                        cy.get('[class="custom-row accounts-receivable"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(3)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'500')
 
         cy.get('[class="custom-row passive"]')
             .find(CSSTableCell)
@@ -162,35 +237,114 @@ class checking_onboarding_data {
             .should('contain', '42 100')
 
         cy.get('[class="custom-row equity"]')
-            .find(CSSTableRow)
+            .find(CSSTableHeaderRow)
             .find(CSSTableCell)
             .last()
             .should('contain', '27 800')
 
+                        cy.get('[class="custom-row equity"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'27 800')
+
+                        cy.get('[class="custom-row equity"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'0')
+
         cy.get('[class="custom-row long-term"]')
-            .find(CSSTableRow)
+            .find(CSSTableHeaderRow)
             .find(CSSTableCell)
             .last()
             .should('contain', '6 600')
 
+                        cy.get('[class="custom-row long-term"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'2 200')
+
+                        cy.get('[class="custom-row long-term"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'4 400')
+
+
         cy.get('[class="custom-row short-term"]')
-            .find(CSSTableRow)
+            .find(CSSTableHeaderRow)
             .find(CSSTableCell)
             .last()
             .should('contain', '4 400')
 
+                        cy.get('[class="custom-row short-term"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'1 100')
+
+                        cy.get('[class="custom-row short-term"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'3 300')
+
         cy.get('[class="custom-row accounts-payable"]')
-            .find(CSSTableRow)
+            .find(CSSTableHeaderRow)
             .find(CSSTableCell)
             .last()
             .should('contain', '3 300')
 
+                        cy.get('[class="custom-row accounts-payable"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'800')
+
+                        cy.get('[class="custom-row accounts-payable"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'800')
+
+                        cy.get('[class="custom-row accounts-payable"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'1 200')
+
+                        cy.get('[class="custom-row accounts-payable"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(3)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("contain",'500')
 
         cy.get('[class="custom-row balance-convergence"]')
             .find(CSSTableCell)
             .last()
             .should('contain', '0')
-
 
     }
     report_accounts_receivable_onboarding(){
@@ -198,12 +352,76 @@ class checking_onboarding_data {
         cy.wait(1000)
         
        cy.get(CSSGreenNumber).should("contain",'2 100')
+
+        cy.get(CSSMenuChapter).contains('Изменение').click()
+
+        cy.get('[class="custom-row begin-period-debt"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should('contain', '2 100')
+
+                            cy.get('[class="custom-row begin-period-debt"]')
+                                .find('[class="custom-row customers-debt"]')
+                                .find(CSSTableCell)
+                                .last()
+                                .should("contain",'400')
+
+                            cy.get('[class="custom-row advances-to-suppliers"]')
+                                .find('[class="custom-row customers-debt"]')
+                                .find(CSSTableCell)
+                                .last()
+                                .should("contain",'400')
+
+                            cy.get('[class="custom-row advances-to-employees"]')
+                                .find('[class="custom-row customers-debt"]')
+                                .find(CSSTableCell)
+                                .last()
+                                .should("contain",'800')
+
+                            cy.get('[class="custom-row taxes-advances"]')
+                                .find('[class="custom-row customers-debt"]')
+                                .find(CSSTableCell)
+                                .last()
+                                .should("contain",'500')
     }
     report_accounts_payable_onboarding(){
         cy.get(CSSMenuPage).contains('Кредиторская задолженность').click()
         cy.wait(1000)
         
        cy.get(CSSGreenNumber).should("contain",'3 300')
+
+        cy.get(CSSMenuChapter).contains('Изменение').click()
+
+        cy.get('[class="custom-row begin-period-debt"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should('contain', '3 300')
+
+                            cy.get('[class="custom-row debt-to-suppliers"]')
+                                .find('[class="custom-row customers-debt"]')
+                                .find(CSSTableCell)
+                                .last()
+                                .should("contain",'800')
+
+                            cy.get('[class="custom-row buyers-advances"]')
+                                .find('[class="custom-row customers-debt"]')
+                                .find(CSSTableCell)
+                                .last()
+                                .should("contain",'800')
+
+                            cy.get('[class="custom-row debt-to-employees"]')
+                                .find('[class="custom-row customers-debt"]')
+                                .find(CSSTableCell)
+                                .last()
+                                .should("contain",'1 200')
+
+                            cy.get('[class="custom-row tax-arrears"]')
+                                .find('[class="custom-row customers-debt"]')
+                                .find(CSSTableCell)
+                                .last()
+                                .should("contain",'500')
     }
     report_warehouses_and_products(){
         cy.get(CSSMenuPage).contains('Товарные запасы').click()
