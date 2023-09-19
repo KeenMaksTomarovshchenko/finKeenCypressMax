@@ -6,6 +6,7 @@ const CSSMenuPage = '[class="text-component pointer"]'
 const CSSCardTitleBold = '[class="main-indicator-card__title"]'
 const CSSCardTitleCell = '[class="home-indicator__value"]'
 const CSSCardRow = '[class="main-indicator-card__content-row"]'
+const CSSRegisterRow = '[class="row"]'
 const CSSTableHeaderRow = '[class="item-header opened"]'
 const CSSTableContentChapter = '[class="item-content opened"]'
 const CSSTableCell = '[class="r-cell resizable"]'
@@ -98,31 +99,39 @@ class checking_onboarding_data {
         cy.get(CSSBurgerMenu).click()
         cy.get(CSSMenuChapter).contains('Реестры').click()
         cy.get(CSSMenuPage).contains('Денежные транзакции').click()
+        cy.get(CSSRegisterRow).should('have.length',12)
     }
     transaction_registry_accounts_payable(){
-        cy.wait(1000)
+        cy.get(CSSRegisterRow).should('have.length',12)
     }
     register_of_documents_accounts_receivable(){
         cy.get(CSSMenuPage).contains('Документы').click()
+        cy.get(CSSRegisterRow).should('have.length',24)
     }
     register_of_documents_accounts_payable(){
         cy.wait(1000)
+        cy.get(CSSRegisterRow).should('have.length',24)
     }
     salary_register_accounts_receivable(){
         cy.get(CSSMenuPage).contains('Зарплаты').click()
+        cy.get(CSSRegisterRow).should('have.length',12)
     }
     salary_register_accounts_payable(){
         cy.wait(1000)
+        cy.get(CSSRegisterRow).should('have.length',12)
     }
     tax_register_accounts_receivable(){
         cy.get(CSSMenuPage).contains('Налоги').click()
+        cy.get(CSSRegisterRow).should('have.length',31)
     }
     tax_register_accounts_payable(){
         cy.wait(1000)
+        cy.get(CSSRegisterRow).should('have.length',31)
     }
     products_registry_warehouses_and_goods(){
         cy.get(CSSMenuPage).contains('Товары').click()
         cy.wait(1000)
+        cy.get(CSSRegisterRow).should('have.length',4)
     }
     report_flow_of_funds_onboarding(){
         cy.get(CSSMenuChapter).contains('Отчеты').click()
@@ -268,6 +277,8 @@ class checking_onboarding_data {
     report_profits_and_loses_onboarding(){
         cy.get(CSSMenuPage).contains('Прибыли и убытки').click()
         cy.wait(1000)
+
+        cy.get(CSSTableContentRow).find(CSSTableCell).should('contain','0')
     }
     report_balance_onboarding(){
         cy.get(CSSMenuPage).contains('Баланс').click()

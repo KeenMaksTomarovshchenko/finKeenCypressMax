@@ -6,6 +6,8 @@ const CSSButton = '[class="main-button"]'
 const LoginPage = 'https://dev.fin-consult.com/login'
 class Login {
     login() {
+        cy.viewport(1300, 800)
+
         cy.visit(LoginPage)
        cy.get(CSSInput).eq(0).clear()
        cy.get(CSSInput).eq(0).type(credentials.email.email)
