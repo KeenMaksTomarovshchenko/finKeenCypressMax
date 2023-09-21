@@ -6,4 +6,6 @@ const login = new Login
 it('check reports after operations',function (){
     login.login()
     Reports_after_operations.dashboard()
+    Reports_after_operations.flow_of_fund()
+    Reports_after_operations.balance()
 })

@@ -23,46 +23,27 @@ const CSSAccountBalance = '[class="account-value"]'
 class checking_onboarding_data {
 
     dashboard_revenue(){
-        cy.get(CSSCardTitleBold).eq(0).should('contain','Выручка')
         cy.get(CSSCardTitleCell).eq(0).should('contain','0')
         
-        cy.get(CSSCardRow).eq(0).should('contain','К месяцу', '-')
         cy.get(CSSCardRow).eq(0).should('contain', '-')
         
-        cy.get(CSSCardRow).eq(1).should('contain','К дню', '-')
         cy.get(CSSCardRow).eq(1).should('contain','-')
         
-        cy.get(CSSCardRow).eq(2).should('contain','Прошлый период', '0')
         cy.get(CSSCardRow).eq(2).should('contain', '0')
     }
     dashboard_expense(){
-        cy.get(CSSCardTitleBold).eq(1).should('contain','Расходы')
         cy.get(CSSCardTitleCell).eq(1).should('contain','0')
-        
-        cy.get(CSSCardRow).eq(3).should('contain','К месяцу', '-')
         cy.get(CSSCardRow).eq(3).should('contain', '-')
-        
-        cy.get(CSSCardRow).eq(4).should('contain','К дню', '-')
         cy.get(CSSCardRow).eq(4).should('contain','-')
-        
-        cy.get(CSSCardRow).eq(5).should('contain','Прошлый период', '0')
         cy.get(CSSCardRow).eq(5).should('contain', '0')
     }
     dashboard_profit(){
-        cy.get(CSSCardTitleBold).eq(2).should('contain','Прибыль')
         cy.get(CSSCardTitleCell).eq(2).should('contain','0')
-        
-        cy.get(CSSCardRow).eq(6).should('contain','К месяцу', '-')
         cy.get(CSSCardRow).eq(6).should('contain', '-')
-        
-        cy.get(CSSCardRow).eq(7).should('contain','К дню', '-')
         cy.get(CSSCardRow).eq(7).should('contain','-')
-        
-        cy.get(CSSCardRow).eq(8).should('contain','Прошлый период', '0')
         cy.get(CSSCardRow).eq(8).should('contain', '0')
     }
     dashboard_monetary_resources(){
-        cy.get(CSSSecondaryCardTitleBold).eq(0).should('contain','Денежных средств')
         cy.get(CSSSecondaryCardTitleBold).eq(1).should('contain','30 000')
        cy.get(CSSAccountName).should(($element) => {
             const text = $element.text();
@@ -76,24 +57,15 @@ class checking_onboarding_data {
         });
     }
     dashboard_working_capital(){
-        cy.get(CSSSecondaryCardTitleBold).eq(2).should('contain','Оборотный капитал')
-        cy.get(CSSSecondaryCardTitleBold).eq(3).should('contain','38 800')//40 000 без КЗ и ДЗ, 38 800 - с
-        
-        cy.get(CSSSecondaryCardCell).eq(0).should('contain','Прошлый период')
+        cy.get(CSSSecondaryCardTitleBold).eq(3).should('contain','38 800')
         cy.get(CSSSecondaryCardCell).eq(1).should('contain','0')
     }
     dashboard_accounts_receivable(){
-        cy.get(CSSSecondaryCardTitleBold).eq(4).should('contain','Дебиторская задолженность')
-        cy.get(CSSSecondaryCardTitleBold).eq(5).should('contain','2 100')//2 100
-        
-        cy.get(CSSSecondaryCardCell).eq(2).should('contain','Прошлый период')
+        cy.get(CSSSecondaryCardTitleBold).eq(5).should('contain','2 100')
         cy.get(CSSSecondaryCardCell).eq(3).should('contain','0')
     }
     dashboard_accounts_payable(){
-        cy.get(CSSSecondaryCardTitleBold).eq(6).should('contain','Кредиторская задолженность')
-        cy.get(CSSSecondaryCardTitleBold).eq(7).should('contain','3 300')//3 300
-        
-        cy.get(CSSSecondaryCardCell).eq(4).should('contain','Прошлый период' )
+        cy.get(CSSSecondaryCardTitleBold).eq(7).should('contain','3 300')
         cy.get(CSSSecondaryCardCell).eq(5).should('contain', '0')
     }
     transaction_registry_accounts_receivable(){

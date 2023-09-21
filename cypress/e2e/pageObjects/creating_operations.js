@@ -18,6 +18,7 @@ const CSSCheckboxObligation = '[name="obligationFulfilled"]'
 const CSSAccountNameAndBalance = '[class="text-component option-text-wrapper"]'
 const CSSBoldNumber = 'b'
 const CSSHugeBoldNumber = '[class="text-component amount huge bold link-accent"]'
+const CSSHugeBoldGreen = '[class="text-component amount huge bold green"]'
 const CSSBoldGreenNumber = '[class="text-component bold amount"]'
 const CSSDocumentRow = '[class="row"]'
 const CSSTab = '[class="tab"]'
@@ -361,14 +362,14 @@ class creating_operations{
             cy.get(CSSMenuPage).contains('Собственный капитал').click()
 
             cy.get(CSSBoldNumber).eq(0).should("contain",'25 960')
-            cy.get(CSSHugeBoldNumber).eq(0).should("contain",'27 800')
-            cy.get(CSSHugeBoldNumber).eq(1).should("contain",'-1 840')
+            cy.get(CSSHugeBoldGreen).eq(0).should("contain",'27 800')
+            cy.get(CSSHugeBoldGreen).eq(1).should("contain",'-1 840')
            cy.get(CSSDropdown).eq(0).click()
             cy.get(CSSAccountNameAndBalance).contains(credentials.account_name.account_name_1+' / 8 150').click()
            cy.get(CSSInput).eq(0).type('150')
            cy.get(CSSButton).click()
             cy.get(CSSBoldNumber).eq(0).should("contain",'25 810')
-            cy.get(CSSHugeBoldNumber).eq(0).should("contain",'27 650')
+            cy.get(CSSHugeBoldGreen).eq(0).should("contain",'27 650')
             cy.get(CSSDocumentRow).eq(1).should("contain", 'Выплата').and("contain", 'Дивиденды').and("contain", '150')
 
         }
