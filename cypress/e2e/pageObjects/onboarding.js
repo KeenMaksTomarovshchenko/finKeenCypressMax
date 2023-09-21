@@ -19,6 +19,7 @@ const CSSSubTitle = 'h2'
 const CSSWarehousesName = '[class="name"]'
 const CSSCheckbox = '[type="checkbox"]'
 const CSSWarehousesAdressMask = '[class="input-field input-field-mask"]'
+const CSSBigBoldGreenAmount = '[class="text-component amount big bold green"]'
 
 class onboarding{
     //Логин
@@ -864,7 +865,7 @@ class onboarding{
     page15(){
         cy.get(CSSTitle).should("contain",'Все готово')
         //с КЗ и ДЗ = 27 800, БЕЗ - 29 000
-       cy.get(CSSGreenAmount).should('contain.text','27 800')
+       cy.get(CSSBigBoldGreenAmount).should('have.text','27 800')
         cy.get(CSSNextButton).click()
     }
     GetDashboard(){
