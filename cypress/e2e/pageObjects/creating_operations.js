@@ -47,8 +47,9 @@ class creating_operations{
        cy.get(CSSDropdown).eq(2).type(credentials.account_name.account_name_1+'{enter}')
        cy.get(CSSDropdownValue).eq(2).should('contain',credentials.account_name.account_name_1+' / 9 000')
        cy.get(CSSBoldGreenNumber).should('contain','10 000')
-       cy.get(CSSButton).click()
         cy.wait(500)
+       cy.get(CSSButton).click()
+        cy.wait(1000)
     }
     operations_with_doc_sell(){
 
@@ -74,8 +75,8 @@ class creating_operations{
        cy.get(CSSDropdownValue).eq(2).should('contain','Выручка')
        cy.get(CSSSubmitButton).click()
        cy.get(CSSCheckboxObligation).click()
-       cy.get(CSSButton).click()
         cy.wait(500)
+       cy.get(CSSButton).click()
 
 ///////////////С Позицией, без транзакции и без чекбокса///////////////
         cy.wait(500)
@@ -93,8 +94,8 @@ class creating_operations{
         cy.get(CSSDropdown).eq(3).type(credentials.income_item.income_item_1_name+'{enter}')
         cy.get(CSSDropdownValue).eq(2).should('contain','Выручка')
         cy.get(CSSSubmitButton).click()
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
 
 ////////////////С Позицией, Транзакцией и без чекбокса //////////////////
         cy.wait(500)
@@ -117,8 +118,8 @@ class creating_operations{
         cy.get(CSSDropdown).eq(3).type(credentials.income_item.income_item_1_name+'{enter}')
         cy.get(CSSDropdownValue).eq(2).should('contain','Выручка')
         cy.get(CSSSubmitButton).click()
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
 
 /////////////////С Позицией, чекбоксом и без транзакции//////////////////
         cy.wait(500)
@@ -137,8 +138,8 @@ class creating_operations{
         cy.get(CSSDropdownValue).eq(2).should('contain','Выручка')
         cy.get(CSSSubmitButton).click()
         cy.get(CSSCheckboxObligation).click()
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
     }
     operation_with_doc_buy(){
 ///////////////////С транзакцией, позицией и чекбоксом////////////////////
@@ -166,8 +167,8 @@ class creating_operations{
        cy.get(CSSDropdown).eq(5).type('25'+'{enter}')
        cy.get(CSSSubmitButton).click()
         cy.get(CSSCheckboxObligation).click()
-       cy.get(CSSButton).click()
         cy.wait(500)
+       cy.get(CSSButton).click()
 
 
 ///////////////С Позицией, без транзакции и без чекбокса///////////////
@@ -189,8 +190,8 @@ class creating_operations{
         cy.get(CSSDropdown).eq(4).type(credentials.units.unit_1)
         cy.get(CSSDropdown).eq(5).type('25'+'{enter}')
         cy.get(CSSSubmitButton).click()
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
 /////////////////С Позицией, чекбоксом и без транзакции//////////////////
         cy.wait(500)
         cy.get(CSSMenuPage).contains('С документом').click()
@@ -211,8 +212,8 @@ class creating_operations{
         cy.get(CSSDropdown).eq(5).type('25'+'{enter}')
         cy.get(CSSSubmitButton).click()
         cy.get(CSSCheckboxObligation).click()
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
 ////////////////С Позицией, Транзакцией и без чекбокса ///////////////////
         cy.wait(500)
         cy.get(CSSMenuPage).contains('С документом').click()
@@ -237,8 +238,8 @@ class creating_operations{
         cy.get(CSSDropdown).eq(4).type(credentials.units.unit_1)
         cy.get(CSSDropdown).eq(5).type('25'+'{enter}')
         cy.get(CSSSubmitButton).click()
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
     }
     operation_with_salaries(){
 //////////////////С Начислением и с транзакцией//////////////////////
@@ -258,8 +259,8 @@ class creating_operations{
        cy.get(CSSInput).eq(0).type('150')
        cy.get(CSSGreenButton).click()
 
-       cy.get(CSSButton).click()
         cy.wait(500)
+       cy.get(CSSButton).click()
 //////////////////С Начислением и без транзакции//////////////////////
         cy.wait(500)
         cy.get(CSSMenuPage).contains('Зарплаты').click()
@@ -272,8 +273,8 @@ class creating_operations{
         cy.get(CSSInput).eq(1).type('150')
         cy.get(CSSGreenButton).click()
 
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
 //////////////////Без Начисления и с транзакцией//////////////////////
         cy.wait(500)
         cy.get(CSSMenuPage).contains('Зарплаты').click()
@@ -286,8 +287,8 @@ class creating_operations{
         cy.get(CSSInput).eq(0).type('150')
         cy.get(CSSGreenButton).click()
 
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
     }
     operation_with_taxes(){
 //////////////////С Начислением и с транзакцией//////////////////////
@@ -310,8 +311,8 @@ class creating_operations{
         cy.get(CSSInput).eq(0).type('150')
         cy.get(CSSGreenButton).click()
 
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
 //////////////////С Начислением и без транзакции//////////////////////
         cy.wait(500)
         cy.get(CSSMenuPage).contains('Налоги').click()
@@ -327,8 +328,8 @@ class creating_operations{
         cy.get(CSSInput).eq(0).type('150')
         cy.get(CSSGreenButton).click()
 
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
 //////////////////Без Начисления и с транзакцией//////////////////////
         cy.wait(500)
         cy.get(CSSMenuPage).contains('Налоги').click()
@@ -343,8 +344,8 @@ class creating_operations{
         cy.get(CSSInput).eq(0).type('150')
         cy.get(CSSGreenButton).click()
 
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
     }
         operation_with_self_capital(){
             cy.wait(500)
@@ -357,75 +358,82 @@ class creating_operations{
             cy.get(CSSAccountNameAndBalance).contains(credentials.account_name.account_name_1+' / 9 300').click()
            cy.get(CSSInput).eq(0).type('150')
            cy.get(CSSButton).click()
+            cy.wait(500)
             cy.get(CSSBold).eq(0).should("contain",'26 970')
             cy.get(CSSHugeBoldGreen).eq(0).should("contain",'27 650')
             cy.get(CSSDocumentRow).eq(1).should("contain", 'Выплата').and("contain", 'Дивиденды').and("contain", '150')
-            cy.wait(500)
         }
         operations_with_credits_receipt(){
+        //Реквизиты
             cy.wait(500)
             cy.get(CSSMenuPage).contains('С кредитом / займом').click()
             cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1+'{enter}')
             cy.get(CSSDropdown).eq(1).type('Соглашение'+'{enter}')
             cy.get(CSSInput).eq(0).type('1001')
-
+            cy.wait(500)
+        //Транзакция
             cy.get(CSSCreateNewButton).eq(2).click()
             cy.get(CSSDropdown).eq(3).type(credentials.account_name.account_name_1+'{enter}')
             cy.get(CSSInput).eq(1).type('5000')
             cy.get(CSSGreenButton).click()
-
+            cy.wait(500)
+        //Позиция
             cy.get(CSSInput).eq(1).type(credentials.credits.credit_name_5)
             cy.get(CSSDatepicker).eq(1).click()
             cy.get('.unstyled-button.right').dblclick()
             cy.get('.custom-month-cell-wrapper').contains('октябрь').click();
+            cy.get(CSSInput).eq(2).click()
             cy.get(CSSInput).eq(2).type('5000')
 
-            cy.get(CSSButton).click()
             cy.wait(500)
+            cy.get(CSSButton).click()
         }
         operations_with_credits_repayment_1(){
             cy.wait(500)
             cy.get(CSSMenuPage).contains('С кредитом / займом').click()
             cy.get(CSSTab).contains('Погашение').click()
-
+            cy.wait(500)
+        //Реквизиты
             cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1+'{enter}')
             cy.get(CSSDropdown).eq(1).type('Соглашение'+'{enter}')
             cy.get(CSSDropdown).eq(2).type('1001'+'{enter}')
-
+            cy.wait(500)
+        //Транзакция
             cy.get(CSSCreateNewButton).eq(2).click()
             cy.get(CSSDropdown).eq(3).type('Погашение кредита'+'{enter}')
             cy.get(CSSDropdown).eq(4).type(credentials.account_name.account_name_1+'{enter}')
             cy.get(CSSInput).eq(0).type('1000')
             cy.get(CSSGreenButton).click()
-
+            cy.wait(500)
+        //Позиция
             cy.get(CSSInput).eq(0).should('have.value',credentials.credits.credit_name_5)
             cy.get(CSSInput).eq(1).should('have.value','10.2025')
             cy.get(CSSInput).eq(2).should('have.value','5 000')
 
-            cy.get(CSSButton).click()
             cy.wait(500)
+            cy.get(CSSButton).click()
     }
         operations_with_credits_repayment_2(){
             cy.wait(500)
             cy.get(CSSMenuPage).contains('С кредитом / займом').click()
             cy.get(CSSTab).contains('Погашение').click()
-
+        //Реквизиты
             cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1+'{enter}')
             cy.get(CSSDropdown).eq(1).type('Соглашение'+'{enter}')
             cy.get(CSSDropdown).eq(2).type('1001'+'{enter}')
-
+        //Транзакция
             cy.get(CSSCreateNewButton).eq(2).click()
             cy.get(CSSDropdown).eq(3).type('Оплата процентов'+'{enter}')
             cy.get(CSSDropdown).eq(4).type(credentials.account_name.account_name_1+'{enter}')
-            cy.get(CSSInput).eq(0).type('1000')
+            cy.get(CSSInput).eq(0).type('500')
             cy.get(CSSGreenButton).click()
-
+        //Позиция
             cy.get(CSSInput).eq(0).should('have.value',credentials.credits.credit_name_5)
             cy.get(CSSInput).eq(1).should('have.value','10.2025')
             cy.get(CSSInput).eq(2).should('have.value','5 000')
 
-            cy.get(CSSButton).click()
             cy.wait(500)
+            cy.get(CSSButton).click()
         }
         operations_with_products_disposal(){
             cy.wait(500)
@@ -439,8 +447,8 @@ class creating_operations{
             cy.get(CSSDropdownValue).eq(4).should('have.text',credentials.expense_item_name.expense_item_1_name)
             cy.get(CSSSubmitButton).click()
             cy.get(CSSBoldNumber).eq(5).should('have.text','400')
-            cy.get(CSSButton).click()
             cy.wait(500)
+            cy.get(CSSButton).click()
 
             cy.wait(500)
             cy.get(CSSMenuPage).contains('Товары').click()
@@ -453,8 +461,8 @@ class creating_operations{
             cy.get(CSSDropdownValue).eq(4).should('have.text',credentials.expense_item_name.expense_item_1_name)
             cy.get(CSSSubmitButton).click()
             cy.get(CSSBoldNumber).eq(5).should('have.text','450')
-            cy.get(CSSButton).click()
             cy.wait(500)
+            cy.get(CSSButton).click()
         }
     operations_with_products_write_off(){
         cy.wait(500)
@@ -466,8 +474,8 @@ class creating_operations{
         cy.get(CSSInput).type('30')
         cy.get(CSSSubmitButton).click()
         cy.get(CSSBoldNumber).eq(5).should('have.text','300')
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
 
         cy.wait(500)
         cy.get(CSSMenuPage).contains('Товары').click()
@@ -478,8 +486,8 @@ class creating_operations{
         cy.get(CSSInput).type('35')
         cy.get(CSSSubmitButton).click()
         cy.get(CSSBoldNumber).eq(5).should('have.text','350')
-        cy.get(CSSButton).click()
         cy.wait(500)
+        cy.get(CSSButton).click()
     }
 }
 export default creating_operations
