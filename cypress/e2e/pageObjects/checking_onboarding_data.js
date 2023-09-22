@@ -23,25 +23,22 @@ const CSSAccountBalance = '[class="account-value"]'
 class checking_onboarding_data {
 
     dashboard_revenue(){
-        cy.get(CSSCardTitleCell).eq(0).should('contain','0')
-        
-        cy.get(CSSCardRow).eq(0).should('contain', '-')
-        
-        cy.get(CSSCardRow).eq(1).should('contain','-')
-        
-        cy.get(CSSCardRow).eq(2).should('contain', '0')
+        cy.get(CSSCardTitleCell).eq(0).should('have.text','0')
+        cy.get(CSSCardRow).eq(0).should('have.text', 'К месяцу:-')
+        cy.get(CSSCardRow).eq(1).should('have.text','К дню:-')
+        cy.get(CSSCardRow).eq(2).should('have.text', 'Прошлый период:0')
     }
     dashboard_expense(){
-        cy.get(CSSCardTitleCell).eq(1).should('contain','0')
-        cy.get(CSSCardRow).eq(3).should('contain', '-')
-        cy.get(CSSCardRow).eq(4).should('contain','-')
-        cy.get(CSSCardRow).eq(5).should('contain', '0')
+        cy.get(CSSCardTitleCell).eq(1).should('have.text','0')
+        cy.get(CSSCardRow).eq(3).should('have.text', 'К месяцу:-')
+        cy.get(CSSCardRow).eq(4).should('have.text','К дню:-')
+        cy.get(CSSCardRow).eq(5).should('have.text', 'Прошлый период:0')
     }
     dashboard_profit(){
-        cy.get(CSSCardTitleCell).eq(2).should('contain','0')
-        cy.get(CSSCardRow).eq(6).should('contain', '-')
-        cy.get(CSSCardRow).eq(7).should('contain','-')
-        cy.get(CSSCardRow).eq(8).should('contain', '0')
+        cy.get(CSSCardTitleCell).eq(2).should('have.text','0')
+        cy.get(CSSCardRow).eq(6).should('have.text', 'К месяцу:-')
+        cy.get(CSSCardRow).eq(7).should('have.text','К дню:-')
+        cy.get(CSSCardRow).eq(8).should('have.text', 'Прошлый период:0')
     }
     dashboard_monetary_resources(){
         cy.get(CSSSecondaryCardTitleBold).eq(1).should('contain','30 000')
@@ -57,16 +54,24 @@ class checking_onboarding_data {
         });
     }
     dashboard_working_capital(){
-        cy.get(CSSSecondaryCardTitleBold).eq(3).should('contain','38 800')
-        cy.get(CSSSecondaryCardCell).eq(1).should('contain','0')
+        cy.get(CSSSecondaryCardTitleBold).eq(3).should('have.text','38 800')
+        cy.get(CSSSecondaryCardCell).eq(1).should('have.text','0')
     }
     dashboard_accounts_receivable(){
-        cy.get(CSSSecondaryCardTitleBold).eq(5).should('contain','2 100')
-        cy.get(CSSSecondaryCardCell).eq(3).should('contain','0')
+        cy.get(CSSSecondaryCardTitleBold).eq(5).should('have.text','2 100')
+        cy.get(CSSSecondaryCardCell).eq(3).should('have.text','0')
     }
     dashboard_accounts_payable(){
-        cy.get(CSSSecondaryCardTitleBold).eq(7).should('contain','3 300')
-        cy.get(CSSSecondaryCardCell).eq(5).should('contain', '0')
+        cy.get(CSSSecondaryCardTitleBold).eq(7).should('have.text','3 300')
+        cy.get(CSSSecondaryCardCell).eq(5).should('have.text', '0')
+    }
+    dashboard_eqity(){
+        cy.get(CSSSecondaryCardTitleBold).eq(9).should('have.text','27 800')
+        cy.get(CSSSecondaryCardCell).eq(7).should('have.text', '0')
+    }
+    dashboard_accumulated_profit(){
+        cy.get(CSSSecondaryCardTitleBold).eq(11).should('have.text','0')
+        cy.get(CSSSecondaryCardCell).eq(9).should('have.text', '0')
     }
     transaction_registry_accounts_receivable(){
         cy.get(CSSBurgerMenu).click()
