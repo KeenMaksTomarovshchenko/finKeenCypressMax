@@ -13,6 +13,7 @@ const CSSTableContentChapter = '[class="item-content opened"]'
 const CSSTableCell = '[class="r-cell resizable"]'
 const CSSTableCellClickable = '[class="r-cell resizable clickable"]'
 const CSSTableContentRow = '[class="custom-row"]'
+const CSSTableCellName = '[class="r-cell first-cell"]'
 const CSSTableContentRowProducts = '[class="custom-row products"]'
 const CSSSecondaryCardTitleBold = '[class="secondary-indicator-card__title-cell"]'
 const CSSSecondaryCardCell = '[class="secondary-indicator-card__content-cell"]'
@@ -137,6 +138,227 @@ class checking_onboarding_data {
                                     .find(CSSTableCell)
                                     .last()
                                     .should("have.text",'20 000')
+        //Выручка
+
+        cy.get('[class="custom-row revenue"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+                        cy.get('[class="custom-row revenue"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .should('contain',credentials.income_item.income_item_1_name)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'0')
+
+                        cy.get('[class="custom-row revenue"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .should('contain',credentials.income_item.income_item_2_name)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'0')
+
+                        cy.get('[class="custom-row revenue"]')
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .should('contain','Возмещение НДС')
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'0')
+        //Себестоимость
+
+        cy.get('[class="custom-row cost"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+                    cy.get('[class="custom-row cost"]')
+                        .find(CSSTableContentRow)
+                        .eq(0)
+                        .should('contain',credentials.expense_item_name.expense_item_2_name)
+                        .find(CSSTableCell)
+                        .last()
+                        .should("have.text",'0')
+
+                    cy.get('[class="custom-row cost"]')
+                        .find(CSSTableContentRow)
+                        .eq(1)
+                        .should('contain','Зарплата')
+                        .find(CSSTableCell)
+                        .last()
+                        .should("have.text",'0')
+
+                    cy.get('[class="custom-row cost"]')
+                        .find(CSSTableContentRow)
+                        .eq(2)
+                        .should('contain','Социальный налог')
+                        .find(CSSTableCell)
+                        .last()
+                        .should("have.text",'0')
+
+                    cy.get('[class="custom-row cost"]')
+                        .find(CSSTableContentRow)
+                        .eq(3)
+                        .should('contain','Подоходный налог')
+                        .find(CSSTableCell)
+                        .last()
+                        .should("have.text",'0')
+// Общие
+
+        cy.get('[class="custom-row common"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+                    cy.get('[class="custom-row common"]')
+                        .find(CSSTableContentRow)
+                        .eq(0)
+                        .should('contain',credentials.expense_item_name.expense_item_4_name)
+                        .find(CSSTableCell)
+                        .last()
+                        .should("have.text",'0')
+
+                    cy.get('[class="custom-row common"]')
+                        .find(CSSTableContentRow)
+                        .eq(1)
+                        .should('contain','Зарплата')
+                        .find(CSSTableCell)
+                        .last()
+                        .should("have.text",'0')
+
+                    cy.get('[class="custom-row common"]')
+                        .find(CSSTableContentRow)
+                        .eq(2)
+                        .should('contain','Подоходный налог')
+                        .find(CSSTableCell)
+                        .last()
+                        .should("have.text",'0')
+
+                    cy.get('[class="custom-row common"]')
+                        .find(CSSTableContentRow)
+                        .eq(3)
+                        .should('contain','Социальный налог')
+                        .find(CSSTableCell)
+                        .last()
+                        .should("have.text",'0')
+
+        // Административные
+
+        cy.get('[class="custom-row administrative"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row administrative"]')
+            .find(CSSTableContentRow)
+            .eq(0)
+            .should('contain',credentials.expense_item_name.expense_item_1_name)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row administrative"]')
+            .find(CSSTableContentRow)
+            .eq(1)
+            .should('contain','Зарплата')
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row administrative"]')
+            .find(CSSTableContentRow)
+            .eq(2)
+            .should('contain','Социальный налог')
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row administrative"]')
+            .find(CSSTableContentRow)
+            .eq(3)
+            .should('contain','Погашение НДС')
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row administrative"]')
+            .find(CSSTableContentRow)
+            .eq(4)
+            .should('contain','Подоходный налог')
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+// Коммерческие
+
+        cy.get('[class="custom-row commercial"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row commercial"]')
+            .find(CSSTableContentRow)
+            .eq(0)
+            .should('contain',credentials.expense_item_name.expense_item_3_name)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row commercial"')
+            .find(CSSTableContentRow)
+            .eq(1)
+            .should('contain','Зарплата')
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row commercial"]')
+            .find(CSSTableContentRow)
+            .eq(2)
+            .should('contain','Подоходный налог')
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row commercial"]')
+            .find(CSSTableContentRow)
+            .eq(3)
+            .should('contain','Социальный налог')
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+// Послеоперационные
+
+        cy.get('[class="custom-row postoperative"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row postoperative"]')
+            .find(CSSTableContentRow)
+            .eq(0)
+            .should('contain','Проценты по кредитам')
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row postoperative"]')
+            .find(CSSTableContentRow)
+            .eq(1)
+            .should('contain','Налог на прибыль')
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
 
         //Товары
 
@@ -149,14 +371,6 @@ class checking_onboarding_data {
                                 cy.get('[class="custom-row operation-activity"]').eq(1)
                                     .find(CSSTableContentRowProducts)
                                     .eq(0)
-                                    .should('contain','Склад 3')
-                                    .find(CSSTableCell)
-                                    .last()
-                                    .should('have.text','0')
-
-                                cy.get('[class="custom-row operation-activity"]').eq(1)
-                                    .find(CSSTableContentRowProducts)
-                                    .eq(1)
                                     .should('contain','Склад 1')
                                     .find(CSSTableCell)
                                     .last()
@@ -164,12 +378,20 @@ class checking_onboarding_data {
 
                                 cy.get('[class="custom-row operation-activity"]').eq(1)
                                     .find(CSSTableContentRowProducts)
-                                    .eq(2)
+                                    .eq(1)
                                     .should('contain','Склад 2')
                                     .find(CSSTableCell)
                                     .last()
                                     .should('have.text','0')
-        //Кредиты
+
+                                cy.get('[class="custom-row operation-activity"]').eq(1)
+                                    .find(CSSTableContentRowProducts)
+                                    .eq(2)
+                                    .should('contain','Склад 3')
+                                    .find(CSSTableCell)
+                                    .last()
+                                    .should('have.text','0')
+        // Кредиты и займы
 
                             // cy.get('[class="custom-row credits-and-loans"]')
                             //     .find(CSSTableContentRow)
@@ -228,7 +450,7 @@ class checking_onboarding_data {
                             //     .last()
                             //     .should('have.text','0')
 
-        //
+//Денег на конец месяца
 
         cy.get('[class="custom-row money-to-end"]')
             .find(CSSTableHeaderRow)

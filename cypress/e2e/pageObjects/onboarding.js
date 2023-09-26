@@ -284,6 +284,7 @@ class onboarding{
        cy.get(CSSInput).eq(1).type('100')
        cy.get(CSSInput).eq(2).type('10')
        cy.get(CSSGreenButton).click()
+        cy.wait(500)
     }
     waterhouse_2_creating(){
        cy.get(CSSCreateNewButton).eq(1).click()
@@ -291,6 +292,7 @@ class onboarding{
         cy.get(CSSCheckbox).eq(1).click()
        cy.get(CSSCreateNewButton).eq(1).click()
        cy.get(CSSInput).eq(0).type(credentials.product_name.product_2_name)
+        cy.wait(500)
         cy.get(CSSWarehousesAdressMask).type('11.A.111')
        cy.get(CSSDropdown).eq(0).click()
        cy.get(CSSDropdown).eq(0).type('a{backspace}' + credentials.units.unit_2)
@@ -302,12 +304,14 @@ class onboarding{
 
        cy.get(CSSCreateNewButton).eq(1).click()
        cy.get(CSSInput).eq(0).type(credentials.product_name.product_3_name)
+        cy.wait(500)
         cy.get(CSSWarehousesAdressMask).type('22.B.222')
        cy.get(CSSDropdown).eq(0).click()
        cy.get(CSSDropdown).eq(0).type('a{backspace}' + credentials.units.unit_3)
        cy.get(CSSInput).eq(2).type('300')
        cy.get(CSSInput).eq(3).type('10')
        cy.get(CSSGreenButton).click()
+        cy.wait(500)
 
     }
     waterhouse_3_creating(){
@@ -315,6 +319,7 @@ class onboarding{
         cy.get(CSSWarehousesName).should('contain','Склад №3')
        cy.get(CSSCreateNewButton).eq(2).click()
        cy.get(CSSInput).eq(0).type(credentials.product_name.product_4_name)
+        cy.wait(500)
        cy.get(CSSDropdown).eq(0).click()
        cy.get(CSSDropdown).eq(0).type('a{backspace}' + credentials.units.unit_4.toLowerCase())
        cy.get(CSSInput).eq(1).type('400')

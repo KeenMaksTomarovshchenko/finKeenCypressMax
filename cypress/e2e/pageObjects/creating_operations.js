@@ -356,7 +356,9 @@ class creating_operations{
             cy.get(CSSHugeBoldGreen).eq(1).should("contain",'-680')
            cy.get(CSSDropdown).eq(0).click()
             cy.get(CSSAccountNameAndBalance).contains(credentials.account_name.account_name_1+' / 9 300').click()
+            cy.wait(500)
            cy.get(CSSInput).eq(0).type('150')
+            cy.wait(500)
            cy.get(CSSButton).click()
             cy.wait(500)
             cy.get(CSSBold).eq(0).should("contain",'26 970')
@@ -382,6 +384,7 @@ class creating_operations{
             cy.get(CSSDatepicker).eq(1).click()
             cy.get('.unstyled-button.right').dblclick()
             cy.get('.custom-month-cell-wrapper').contains('октябрь').click();
+            cy.wait(500)
             cy.get(CSSInput).eq(2).click()
             cy.get(CSSInput).eq(2).type('5000')
 
