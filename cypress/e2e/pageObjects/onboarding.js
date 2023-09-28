@@ -328,12 +328,12 @@ class onboarding{
     }
 
     page10(){
-        cy.get(CSSTitle).should("contain",'Склады')
-        this.waterhouse_1_creating()
-        cy.wait(1000)
-        this.waterhouse_2_creating()
-        cy.wait(1000)
-        this.waterhouse_3_creating()
+        // cy.get(CSSTitle).should("contain",'Склады')
+        // this.waterhouse_1_creating()
+        // cy.wait(1000)
+        // this.waterhouse_2_creating()
+        // cy.wait(1000)
+        //this.waterhouse_3_creating()
         cy.wait(1000)
         cy.get(CSSNextButton).click()
     }

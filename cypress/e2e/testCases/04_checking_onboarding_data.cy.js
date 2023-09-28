@@ -4,15 +4,7 @@ import Login from "../pageObjects/login";
 const login = new Login
 it('Check all data entered during onboarding',function (){
     login.login()
-    Checking_onboarding_data.dashboard_revenue()
-    Checking_onboarding_data.dashboard_expense()
-    Checking_onboarding_data.dashboard_profit()
-    Checking_onboarding_data.dashboard_monetary_resources()
-    Checking_onboarding_data.dashboard_working_capital()
-    Checking_onboarding_data.dashboard_accounts_receivable()
-    Checking_onboarding_data.dashboard_accounts_payable()
-    Checking_onboarding_data.dashboard_eqity()
-    Checking_onboarding_data.dashboard_accumulated_profit()
+    Checking_onboarding_data.dashboard()
     Checking_onboarding_data.transaction_registry_accounts_receivable()
     Checking_onboarding_data.transaction_registry_accounts_payable()
     Checking_onboarding_data.register_of_documents_accounts_receivable()
