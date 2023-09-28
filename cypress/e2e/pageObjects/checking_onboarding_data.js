@@ -470,7 +470,246 @@ class checking_onboarding_data {
         cy.get(CSSMenuPage).contains('Прибыли и убытки').click()
         cy.wait(1000)
 
-        cy.get(CSSTableContentRow).find(CSSTableCell).should('contain','0')
+        // Общая выручка
+                cy.get('[class="custom-row revenue"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should("have.text",'0')
+
+                        cy.get('[class="custom-row revenue"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row revenue"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row revenue"]')
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row revenue"]')
+                            .find(CSSTableContentRow)
+                            .eq(3)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+        // Себестоимость
+
+                cy.get('[class="custom-row cost"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should("have.text",'0')
+
+                        cy.get('[class="custom-row cost"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row cost"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row cost"]')
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row cost"]')
+                            .find(CSSTableContentRow)
+                            .eq(3)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+        // Маржа
+
+                cy.get('[class="custom-row marginal-profit"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should("have.text",'0')
+
+                cy.get('[class="custom-row marginal-profit-efficiency"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should("have.text",'0')
+
+        // Общие расходы
+
+                cy.get('[class="custom-row common"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should("have.text",'0')
+
+                        cy.get('[class="custom-row common"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row common"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row common"]')
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row common"]')
+                            .find(CSSTableContentRow)
+                            .eq(3)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+        // Валовая
+
+        cy.get('[class="custom-row gross-profit"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row gross-profit-efficiency"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        // Административные
+
+                cy.get('[class="custom-row administrative"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should("have.text",'0')
+
+                        cy.get('[class="custom-row administrative"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row administrative"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row administrative"]')
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row administrative"]')
+                            .find(CSSTableContentRow)
+                            .eq(3)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+        // Коммерческие
+
+                cy.get('[class="custom-row commercial"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should("have.text",'0')
+
+                        cy.get('[class="custom-row commercial"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row commercial"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row commercial"]')
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row commercial"]')
+                            .find(CSSTableContentRow)
+                            .eq(3)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+        // Операционная
+
+        cy.get('[class="custom-row operating-profit"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row operating-profit-efficiency"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        // Послеоперационные расходы
+
+                cy.get('[class="custom-row post-operating-spendings"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should("have.text",'0')
+
+                        cy.get('[class="custom-row post-operating-spendings"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row post-operating-spendings"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+                        cy.get('[class="custom-row post-operating-spendings"]')
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .should('have.text','0')
+
+        // Чистая
+
+        cy.get('[class="custom-row net-profit"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
+
+        cy.get('[class="custom-row net-profit-efficiency"]')
+            .find(CSSTableHeaderRow)
+            .find(CSSTableCell)
+            .last()
+            .should("have.text",'0')
     }
     report_balance_onboarding(){
         cy.get(CSSMenuPage).contains('Баланс').click()
