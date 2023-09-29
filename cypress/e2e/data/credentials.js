@@ -3,10 +3,10 @@ module.exports = {
         name: 'Test'
     },
     email: {
-        email: 'artem.zaitsev+7@keenethics.com',
+        email: 'cogep33170@naymedia.com',
     },
     password:{
-        password: 'qwerty12'
+        password: '11111'
     },
     textLink:{
         textLinkCreateNewAccount: 'Создать аккаунт'

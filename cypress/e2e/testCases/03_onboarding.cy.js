@@ -5,7 +5,7 @@ const login = new Login
 
 it ('pass onboarding', function (){
     login.login()
-    Onboarding.page0()
+    //Onboarding.page0()
     Onboarding.page1()
     Onboarding.page2()
     Onboarding.page3()
