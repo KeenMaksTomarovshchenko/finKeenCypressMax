@@ -16,6 +16,10 @@ const CSSSecondaryCardTitleBold = '[class="secondary-indicator-card__title-cell"
 const CSSSecondaryCardCell = '[class="secondary-indicator-card__content-cell"]'
 const CSSAccountName = '[class="account-name"]'
 const CSSAccountBalance = '[class="account-value"]'
+const CSSModalWindow = '[class="modal-block-wrapper"]'
+const CSSCloseButton = '[class="cross-icon-wrapper"]'
+const CSSRow = '[class="row"]'
+const CSSBoldGreen = '[class="text-component bold green"]'
 
 class reports_after_operations{
     dashboard(){
@@ -88,7 +92,7 @@ class reports_after_operations{
                             .last()
                             .should("have.text",'20 000')
 
-//Выручка
+        //Выручка
 
                 cy.get('[class="custom-row revenue"]')
                     .find(CSSTableHeaderRow)
@@ -120,7 +124,7 @@ class reports_after_operations{
                             .last()
                             .should("have.text",'0')
 
-//Себестоимость
+        //Себестоимость
 
                 cy.get('[class="custom-row cost"]')
                     .find(CSSTableHeaderRow)
@@ -160,7 +164,7 @@ class reports_after_operations{
                             .last()
                             .should("have.text",'0')
 
-// Общие
+        // Общие
 
                 cy.get('[class="custom-row common"]')
                     .find(CSSTableHeaderRow)
@@ -248,7 +252,7 @@ class reports_after_operations{
                             .last()
                             .should("have.text",'0')
 
-// Коммерческие
+        // Коммерческие
 
                 cy.get('[class="custom-row commercial"]')
                     .find(CSSTableHeaderRow)
@@ -288,7 +292,7 @@ class reports_after_operations{
                             .last()
                             .should("have.text",'0')
 
-// Послеоперационные
+        // Послеоперационные
 
                 cy.get('[class="custom-row postoperative"]')
                     .find(CSSTableHeaderRow)
@@ -417,7 +421,7 @@ class reports_after_operations{
                             .last()
                             .should('have.text','1 000')
 
-// Денег на конец месяца
+        // Денег на конец месяца
 
                 cy.get('[class="custom-row money-to-end"]')
                     .find(CSSTableHeaderRow)
@@ -588,21 +592,21 @@ class reports_after_operations{
                     .last()
                     .should('have.text', '10 600')
 
-                        // cy.get('[class="custom-row long-term"]')
-                        //     .find(CSSTableContentChapter)
-                        //     .find(CSSTableContentRow)
-                        //     .eq(0)
-                        //     .find(CSSTableCell)
-                        //     .last()
-                        //     .should("have.text",'2 200')
-                        //
-                        // cy.get('[class="custom-row long-term"]')
-                        //     .find(CSSTableContentChapter)
-                        //     .find(CSSTableContentRow)
-                        //     .eq(1)
-                        //     .find(CSSTableCell)
-                        //     .last()
-                        //     .should("have.text",'4 400')
+                        cy.get('[class="custom-row long-term"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'2 200')
+
+                        cy.get('[class="custom-row long-term"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'4 400')
 
         //Кредиты (краткосрочные)
 
@@ -612,21 +616,21 @@ class reports_after_operations{
                     .last()
                     .should('have.text', '4 400')
 
-                        // cy.get('[class="custom-row short-term"]')
-                        //     .find(CSSTableContentChapter)
-                        //     .find(CSSTableContentRow)
-                        //     .eq(0)
-                        //     .find(CSSTableCell)
-                        //     .last()
-                        //     .should("have.text",'1 100')
-                        //
-                        // cy.get('[class="custom-row short-term"]')
-                        //     .find(CSSTableContentChapter)
-                        //     .find(CSSTableContentRow)
-                        //     .eq(1)
-                        //     .find(CSSTableCell)
-                        //     .last()
-                        //     .should("have.text",'3 300')
+                        cy.get('[class="custom-row short-term"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'1 100')
+
+                        cy.get('[class="custom-row short-term"]')
+                            .find(CSSTableContentChapter)
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'3 300')
 
         //Кредиторская задолженность
 
@@ -675,6 +679,607 @@ class reports_after_operations{
                     .last()
                     .should('have.text', '150')
 
+    }
+
+    accounts_receivable(){
+        cy.get(CSSMenuPage).contains('Дебиторская задолженность').click()
+        cy.wait(1000)
+
+        //Текущая
+
+            cy.get(CSSBoldGreen).should("have.text",'2 100')
+
+        //Задолженность клиентов
+
+                cy.get('[class="custom-row customers-debt"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .should('have.text','400')
+
+                        cy.get('[class="custom-row customers-debt"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','200')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',2)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row customers-debt"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','200')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',2)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+        //Авансы поставщикам
+
+                cy.get('[class="custom-row advances-to-suppliers"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .should('have.text','400')
+
+                        cy.get('[class="custom-row advances-to-suppliers"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','200')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',4)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row advances-to-suppliers"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','200')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',2)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+        //Авансы сотрудникам
+
+
+                cy.get('[class="custom-row advances-to-employees"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .should('have.text','800')
+
+                        cy.get('[class="custom-row advances-to-employees"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','200')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',1)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row advances-to-employees"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','200')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',1)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row advances-to-employees"]')
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .should('have.text','200')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',1)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row advances-to-employees"]')
+                            .find(CSSTableContentRow)
+                            .eq(3)
+                            .find(CSSTableCell)
+                            .should('have.text','200')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',1)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+        //Авансы по налогам
+
+                cy.get('[class="custom-row taxes-advances"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .should('have.text','800')
+
+                        cy.get('[class="custom-row taxes-advances"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','200')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',4)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row taxes-advances"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','200')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',4)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row taxes-advances"]')
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .should('have.text','50')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',1)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row taxes-advances"]')
+                            .find(CSSTableContentRow)
+                            .eq(3)
+                            .find(CSSTableCell)
+                            .should('have.text','50')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',2)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+        //Изменение
+
+            cy.get(CSSMenuChapter).contains('Изменение').click()
+
+                cy.get('[class="custom-row begin-period-debt"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should('have.text', '2 100')
+
+                        cy.get('[class="custom-row begin-period-debt"]')
+                            .find('[class="custom-row customers-debt"]')
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'400')
+
+                        cy.get('[class="custom-row begin-period-debt"]')
+                            .find('[class="custom-row advances-to-suppliers"]')
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'400')
+
+                        cy.get('[class="custom-row begin-period-debt"]')
+                            .find('[class="custom-row advances-to-employees"]')
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'800')
+
+                        cy.get('[class="custom-row begin-period-debt"]')
+                            .find('[class="custom-row taxes-advances"]')
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'500')
+
+                cy.get('[class="custom-row changes-by-period"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should('have.text', '0')
+
+                        cy.get('[class="custom-row changes-by-period"]')
+                            .find('[class="custom-row customers-debt"]')
+                            .find(CSSTableCellClickable)
+                            .last()
+                            .should("have.text",'0')
+
+                        cy.get('[class="custom-row changes-by-period"]')
+                            .find('[class="custom-row advances-to-suppliers"]')
+                            .find(CSSTableCellClickable)
+                            .last()
+                            .should("have.text",'0')
+
+                        cy.get('[class="custom-row changes-by-period"]')
+                            .find('[class="custom-row advances-to-employees"]')
+                            .find(CSSTableCellClickable)
+                            .last()
+                            .should("have.text",'0')
+
+                        cy.get('[class="custom-row changes-by-period"]')
+                            .find('[class="custom-row taxes-advances"]')
+                            .find(CSSTableCellClickable)
+                            .last()
+                            .should("have.text",'0')
+
+
+                cy.get('[class="custom-row end-period-debt"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should('have.text', '2 100')
+
+                        cy.get('[class="custom-row end-period-debt"]')
+                            .find('[class="custom-row customers-debt"]')
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'400')
+
+                        cy.get('[class="custom-row end-period-debt"]')
+                            .find('[class="custom-row advances-to-suppliers"]')
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'400')
+
+                        cy.get('[class="custom-row end-period-debt"]')
+                            .find('[class="custom-row advances-to-employees"]')
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'800')
+
+                        cy.get('[class="custom-row end-period-debt"]')
+                            .find('[class="custom-row taxes-advances"]')
+                            .find(CSSTableCell)
+                            .last()
+                            .should("have.text",'500')
+    }
+    accounts_payable(){
+        cy.get(CSSMenuPage).contains('Кредиторская задолженность').click()
+        cy.wait(1000)
+
+                cy.get(CSSBoldGreen).should("have.text",'3 300')
+
+        //Текущая
+
+                cy.get(CSSBoldGreen).should("have.text",'2 100')
+
+        //Задолженность перед поставщиками
+
+                cy.get('[class="custom-row customers-debt"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .should('have.text','800')
+
+                        cy.get('[class="custom-row customers-debt"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','400')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',4)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row customers-debt"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','400')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',4)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+        //Авансы покупателей
+
+                cy.get('[class="custom-row advances-to-suppliers"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .should('have.text','800')
+
+                        cy.get('[class="custom-row advances-to-suppliers"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','400')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',2)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row advances-to-suppliers"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','400')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',2)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+        //Задолженность сотрудникам
+
+                cy.get('[class="custom-row advances-to-employees"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .should('have.text','1200')
+
+                        cy.get('[class="custom-row advances-to-employees"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','300')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',1)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row advances-to-employees"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','300')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',1)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row advances-to-employees"]')
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .should('have.text','300')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',1)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row advances-to-employees"]')
+                            .find(CSSTableContentRow)
+                            .eq(3)
+                            .find(CSSTableCell)
+                            .should('have.text','300')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',1)
+
+                                            cy.wait(1000)
+                                            cy.get(CSSCloseButton)
+
+        //Задолженность по налогам
+
+                cy.get('[class="custom-row taxes-advances"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .should('have.text','800')
+
+                        cy.get('[class="custom-row taxes-advances"]')
+                            .find(CSSTableContentRow)
+                            .eq(0)
+                            .find(CSSTableCell)
+                            .should('have.text','200')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',4)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row taxes-advances"]')
+                            .find(CSSTableContentRow)
+                            .eq(1)
+                            .find(CSSTableCell)
+                            .should('have.text','200')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',4)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row taxes-advances"]')
+                            .find(CSSTableContentRow)
+                            .eq(2)
+                            .find(CSSTableCell)
+                            .should('have.text','50')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',1)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+                        cy.get('[class="custom-row taxes-advances"]')
+                            .find(CSSTableContentRow)
+                            .eq(3)
+                            .find(CSSTableCell)
+                            .should('have.text','50')
+                            .click()
+
+                                cy.get(CSSModalWindow)
+                                    .find(CSSRow)
+                                    .should('have.length',2)
+
+                                        cy.wait(1000)
+                                        cy.get(CSSCloseButton)
+
+        //Изменение
+
+        cy.get(CSSMenuChapter).contains('Изменение').click()
+
+                cy.get('[class="custom-row begin-period-debt"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should('have.text', '3 300')
+
+                                cy.get('[class="custom-row begin-period-debt"]')
+                                    .find('[class="custom-row debt-to-suppliers"]')
+                                    .find(CSSTableCell)
+                                    .last()
+                                    .should("have.text",'800')
+
+                                cy.get('[class="custom-row begin-period-debt"]')
+                                    .find('[class="custom-row buyers-advances"]')
+                                    .find(CSSTableCell)
+                                    .last()
+                                    .should("have.text",'800')
+
+                                cy.get('[class="custom-row begin-period-debt"]')
+                                    .find('[class="custom-row debt-to-employees"]')
+                                    .find(CSSTableCell)
+                                    .last()
+                                    .should("have.text",'1 200')
+
+                                cy.get('[class="custom-row begin-period-debt"]')
+                                    .find('[class="custom-row tax-arrears"]')
+                                    .find(CSSTableCell)
+                                    .last()
+                                    .should("have.text",'500')
+
+                cy.get('[class="custom-row changes-by-period"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should('have.text', '0')
+
+                                cy.get('[class="custom-row changes-by-period"]')
+                                    .find('[class="custom-row debt-to-suppliers"]')
+                                    .find(CSSTableCellClickable)
+                                    .last()
+                                    .should("have.text",'0')
+
+                                cy.get('[class="custom-row changes-by-period"]')
+                                    .find('[class="custom-row buyers-advances"]')
+                                    .find(CSSTableCellClickable)
+                                    .last()
+                                    .should("have.text",'0')
+
+                                cy.get('[class="custom-row changes-by-period"]')
+                                    .find('[class="custom-row debt-to-employees"]')
+                                    .find(CSSTableCellClickable)
+                                    .last()
+                                    .should("have.text",'0')
+
+                                cy.get('[class="custom-row changes-by-period"]')
+                                    .find('[class="custom-row tax-arrears"]')
+                                    .find(CSSTableCellClickable)
+                                    .last()
+                                    .should("have.text",'0')
+
+                cy.get('[class="custom-row end-period-debt"]')
+                    .find(CSSTableHeaderRow)
+                    .find(CSSTableCell)
+                    .last()
+                    .should('have.text', '3 300')
+
+                                cy.get('[class="custom-row end-period-debt"]')
+                                    .find('[class="custom-row debt-to-suppliers"]')
+                                    .find(CSSTableCell)
+                                    .last()
+                                    .should("have.text",'800')
+
+                                cy.get('[class="custom-row end-period-debt"]')
+                                    .find('[class="custom-row buyers-advances"]')
+                                    .find(CSSTableCell)
+                                    .last()
+                                    .should("have.text",'800')
+
+                                cy.get('[class="custom-row end-period-debt"]')
+                                    .find('[class="custom-row debt-to-employees"]')
+                                    .find(CSSTableCell)
+                                    .last()
+                                    .should("have.text",'1 200')
+
+                                cy.get('[class="custom-row end-period-debt"]')
+                                    .find('[class="custom-row tax-arrears"]')
+                                    .find(CSSTableCell)
+                                    .last()
+                                    .should("have.text",'500')
     }
 }
 

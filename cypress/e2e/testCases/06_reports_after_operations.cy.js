@@ -8,4 +8,6 @@ it('check reports after operations',function (){
     Reports_after_operations.dashboard()
     Reports_after_operations.flow_of_fund()
     Reports_after_operations.balance()
+    Reports_after_operations.accounts_receivable()
+    Reports_after_operations.accounts_payable()
 })
