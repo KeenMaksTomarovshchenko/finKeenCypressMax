@@ -2,7 +2,9 @@ import reports_after_operations from "../pageObjects/reports_after_operations";
 const Reports_after_operations = new reports_after_operations()
 import Login from "../pageObjects/login";
 const login = new Login
-
+before(function (){
+    cy.viewport(1300, 800);
+});
 it('check reports after operations',function (){
     login.login()
     Reports_after_operations.dashboard()

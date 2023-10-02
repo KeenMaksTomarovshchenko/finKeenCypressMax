@@ -2,7 +2,9 @@ import onboarding from "../pageObjects/onboarding";
 import Login from "../pageObjects/login";
 const Onboarding = new onboarding()
 const login = new Login
-
+before(function (){
+    cy.viewport(1300, 800);
+});
 it ('pass onboarding', function (){
     login.login()
     Onboarding.page0()

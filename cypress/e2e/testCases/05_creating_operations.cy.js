@@ -2,7 +2,9 @@ import creating_operations from "../pageObjects/creating_operations";
 const Creating_operations = new creating_operations()
 import Login from "../pageObjects/login";
 const login = new Login
-
+before(function (){
+    cy.viewport(1300, 800);
+});
 it('create new operations',function (){
     login.login()
     Creating_operations.open_menu_chapter()

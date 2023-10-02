@@ -2,6 +2,9 @@ import checking_onboarding_data from "../pageObjects/checking_onboarding_data";
 const Checking_onboarding_data = new checking_onboarding_data()
 import Login from "../pageObjects/login";
 const login = new Login
+before(function (){
+    cy.viewport(1300, 800);
+});
 it('Check all data entered during onboarding',function (){
     login.login()
     Checking_onboarding_data.dashboard()
