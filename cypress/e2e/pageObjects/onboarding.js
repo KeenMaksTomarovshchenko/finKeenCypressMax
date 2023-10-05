@@ -328,17 +328,17 @@ class onboarding{
     }
 
     page10(){
-        // cy.get(CSSTitle).should("contain",'Склады')
-        // this.waterhouse_1_creating()
-        // cy.wait(1000)
-        // this.waterhouse_2_creating()
-        // cy.wait(1000)
-        //this.waterhouse_3_creating()
+        cy.get(CSSTitle).should("contain",'Склады')
+        this.waterhouse_1_creating()
+        cy.wait(1000)
+        this.waterhouse_2_creating()
+        cy.wait(1000)
+        this.waterhouse_3_creating()
         cy.wait(1000)
         cy.get(CSSNextButton).click()
     }
-    /////////////////Кредиторская задолженность 3300////////////////////////////
-//Задолженность перед поставщиками
+    /////////////////Кредиторская задолженность////////////////////////////
+    //Задолженность перед поставщиками
         DebtToSuppliers() {
            cy.get(CSSCreateNewButton).eq(0).click()
             cy.get(CSSModalWindow).should('contain', 'Задолженность перед поставщиками')
