@@ -173,7 +173,6 @@ class onboarding{
         this.counterparties_1_creating()
         this.counterparties_2_creating()
         cy.get(CSSNextButton).click()
-        cy.wait(1000)
     }
     //Сотрудники
 
@@ -576,7 +575,7 @@ class onboarding{
     this.TaxDebt()
         cy.get(CSSNextButton).click()
 
-}   ////////////////////////////////Дебиторская задолженность 2100//////////////////////////////////////////////////
+}
 
         ////////////////////////////////////Задолженность клиентов////////////////////////////////////////
     CustomerDebt() {
