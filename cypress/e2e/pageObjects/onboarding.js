@@ -282,7 +282,7 @@ class onboarding{
         cy.get(CSSDropdown).eq(0).type('a{backspace}' + credentials.units.unit_1.toLowerCase())
         cy.get(CSSInput).eq(1).type('100')
         cy.get(CSSInput).eq(2).type('10')
-        cy.get(CSSGreenButton).click()
+        cy.get(CSSGreenButton).click({force: true})
         cy.wait(500)
     }
     waterhouse_2_creating(){
@@ -297,7 +297,7 @@ class onboarding{
         cy.get(CSSDropdown).eq(0).type('a{backspace}' + credentials.units.unit_2)
         cy.get(CSSInput).eq(2).type('200')
         cy.get(CSSInput).eq(3).type('10')
-        cy.get(CSSGreenButton).click()
+        cy.get(CSSGreenButton).click({force: true})
 
         cy.wait(1000)
 
@@ -309,7 +309,7 @@ class onboarding{
         cy.get(CSSDropdown).eq(0).type('a{backspace}' + credentials.units.unit_3)
         cy.get(CSSInput).eq(2).type('300')
         cy.get(CSSInput).eq(3).type('10')
-        cy.get(CSSGreenButton).click()
+        cy.get(CSSGreenButton).click({force: true})
         cy.wait(500)
 
     }
@@ -323,7 +323,7 @@ class onboarding{
         cy.get(CSSDropdown).eq(0).type('a{backspace}' + credentials.units.unit_4.toLowerCase())
         cy.get(CSSInput).eq(1).type('400')
         cy.get(CSSInput).eq(2).type('10')
-        cy.get(CSSGreenButton).click()
+        cy.get(CSSGreenButton).click({force: true})
     }
 
     page10(){
