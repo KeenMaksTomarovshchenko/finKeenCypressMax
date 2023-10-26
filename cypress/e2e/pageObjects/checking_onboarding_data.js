@@ -3,7 +3,7 @@ import credentials from "../data/credentials";
 const CSSBurgerMenu = '[class="expand-icon"]'
 const CSSMenuChapter = '[class="text-component bold"]'
 const CSSBoldGreen = '[class="text-component bold green"]'
-const CSSMenuPage = '[class="text-component pointer"]'
+const CSSMenuPage = '[class="text-component"]'
 const CSSCardTitleBold = '[class="main-indicator-card__title"]'
 const CSSCardTitleCell = '[class="home-indicator__value"]'
 const CSSCardRow = '[class="main-indicator-card__content-row"]'
@@ -22,24 +22,29 @@ const CSSAccountName = '[class="account-name"]'
 const CSSAccountBalance = '[class="account-value"]'
 const CSSModalWindow = '[class="modal-block-wrapper"]'
 const CSSCloseButton = '[class="cross-icon-wrapper"]'
+const CSSMenuBar = '[class="side-panel"]'
 
 class checking_onboarding_data {
 
     dashboard(){
-        cy.get(CSSCardTitleCell).eq(0).should('have.text','0')
-        cy.get(CSSCardRow).eq(0).should('have.text', 'К месяцу:-')
-        cy.get(CSSCardRow).eq(1).should('have.text','К дню:-')
-        cy.get(CSSCardRow).eq(2).should('have.text', 'Прошлый период:0')
 
-        cy.get(CSSCardTitleCell).eq(1).should('have.text','0')
-        cy.get(CSSCardRow).eq(3).should('have.text', 'К месяцу:-')
-        cy.get(CSSCardRow).eq(4).should('have.text','К дню:-')
-        cy.get(CSSCardRow).eq(5).should('have.text', 'Прошлый период:0')
+        function checkCardTitles(number){
+            for (let number = 0; number < 3; number++) {
+            cy.get(CSSCardTitleCell)
+                .eq(number)
+                .should('have.text','0')
+        }}
+        checkCardTitles()
 
-        cy.get(CSSCardTitleCell).eq(2).should('have.text','0')
-        cy.get(CSSCardRow).eq(6).should('have.text', 'К месяцу:-')
-        cy.get(CSSCardRow).eq(7).should('have.text','К дню:-')
-        cy.get(CSSCardRow).eq(8).should('have.text', 'Прошлый период:0')
+        function checkCardRows(rowNumber){
+            for (let rowNumber = 0; rowNumber < 3; rowNumber++) {
+                cy.get(CSSCardRow).eq(rowNumber * 3).should('have.text', 'К месяцу:-');
+                cy.get(CSSCardRow).eq(rowNumber * 3 + 1).should('have.text', 'К дню:-');
+                cy.get(CSSCardRow).eq(rowNumber * 3 + 2).should('have.text', 'Прошлый период:0');
+            }
+
+        }
+        checkCardRows()
 
         cy.get(CSSSecondaryCardTitleBold).eq(1).should('contain','30 000')
        cy.get(CSSAccountName).should(($element) => {
@@ -53,32 +58,33 @@ class checking_onboarding_data {
             expect(text).to.include('20 000');
         });
 
-        cy.get(CSSSecondaryCardTitleBold).eq(3).should('have.text','38 800')
-        cy.get(CSSSecondaryCardCell).eq(1).should('have.text','0')
-
-        cy.get(CSSSecondaryCardTitleBold).eq(5).should('have.text','2 100')
-        cy.get(CSSSecondaryCardCell).eq(3).should('have.text','0')
-
-        cy.get(CSSSecondaryCardTitleBold).eq(7).should('have.text','3 300')
-        cy.get(CSSSecondaryCardCell).eq(5).should('have.text', '0')
-
-        cy.get(CSSSecondaryCardTitleBold).eq(9).should('have.text','27 800')
-        cy.get(CSSSecondaryCardCell).eq(7).should('have.text', '0')
-
-        cy.get(CSSSecondaryCardTitleBold).eq(11).should('have.text','0')
-        cy.get(CSSSecondaryCardCell).eq(9).should('have.text', '0')
+        function checkSecondaryCardTitle(number, value){
+            cy.get(CSSSecondaryCardTitleBold).eq(number).should('have.text',value)
+        }
+        checkSecondaryCardTitle(3,'38 800')
+        checkSecondaryCardTitle(5,'2 100')
+        checkSecondaryCardTitle(7,'3 300')
+        checkSecondaryCardTitle(9,'0')
+        checkSecondaryCardTitle(11,'0')
+        checkSecondaryCardTitle(13,'27 800')
+        checkSecondaryCardTitle(15,'0')
+        function checkSecondaryCardCell(number){
+            for (let number = 0; number < 6; number++){
+            cy.get(CSSSecondaryCardCell).eq(number * 2 + 1).should('have.text','0')
+        }}
+        checkSecondaryCardCell()
     }
     transaction_registry_accounts_receivable(){
         cy.get(CSSBurgerMenu).click()
-        cy.get(CSSMenuChapter).contains('Реестры').click()
-        cy.get(CSSMenuPage).contains('Денежные транзакции').click()
+        cy.get(CSSMenuBar).find(CSSMenuChapter).contains('Реестры').click()
+        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Денежные транзакции').click()
         cy.get(CSSRow).should('have.length',12)
     }
     transaction_registry_accounts_payable(){
         cy.get(CSSRow).should('have.length',12)
     }
     register_of_documents_accounts_receivable(){
-        cy.get(CSSMenuPage).contains('Документы').click()
+        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Документы').click()
         cy.get(CSSRow).should('have.length',24)
     }
     register_of_documents_accounts_payable(){
@@ -86,7 +92,7 @@ class checking_onboarding_data {
         cy.get(CSSRow).should('have.length',24)
     }
     salary_register_accounts_receivable(){
-        cy.get(CSSMenuPage).contains('Зарплаты').click()
+        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Зарплаты').click()
         cy.get(CSSRow).should('have.length',12)
     }
     salary_register_accounts_payable(){
@@ -94,7 +100,7 @@ class checking_onboarding_data {
         cy.get(CSSRow).should('have.length',12)
     }
     tax_register_accounts_receivable(){
-        cy.get(CSSMenuPage).contains('Налоги').click()
+        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Налоги').click()
         cy.get(CSSRow).should('have.length',31)
     }
     tax_register_accounts_payable(){
@@ -102,268 +108,80 @@ class checking_onboarding_data {
         cy.get(CSSRow).should('have.length',31)
     }
     products_registry_warehouses_and_goods(){
-        cy.get(CSSMenuPage).contains('Товары').click()
+        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Товары').click()
         cy.wait(1000)
         cy.get(CSSRow).should('have.length',4)
     }
     report_flow_of_funds_onboarding(){
-        cy.get(CSSMenuChapter).contains('Отчеты').click()
-        cy.get(CSSMenuPage).contains('Движение денежных средств').click()
+
+        cy.get(CSSMenuBar).find(CSSMenuChapter).contains('Отчеты').click()
+        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Движение денежных средств').click()
         cy.wait(1000)
 
-            cy.get('[class="custom-row money-from-start"]')
+        function checkCategoryMainValue(categorySelector, expectedValue){
+            cy.get(categorySelector)
                 .find(CSSTableHeaderRow)
                 .find(CSSTableCell)
                 .last()
-                .should("have.text",'30 000')
+                .should("have.text",expectedValue)
+        }
 
-                                cy.get('[class="custom-row money-from-start"]')
-                                    .find(CSSTableContentRow)
-                                    .eq(0)
-                                    .should('contain','Счёт 1')
-                                    .find(CSSTableCell)
-                                    .last()
-                                    .should("have.text",'10 000')
+        function checkCategoryValue(categorySelector, i, itemName, expectedValue){
 
-                                cy.get('[class="custom-row money-from-start"]')
-                                    .find(CSSTableContentRow)
-                                    .eq(1)
-                                    .should('contain','Счёт 2')
-                                    .find(CSSTableCell)
-                                    .last()
-                                    .should("have.text",'20 000')
+            cy.get(categorySelector)
+                .find(CSSTableContentRow)
+                .eq(i)
+                .should('contain', itemName)
+                .find(CSSTableCell)
+                .last()
+                .should('have.text',expectedValue)
+        }
+
+        checkCategoryMainValue('[class="custom-row money-from-start"]', '30 000')
+        checkCategoryValue('[class="custom-row money-from-start"]', 0,'Счёт 1', '10 000')
+        checkCategoryValue('[class="custom-row money-from-start"]', 1,'Счёт 2', '20 000')
 
         //Выручка
 
-            cy.get('[class="custom-row revenue"]')
-                .find(CSSTableHeaderRow)
-                .find(CSSTableCell)
-                .last()
-                .should("have.text",'0')
-
-                        cy.get('[class="custom-row revenue"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .should('contain',credentials.income_item.income_item_1_name)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row revenue"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .should('contain',credentials.income_item.income_item_2_name)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row revenue"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .should('contain','Возмещение НДС')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
+        checkCategoryMainValue('[class="custom-row revenue"]', '0')
+        checkCategoryValue('[class="custom-row revenue"]', 0,credentials.income_item.income_item_1_name, '0')
+        checkCategoryValue('[class="custom-row revenue"]', 1,credentials.income_item.income_item_2_name, '0')
+        checkCategoryValue('[class="custom-row revenue"]', 2,'Возмещение НДС', '0')
 
         //Себестоимость
 
-            cy.get('[class="custom-row cost"]')
-                .find(CSSTableHeaderRow)
-                .find(CSSTableCell)
-                .last()
-                .should("have.text",'0')
-
-                        cy.get('[class="custom-row cost"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .should('contain',credentials.expense_item_name.expense_item_2_name)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row cost"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .should('contain','Зарплата')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row cost"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .should('contain','Социальный налог')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row cost"]')
-                            .find(CSSTableContentRow)
-                            .eq(3)
-                            .should('contain','Подоходный налог')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
+        checkCategoryMainValue('[class="custom-row cost"]', '0')
+        checkCategoryValue('[class="custom-row cost"]', 0,credentials.expense_item_name.expense_item_2_name, '0')
+        checkCategoryValue('[class="custom-row cost"]', 1,'Зарплата', '0')
+        checkCategoryValue('[class="custom-row cost"]', 2,'Социальный налог', '0')
+        checkCategoryValue('[class="custom-row cost"]', 3,'Подоходный налог', '0')
 
         // Общие
 
-            cy.get('[class="custom-row common"]')
-                .find(CSSTableHeaderRow)
-                .find(CSSTableCell)
-                .last()
-                .should("have.text",'0')
-
-                        cy.get('[class="custom-row common"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .should('contain',credentials.expense_item_name.expense_item_4_name)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row common"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .should('contain','Зарплата')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row common"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .should('contain','Подоходный налог')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row common"]')
-                            .find(CSSTableContentRow)
-                            .eq(3)
-                            .should('contain','Социальный налог')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
+        checkCategoryMainValue('[class="custom-row common"]', '0')
+        checkCategoryValue('[class="custom-row common"]', 0,credentials.expense_item_name.expense_item_4_name, '0')
+        checkCategoryValue('[class="custom-row common"]', 1,'Зарплата', '0')
+        checkCategoryValue('[class="custom-row common"]', 2,'Подоходный налог', '0')
+        checkCategoryValue('[class="custom-row common"]', 3,'Социальный налог', '0')
 
         // Административные
 
-            cy.get('[class="custom-row administrative"]')
-                .find(CSSTableHeaderRow)
-                .find(CSSTableCell)
-                .last()
-                .should("have.text",'0')
-
-                        cy.get('[class="custom-row administrative"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .should('contain',credentials.expense_item_name.expense_item_1_name)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row administrative"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .should('contain','Зарплата')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row administrative"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .should('contain','Социальный налог')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row administrative"]')
-                            .find(CSSTableContentRow)
-                            .eq(3)
-                            .should('contain','Погашение НДС')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row administrative"]')
-                            .find(CSSTableContentRow)
-                            .eq(4)
-                            .should('contain','Подоходный налог')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
+        checkCategoryMainValue('[class="custom-row administrative"]', '0')
+        checkCategoryValue('[class="custom-row administrative"]', 0,credentials.expense_item_name.expense_item_1_name, '0')
+        checkCategoryValue('[class="custom-row administrative"]', 1,'Зарплата', '0')
+        checkCategoryValue('[class="custom-row administrative"]', 2,'Подоходный налог', '0')
+        checkCategoryValue('[class="custom-row administrative"]', 3,'Социальный налог', '0')
+        checkCategoryValue('[class="custom-row administrative"]', 5,'Погашение НДС', '0')
 
         // Коммерческие
 
-            cy.get('[class="custom-row commercial"]')
-                .find(CSSTableHeaderRow)
-                .find(CSSTableCell)
-                .last()
-                .should("have.text",'0')
+        checkCategoryMainValue('[class="custom-row commercial"]', '0')
+        checkCategoryValue('[class="custom-row commercial"]', 0,credentials.expense_item_name.expense_item_3_name, '0')
+        checkCategoryValue('[class="custom-row commercial"]', 1,'Зарплата', '0')
+        checkCategoryValue('[class="custom-row commercial"]', 2,'Подоходный налог', '0')
+        checkCategoryValue('[class="custom-row commercial"]', 3,'Социальный налог', '0')        //Товары
 
-                        cy.get('[class="custom-row commercial"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .should('contain',credentials.expense_item_name.expense_item_3_name)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row commercial"')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .should('contain','Зарплата')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row commercial"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .should('contain','Подоходный налог')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row commercial"]')
-                            .find(CSSTableContentRow)
-                            .eq(3)
-                            .should('contain','Социальный налог')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-        // Послеоперационные
-
-                cy.get('[class="custom-row postoperative"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
-
-                        cy.get('[class="custom-row postoperative"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .should('contain','Проценты по кредитам')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-                        cy.get('[class="custom-row postoperative"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .should('contain','Налог на прибыль')
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'0')
-
-        //Товары
-
-            cy.get('[class="custom-row operation-activity"]').eq(1)
-                .find(CSSTableHeaderRow)
-                .find(CSSTableCell)
-                .last()
-                .should('have.text','0')
+        checkCategoryMainValue('[class="custom-row operation-activity"]', '0')
 
                                 cy.get('[class="custom-row operation-activity"]').eq(1)
                                     .find(CSSTableContentRowProducts)
@@ -390,89 +208,23 @@ class checking_onboarding_data {
                                     .should('have.text','0')
         // Кредиты и займы
 
-                            // cy.get('[class="custom-row credits-and-loans"]')
-                            //     .find(CSSTableContentRow)
-                            //     .eq(0)
-                            //     .should('contain',credentials.credits.credit_name_1+' Поступление')
-                            //     .find(CSSTableCell)
-                            //     .last()
-                            //     .should('have.text','0')
-                            // cy.get('[class="custom-row credits-and-loans"]')
-                            //     .find(CSSTableContentRow)
-                            //     .eq(1)
-                            //     .should('contain',credentials.credits.credit_name_1+' Выбытие')
-                            //     .find(CSSTableCell)
-                            //     .last()
-                            //     .should('have.text','0')
-                            // cy.get('[class="custom-row credits-and-loans"]')
-                            //     .find(CSSTableContentRow)
-                            //     .eq(2)
-                            //     .should('contain',credentials.credits.credit_name_2+' Поступление')
-                            //     .find(CSSTableCell)
-                            //     .last()
-                            //     .should('have.text','0')
-                            // cy.get('[class="custom-row credits-and-loans"]')
-                            //     .find(CSSTableContentRow)
-                            //     .eq(3)
-                            //     .should('contain',credentials.credits.credit_name_2+' Выбытие')
-                            //     .find(CSSTableCell)
-                            //     .last()
-                            //     .should('have.text','0')
-                            // cy.get('[class="custom-row credits-and-loans"]')
-                            //     .find(CSSTableContentRow)
-                            //     .eq(4)
-                            //     .should('contain',credentials.credits.credit_name_3+' Поступление')
-                            //     .find(CSSTableCell)
-                            //     .last()
-                            //     .should('have.text','0')
-                            // cy.get('[class="custom-row credits-and-loans"]')
-                            //     .find(CSSTableContentRow)
-                            //     .eq(5)
-                            //     .should('contain',credentials.credits.credit_name_3+' Выбытие')
-                            //     .find(CSSTableCell)
-                            //     .last()
-                            //     .should('have.text','0')
-                            // cy.get('[class="custom-row credits-and-loans"]')
-                            //     .find(CSSTableContentRow)
-                            //     .eq(6)
-                            //     .should('contain',credentials.credits.credit_name_4+' Поступление')
-                            //     .find(CSSTableCell)
-                            //     .last()
-                            //     .should('have.text','0')
-                            // cy.get('[class="custom-row credits-and-loans"]')
-                            //     .find(CSSTableContentRow)
-                            //     .eq(7)
-                            //     .should('contain',credentials.credits.credit_name_4+' Выбытие')
-                            //     .find(CSSTableCell)
-                            //     .last()
-                            //     .should('have.text','0')
+        checkCategoryValue('[class="custom-row credits-and-loans"]', 0,credentials.credits.credit_name_1+' Поступление', '0')
+        checkCategoryValue('[class="custom-row credits-and-loans"]', 1,credentials.credits.credit_name_1+' Выбытие', '0')
+        checkCategoryValue('[class="custom-row credits-and-loans"]', 2,credentials.credits.credit_name_2+' Поступление', '0')
+        checkCategoryValue('[class="custom-row credits-and-loans"]', 3,credentials.credits.credit_name_2+' Выбытие', '0')
+        checkCategoryValue('[class="custom-row credits-and-loans"]', 4,credentials.credits.credit_name_3+' Поступление', '0')
+        checkCategoryValue('[class="custom-row credits-and-loans"]', 5,credentials.credits.credit_name_3+' Выбытие', '0')
+        checkCategoryValue('[class="custom-row credits-and-loans"]', 6,credentials.credits.credit_name_4+' Поступление', '0')
+        checkCategoryValue('[class="custom-row credits-and-loans"]', 7,credentials.credits.credit_name_4+' Выбытие', '0')
 
         //Денег на конец месяца
 
-            cy.get('[class="custom-row money-to-end"]')
-                .find(CSSTableHeaderRow)
-                .find(CSSTableCell)
-                .last()
-                .should("have.text",'30 000')
-
-                                cy.get('[class="custom-row money-to-end"]')
-                                    .find(CSSTableContentRow)
-                                    .eq(0)
-                                    .should('contain','Счёт 1')
-                                    .find(CSSTableCell)
-                                    .last()
-                                    .should("have.text",'10 000')
-
-                                cy.get('[class="custom-row money-to-end"]')
-                                    .find(CSSTableContentRow)
-                                    .eq(1)
-                                    .should('contain','Счёт 2')
-                                    .find(CSSTableCell)
-                                    .last()
-                                    .should("have.text",'20 000')
+        checkCategoryMainValue('[class="custom-row money-to-end"]', '30 000')
+        checkCategoryValue('[class="custom-row money-to-end"]', 0,'Счёт 1', '10 000')
+        checkCategoryValue('[class="custom-row money-to-end"]', 1,'Счёт 2', '20 000')
     }
     report_profits_and_loses_onboarding(){
-        cy.get(CSSMenuPage).contains('Прибыли и убытки').click()
+        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Прибыли и убытки').click()
         cy.wait(1000)
 
         // Общая выручка
@@ -717,7 +469,7 @@ class checking_onboarding_data {
                     .should("have.text",'0')
     }
     report_balance_onboarding(){
-        cy.get(CSSMenuPage).contains('Баланс').click()
+        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Баланс').click()
         cy.wait(1000)
 
         //Активы
@@ -951,7 +703,7 @@ class checking_onboarding_data {
 
     }
     report_accounts_receivable_onboarding(){
-        cy.get(CSSMenuPage).contains('Дебиторская задолженность').click()
+        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Дебиторская задолженность').click()
         cy.wait(1000)
 
         //Текущая
@@ -1251,7 +1003,7 @@ class checking_onboarding_data {
                                 .should("have.text",'500')
     }
     report_accounts_payable_onboarding(){
-        cy.get(CSSMenuPage).contains('Кредиторская задолженность').click()
+        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Кредиторская задолженность').click()
         cy.wait(1000)
         
        cy.get(CSSBoldGreen).should("have.text",'3 300')
@@ -1551,7 +1303,7 @@ class checking_onboarding_data {
                                 .should("have.text",'500')
     }
     report_warehouses_and_products(){
-        cy.get(CSSMenuPage).contains('Товарные запасы').click()
+        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Товарные запасы').click()
         cy.wait(1000)
         
     }
