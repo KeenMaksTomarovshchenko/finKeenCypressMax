@@ -31,6 +31,7 @@ module.exports = {
     income_item:{
         income_item_1_name: 'Статья дохода 1',
         income_item_2_name: 'Статья дохода 2',
+        income_item_3_name: 'Статья дохода 3',
     },
     expense_item_category:{
         expense_item_category_1: 'Административные',
@@ -46,6 +47,8 @@ module.exports = {
         expense_item_2_name:'Статья расхода 2',
         expense_item_3_name:'Статья расхода 3',
         expense_item_4_name:'Статья расхода 4',
+        expense_item_5_name:'Статья расхода спец 5',
+        expense_item_6_name:'Статья расхода спец 6',
     },
     counterparties_type:{
         counterparties_type_1:'Юридическое лицо',
