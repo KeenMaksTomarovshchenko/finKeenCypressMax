@@ -1,4 +1,6 @@
 import credentials from "../data/credentials";
+import CommonActivities from "../data/CommonActivities";
+const commonActivities = new CommonActivities();
 
 const CSSBurgerMenu = '[class="expand-icon"]'
 const CSSMenuChapter = '[class="text-component bold"]'
@@ -65,10 +67,7 @@ class creating_operations{
        cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1+'{enter}')
        cy.get(CSSDropdown).eq(1).type('Invoice'+'{enter}')
 //Транзакции
-       cy.get(CSSCreateNewButton).eq(2).click()
-       cy.get(CSSDropdown).eq(2).type(credentials.account_name.account_name_1+'{enter}')
-       cy.get(CSSInput).eq(1).type('100')
-       cy.get(CSSSubmitButton).click()
+       commonActivities.createTransactionForOperations(commonActivities.CurrentDate(),credentials.account_name.account_name_1,'100',)
 //Позиции
        cy.get(CSSCreateNewButton).eq(3).click()
        cy.get(CSSInput).eq(1).type('Test')
@@ -109,10 +108,7 @@ class creating_operations{
         cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1+'{enter}')
         cy.get(CSSDropdown).eq(1).type('Invoice'+'{enter}')
 //Транзакции
-        cy.get(CSSCreateNewButton).eq(2).click()
-        cy.get(CSSDropdown).eq(2).type(credentials.account_name.account_name_1+'{enter}')
-        cy.get(CSSInput).eq(1).type('100')
-        cy.get(CSSSubmitButton).click()
+        commonActivities.createTransactionForOperations(commonActivities.CurrentDate(),credentials.account_name.account_name_1,'100',)
 //Позиции
         cy.get(CSSCreateNewButton).eq(3).click()
         cy.get(CSSInput).eq(1).type('Test')
@@ -155,10 +151,7 @@ class creating_operations{
        cy.get(CSSDropdown).eq(1).type('Invoice'+'{enter}')
        cy.get(CSSInput).eq(0).type('01')
 //Транзакции
-       cy.get(CSSCreateNewButton).eq(2).click()
-       cy.get(CSSDropdown).eq(2).type(credentials.account_name.account_name_1+'{enter}')
-       cy.get(CSSInput).eq(1).type('150')
-       cy.get(CSSSubmitButton).click()
+        commonActivities.createTransactionForOperations(commonActivities.CurrentDate(),credentials.account_name.account_name_1,'150',)
 //Позиции
        cy.get(CSSCreateNewButton).eq(3).click()
        cy.get(CSSInput).eq(1).type('Test')
@@ -224,10 +217,7 @@ class creating_operations{
         cy.get(CSSDropdown).eq(1).type('Invoice'+'{enter}')
         cy.get(CSSInput).eq(0).type('04')
 //Транзакции
-        cy.get(CSSCreateNewButton).eq(2).click()
-        cy.get(CSSDropdown).eq(2).type(credentials.account_name.account_name_1+'{enter}')
-        cy.get(CSSInput).eq(1).type('150')
-        cy.get(CSSSubmitButton).click()
+        commonActivities.createTransactionForOperations(commonActivities.CurrentDate(),credentials.account_name.account_name_1,'150')
 //Позиции
         cy.get(CSSCreateNewButton).eq(3).click()
         cy.get(CSSInput).eq(1).type('Test')
@@ -255,10 +245,7 @@ class creating_operations{
        cy.get(CSSInput).eq(1).type('150')
        cy.get(CSSGreenButton).click()
 //Транзакции
-       cy.get(CSSCreateNewButton).eq(4).click()
-       cy.get(CSSDropdown).eq(3).type(credentials.account_name.account_name_1+'{enter}')
-       cy.get(CSSInput).eq(0).type('150')
-       cy.get(CSSGreenButton).click()
+        commonActivities.createTransactionForOperations(commonActivities.CurrentDate(),credentials.account_name.account_name_1,'150',)
 
         cy.wait(500)
        cy.get(CSSButton).click()
@@ -283,10 +270,7 @@ class creating_operations{
         cy.get(CSSDropdown).eq(1).click()
         cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name_trim.employee_full_name_1+'{enter}')
 //Транзакции
-        cy.get(CSSCreateNewButton).eq(3).click()
-        cy.get(CSSDropdown).eq(3).type(credentials.account_name.account_name_1+'{enter}')
-        cy.get(CSSInput).eq(0).type('150')
-        cy.get(CSSGreenButton).click()
+        commonActivities.createTransactionForOperations(commonActivities.CurrentDate(),credentials.account_name.account_name_1,'150',)
 
         cy.wait(500)
         cy.get(CSSButton).click()
@@ -307,10 +291,7 @@ class creating_operations{
         cy.get(CSSInput).eq(0).type('150')
         cy.get(CSSGreenButton).click()
 //Транзакция
-        cy.get(CSSCreateNewButton).eq(4).click()
-        cy.get(CSSDropdown).eq(3).type(credentials.account_name.account_name_1+'{enter}')
-        cy.get(CSSInput).eq(0).type('150')
-        cy.get(CSSGreenButton).click()
+        commonActivities.createTransactionForOperations(commonActivities.CurrentDate(),credentials.account_name.account_name_1,'150',)
 
         cy.wait(500)
         cy.get(CSSButton).click()
@@ -340,10 +321,7 @@ class creating_operations{
         cy.get(CSSDropdown).eq(1).click()
         cy.get(CSSDropdown).eq(1).type(credentials.taxes.social_tax+'{enter}')
 //Транзакция
-        cy.get(CSSCreateNewButton).eq(3).click()
-        cy.get(CSSDropdown).eq(3).type(credentials.account_name.account_name_1+'{enter}')
-        cy.get(CSSInput).eq(0).type('150')
-        cy.get(CSSGreenButton).click()
+        commonActivities.createTransactionForOperations(commonActivities.CurrentDate(),credentials.account_name.account_name_1,'150',)
 
         cy.wait(500)
         cy.get(CSSButton).click()
@@ -402,11 +380,7 @@ class creating_operations{
             cy.get(CSSDropdown).eq(2).type('0001'+'{enter}')
             cy.wait(500)
         //Транзакция
-            cy.get(CSSCreateNewButton).eq(2).click()
-            cy.get(CSSDropdown).eq(3).type('Погашение кредита'+'{enter}')
-            cy.get(CSSDropdown).eq(4).type(credentials.account_name.account_name_1+'{enter}')
-            cy.get(CSSInput).eq(0).type('1000')
-            cy.get(CSSGreenButton).click()
+            commonActivities.createTransactionForOperations(commonActivities.CurrentDate(),credentials.account_name.account_name_1,'1000',"Погашение кредита")
             cy.wait(500)
         //Позиция
             cy.get(CSSInput).eq(0).should('have.value',credentials.credits.credit_name_1)
@@ -426,11 +400,7 @@ class creating_operations{
             cy.get(CSSModalWindow).find(CSSButton).click()
             cy.wait(1000)
         //Транзакция
-            cy.get(CSSCreateNewButton).eq(2).click()
-            cy.get(CSSDropdown).eq(3).type('Оплата процентов'+'{enter}')
-            cy.get(CSSDropdown).eq(4).type(credentials.account_name.account_name_1+'{enter}')
-            cy.get(CSSInput).eq(0).type('500')
-            cy.get(CSSGreenButton).click()
+            commonActivities.createTransactionForOperations(commonActivities.CurrentDate(),credentials.account_name.account_name_1,'500',"Оплата процентов")
         //Позиция
             cy.get(CSSInput).eq(0).should('have.value',credentials.credits.credit_name_1)
             cy.get(CSSInput).eq(1).should('have.value','12.2023')
