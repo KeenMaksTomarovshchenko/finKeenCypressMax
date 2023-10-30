@@ -20,6 +20,12 @@ class CommonActivities {
         this.CSSDatePicker = '[class="react-datepicker-wrapper"]'
         this.CSSSubmitButton = '[class="unstyled-button round-submit-button"]'
         this.CSSTabActive = '[class="tab active"]'
+        this.CSSToolTipContent = '[class="tooltip-content shown"]'
+        this.CSSToolTipSign = '[class="tooltip-sign"]'
+        this.CSSSidePannel = '[class="side-panel"]'
+        this.CSSTableHeaderRow = '[class="item-header opened"]'
+        this.CSSTableContentRow = '[class="custom-row"]'
+        this.CSSTableCell = '[class="r-cell resizable"]'
     }
 
     CurrentDate() {
@@ -143,6 +149,38 @@ class CommonActivities {
             });
         });
     }
+    checkToolTip() {
+        cy.get(this.CSSTitle).then(($title) => {
+            if ($title.text().includes('Добро пожаловать!')) {
+                cy.get(this.CSSToolTipContent).should('be.visible');
+            } else {
+                cy.get(this.CSSSidePannel)
+                    .find(this.CSSToolTipSign).click();
+                cy.scrollTo("top")
+                cy.get(this.CSSToolTipContent).should('be.visible');
+            }
+        });
+    }
+
+    checkCategoryMainValue(categorySelector, expectedValue){
+        cy.get(categorySelector)
+            .find(this.CSSTableHeaderRow)
+            .find(this.CSSTableCell)
+            .last()
+            .should("have.text",expectedValue)
+    }
+
+    checkCategoryValue(categorySelector, i, itemName, expectedValue){
+
+        cy.get(categorySelector)
+            .find(this.CSSTableContentRow)
+            .eq(i)
+            .should('contain', itemName)
+            .find(this.CSSTableCell)
+            .last()
+            .should('have.text',expectedValue)
+    }
+
 }
 
 

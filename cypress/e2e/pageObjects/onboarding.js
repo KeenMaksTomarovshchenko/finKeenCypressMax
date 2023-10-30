@@ -36,6 +36,7 @@ class onboarding{
     page0() {
         commonActivities.checkTitle('Добро пожаловать')
         cy.wait(500)
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).eq(0).click()
     }
 
@@ -43,6 +44,7 @@ class onboarding{
     page1() {
         commonActivities.checkTitle('Финансовое моделирование')
         cy.wait(500)
+        commonActivities.checkToolTip()
         cy.get(CSSSkipButton).eq(1).click()
     }
 
@@ -54,6 +56,7 @@ class onboarding{
         cy.get(CSSInput).eq(1).type(credentials.company_short_name.company_short_name)
         cy.get(CSSInput).eq(2).type(credentials.company_tax_number.company_tax_number)
         cy.wait(1000)
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
     }
 
@@ -61,6 +64,7 @@ class onboarding{
     page3() {
         commonActivities.checkTitle('Валюта учета')
         cy.wait(500)
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
     }
 
@@ -88,6 +92,7 @@ class onboarding{
         commonActivities.checkTitle('Счета')
         this.account_1_creating()
         this.account_2_creating()
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
     }
 
@@ -118,6 +123,7 @@ class onboarding{
         this.income_item_1_creating()
         this.income_item_2_creating()
         this.income_item_3_creating()
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
     }
 
@@ -185,6 +191,7 @@ class onboarding{
         this.expense_item_4_creating()
         this.expense_item_5_creating()
         this.expense_item_6_creating()
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
     }
 
@@ -208,6 +215,7 @@ class onboarding{
         commonActivities.checkTitle('Контрагенты')
         this.counterparties_1_creating()
         this.counterparties_2_creating()
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
     }
 
@@ -271,6 +279,7 @@ class onboarding{
         this.employee_2_creating()
         this.employee_3_creating()
         this.employee_4_creating()
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
     }
 
@@ -308,6 +317,7 @@ class onboarding{
         cy.get(CSSDropdown).eq(7).click()
         cy.get(CSSDropdown).eq(7).type(credentials.expense_item_category.expense_item_category_4 + '{enter}')
 
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
     }
 
@@ -375,6 +385,7 @@ class onboarding{
         cy.wait(1000)
         this.waterhouse_3_creating()
         cy.wait(1000)
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
     }
 
@@ -511,6 +522,7 @@ class onboarding{
         this.BuyersAdvances()
         this.DebtToEmployees()
         this.TaxDebt()
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
 
     }
@@ -647,6 +659,7 @@ class onboarding{
         this.AdvancesToSuppliers()
         this.AdvancesToEmployees()
         this.TaxAdvances()
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
     }    //Кредиты и займы
     page13() {
@@ -690,21 +703,23 @@ class onboarding{
         cy.get(CSSDatepickerMonth).contains('январь').click({force: true});
         cy.get(CSSGreenButton).click()
 
+        commonActivities.checkToolTip()
+
         cy.get(CSSNextButton).click()
     }
 
     //Основные средства
     page14() {
         commonActivities.checkTitle('Основные средства')
-
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
     }
 
     //Все готово
     page15() {
         commonActivities.checkTitle('Все готово')
-        //с КЗ и ДЗ = 27 800, БЕЗ - 29 000
         cy.get(CSSBigBoldGreenAmount).should('have.text', '27 800')
+        commonActivities.checkToolTip()
         cy.get(CSSNextButton).click()
     }
 
