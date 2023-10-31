@@ -99,7 +99,10 @@ class CommonActivities {
             .type(value);
 
           cy.get(this.CSSSubmitButton).click();
-        } else if ($header.text().includes('Операция с зарплатами') ||
+
+        }
+
+        else if ($header.text().includes('Операция с зарплатами') ||
                     $header.text().includes('Операция с налогами')) {
           cy.get(this.CSSBlockTransaction2)
             .find(this.CSSPlusButton)
@@ -118,7 +121,10 @@ class CommonActivities {
             .type(value);
 
           cy.get(this.CSSAddButton).click();
-        } else if ($header.text().includes('Документ от:') &&
+
+        }
+
+        else if ($header.text().includes('Документ от:') &&
                     ($tab.text().includes('Поступление') || $tab.text().includes('Погашение'))) {
           cy.get(this.CSSBlockTransaction1)
             .find(this.CSSPlusButton)

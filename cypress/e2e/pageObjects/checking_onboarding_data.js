@@ -24,63 +24,61 @@ const CSSModalWindow = '[class="modal-block-wrapper"]';
 const CSSCloseButton = '[class="cross-icon-wrapper"]';
 const CSSMenuBar = '[class="side-panel"]';
 
-    function checkCardTitles(){
-      for (let i = 0; i < 2; i++) {
-        cy.get(CSSCardTitleCell)
-          .eq(i)
-          .should('have.text','0')
-      }
-    }
+function checkCardTitles(){
+  for (let i = 0; i < 2; i++) {
+     cy.get(CSSCardTitleCell)
+     .eq(i)
+     .should('have.text','0')
+  }
+}
+
+function checkCardRows(rowNumber, value1,value2,value3) {
+    cy.get(CSSCardRow).eq(rowNumber * 3).should('have.text', 'К месяцу:' + value1);
+    cy.get(CSSCardRow).eq(rowNumber * 3 + 1).should('have.text', 'К дню:' + value2);
+    cy.get(CSSCardRow).eq(rowNumber * 3 + 2).should('have.text', 'Прошлый период:' + value3);
+}
+
+function checkSecondaryCardTitle(number, value) {
+  cy.get(CSSSecondaryCardTitleBold).eq(number).should('have.text', value);
+}
+
+function checkSecondaryCardCell() {
+  for (let number = 0; number < 6; number++) {
+    cy.get(CSSSecondaryCardCell).eq(number * 2 + 1).should('have.text', '0')
+  }
+}
 
 class checking_onboarding_data {
-  dashboard()
-      {
+  dashboard() {
 
-        checkCardTitles();
+    checkCardTitles();
 
-        function checkCardRows() {
-          for (let rowNumber = 0; rowNumber < 3; rowNumber++) {
-            cy.get(CSSCardRow).eq(rowNumber * 3).should('have.text', 'К месяцу:-');
-            cy.get(CSSCardRow).eq(rowNumber * 3 + 1).should('have.text', 'К дню:-');
-            cy.get(CSSCardRow).eq(rowNumber * 3 + 2).should('have.text', 'Прошлый период:0');
-          }
-        }
+    checkCardRows(0,'-','-','0');
+    checkCardRows(1,'-','-','0');
+    checkCardRows(2,'-','-','0');
 
-        checkCardRows();
+    cy.get(CSSSecondaryCardTitleBold).eq(1).should('contain', '30 000');
+    cy.get(CSSAccountName).should(($element) => {
+      const text = $element.text();
+      expect(text).to.include(credentials.account_name.account_name_1);
+      expect(text).to.include(credentials.account_name.account_name_2);
+    });
+    cy.get(CSSAccountBalance).should(($element) => {
+      const text = $element.text();
+      expect(text).to.include('10 000');
+      expect(text).to.include('20 000');
+    });
 
-        cy.get(CSSSecondaryCardTitleBold).eq(1).should('contain', '30 000');
-        cy.get(CSSAccountName).should(($element) => {
-          const text = $element.text();
-          expect(text).to.include(credentials.account_name.account_name_1);
-          expect(text).to.include(credentials.account_name.account_name_2);
-        });
-        cy.get(CSSAccountBalance).should(($element) => {
-          const text = $element.text();
-          expect(text).to.include('10 000');
-          expect(text).to.include('20 000');
-        });
+    checkSecondaryCardTitle(3, '38 800')
+    checkSecondaryCardTitle(5, '2 100')
+    checkSecondaryCardTitle(7, '3 300')
+    checkSecondaryCardTitle(9, '0')
+    checkSecondaryCardTitle(11, '0')
+    checkSecondaryCardTitle(13, '27 800')
+    checkSecondaryCardTitle(15, '0')
 
-        function checkSecondaryCardTitle(number, value) {
-          cy.get(CSSSecondaryCardTitleBold).eq(number).should('have.text', value);
-        }
-
-        checkSecondaryCardTitle(3, '38 800')
-        checkSecondaryCardTitle(5, '2 100')
-        checkSecondaryCardTitle(7, '3 300')
-        checkSecondaryCardTitle(9, '0')
-        checkSecondaryCardTitle(11, '0')
-        checkSecondaryCardTitle(13, '27 800')
-        checkSecondaryCardTitle(15, '0')
-
-        function checkSecondaryCardCell() {
-          for (let number = 0; number < 6; number++) {
-            cy.get(CSSSecondaryCardCell).eq(number * 2 + 1).should('have.text', '0')
-          }
-        }
-
-        checkSecondaryCardCell()
-
-      }
+    checkSecondaryCardCell()
+  }
 
   transaction_registry_accounts_receivable() {
     cy.get(CSSBurgerMenu).click();
@@ -91,313 +89,313 @@ class checking_onboarding_data {
   transaction_registry_accounts_payable() {
     cy.get(CSSRow).should('have.length', 12);
   }
-    register_of_documents_accounts_receivable(){
-        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Документы').click()
-        cy.get(CSSRow).should('have.length',24)
+  register_of_documents_accounts_receivable(){
+    cy.get(CSSMenuBar).find(CSSMenuPage).contains('Документы').click()
+    cy.get(CSSRow).should('have.length',24)
+  }
+  register_of_documents_accounts_payable(){
+    cy.wait(1000)
+    cy.get(CSSRow).should('have.length',24)
+  }
+  salary_register_accounts_receivable(){
+    cy.get(CSSMenuBar).find(CSSMenuPage).contains('Зарплаты').click()
+    cy.get(CSSRow).should('have.length',12)
+  }
+  salary_register_accounts_payable(){
+    cy.wait(1000)
+    cy.get(CSSRow).should('have.length',12)
+  }
+  tax_register_accounts_receivable(){
+    cy.get(CSSMenuBar).find(CSSMenuPage).contains('Налоги').click()
+    cy.get(CSSRow).should('have.length',31)
+  }
+  tax_register_accounts_payable(){
+    cy.wait(1000)
+    cy.get(CSSRow).should('have.length',31)
+  }
+  products_registry_warehouses_and_goods(){
+    cy.get(CSSMenuBar).find(CSSMenuPage).contains('Товары').click()
+    cy.wait(1000)
+    cy.get(CSSRow).should('have.length',4)
+  }
+  report_flow_of_funds_onboarding(){
+
+    cy.get(CSSMenuBar).find(CSSMenuChapter).contains('Отчеты').click()
+    cy.get(CSSMenuBar).find(CSSMenuPage).contains('Движение денежных средств').click()
+    cy.wait(1000)
+
+    commonActivities.checkCategoryMainValue('[class="custom-row money-from-start"]', '30 000')
+    commonActivities.checkCategoryValue('[class="custom-row money-from-start"]', 0,credentials.account_name.account_name_1, '10 000')
+    commonActivities.checkCategoryValue('[class="custom-row money-from-start"]', 1,credentials.account_name.account_name_2, '20 000')
+
+    //Выручка
+
+    commonActivities.checkCategoryMainValue('[class="custom-row revenue"]', '0')
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 0,credentials.income_item.income_item_1_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 1,credentials.income_item.income_item_2_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 2,credentials.income_item.income_item_3_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 3,'Возмещение НДС', '0')
+
+    //Себестоимость
+
+    commonActivities.checkCategoryMainValue('[class="custom-row cost"]', '0')
+    commonActivities.checkCategoryValue('[class="custom-row cost"]', 0,credentials.expense_item_name.expense_item_6_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row cost"]', 1,credentials.expense_item_name.expense_item_2_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row cost"]', 2,'Зарплата', '0')
+    commonActivities.checkCategoryValue('[class="custom-row cost"]', 3,'Социальный налог', '0')
+    commonActivities.checkCategoryValue('[class="custom-row cost"]', 4,'Подоходный налог', '0')
+
+    // Общие
+
+    commonActivities.checkCategoryMainValue('[class="custom-row common"]', '0')
+    commonActivities.checkCategoryValue('[class="custom-row common"]', 0,credentials.expense_item_name.expense_item_4_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row common"]', 1,'Зарплата', '0')
+    commonActivities.checkCategoryValue('[class="custom-row common"]', 2,'Подоходный налог', '0')
+    commonActivities.checkCategoryValue('[class="custom-row common"]', 3,'Социальный налог', '0')
+
+    // Административные
+
+    commonActivities.checkCategoryMainValue('[class="custom-row administrative"]', '0')
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]', 0,credentials.expense_item_name.expense_item_5_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]', 1,credentials.expense_item_name.expense_item_1_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]', 2,'Зарплата', '0')
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]', 5,'Подоходный налог', '0')
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]', 4,'Социальный налог', '0')
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]', 3,'Погашение НДС', '0')
+
+    // Коммерческие
+
+    commonActivities.checkCategoryMainValue('[class="custom-row commercial"]', '0')
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]', 0,credentials.expense_item_name.expense_item_3_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]', 1,'Зарплата', '0')
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]', 2,'Подоходный налог', '0')
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]', 3,'Социальный налог', '0')
+
+    // Послеоперационные
+
+    commonActivities.checkCategoryMainValue('[class="custom-row postoperative"]', '0')
+    commonActivities.checkCategoryValue('[class="custom-row postoperative"]', 0,'Проценты по кредитам', '0')
+    commonActivities.checkCategoryValue('[class="custom-row postoperative"]', 1,'Налог на прибыль', '0')
+
+    //Товары
+
+    commonActivities.checkCategoryMainValue('[class="custom-row operation-activity"]', '0')
+
+    cy.get('[class="custom-row operation-activity"]').eq(1)
+      .find(CSSTableContentRowProducts)
+      .eq(0)
+      .should('contain','Склад №1')
+      .find(CSSTableCell)
+      .last()
+      .should('have.text','0')
+
+    cy.get('[class="custom-row operation-activity"]').eq(1)
+      .find(CSSTableContentRowProducts)
+      .eq(1)
+      .should('contain','Склад №2')
+      .find(CSSTableCell)
+      .last()
+      .should('have.text','0')
+
+    cy.get('[class="custom-row operation-activity"]').eq(1)
+      .find(CSSTableContentRowProducts)
+      .eq(2)
+      .should('contain','Склад №3')
+      .find(CSSTableCell)
+      .last()
+      .should('have.text','0')
+
+    // Кредиты и займы
+
+    // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 0,credentials.credits.credit_name_1+' Поступление', '0')
+    // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 1,credentials.credits.credit_name_1+' Выбытие', '0')
+    // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 2,credentials.credits.credit_name_2+' Поступление', '0')
+    // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 3,credentials.credits.credit_name_2+' Выбытие', '0')
+    // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 4,credentials.credits.credit_name_3+' Поступление', '0')
+    // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 5,credentials.credits.credit_name_3+' Выбытие', '0')
+    // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 6,credentials.credits.credit_name_4+' Поступление', '0')
+    // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 7,credentials.credits.credit_name_4+' Выбытие', '0')
+
+    // Дивиденды
+
+    commonActivities.checkCategoryValue('[class="custom-row dividends"]', 0,'Выплата', '0')
+
+    // Денег на конец месяца
+
+    commonActivities.checkCategoryMainValue('[class="custom-row money-to-end"]', '30 000')
+    commonActivities.checkCategoryValue('[class="custom-row money-to-end"]', 0,credentials.account_name.account_name_1, '10 000')
+    commonActivities.checkCategoryValue('[class="custom-row money-to-end"]', 1,credentials.account_name.account_name_2, '20 000')
     }
-    register_of_documents_accounts_payable(){
-        cy.wait(1000)
-        cy.get(CSSRow).should('have.length',24)
-    }
-    salary_register_accounts_receivable(){
-        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Зарплаты').click()
-        cy.get(CSSRow).should('have.length',12)
-    }
-    salary_register_accounts_payable(){
-        cy.wait(1000)
-        cy.get(CSSRow).should('have.length',12)
-    }
-    tax_register_accounts_receivable(){
-        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Налоги').click()
-        cy.get(CSSRow).should('have.length',31)
-    }
-    tax_register_accounts_payable(){
-        cy.wait(1000)
-        cy.get(CSSRow).should('have.length',31)
-    }
-    products_registry_warehouses_and_goods(){
-        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Товары').click()
-        cy.wait(1000)
-        cy.get(CSSRow).should('have.length',4)
-    }
-    report_flow_of_funds_onboarding(){
+  report_profits_and_loses_onboarding(){
+    cy.get(CSSMenuBar).find(CSSMenuPage).contains('Прибыли и убытки').click()
+    cy.wait(1000)
 
-        cy.get(CSSMenuBar).find(CSSMenuChapter).contains('Отчеты').click()
-        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Движение денежных средств').click()
-        cy.wait(1000)
+    // Общая выручка
 
-        commonActivities.checkCategoryMainValue('[class="custom-row money-from-start"]', '30 000')
-        commonActivities.checkCategoryValue('[class="custom-row money-from-start"]', 0,credentials.account_name.account_name_1, '10 000')
-        commonActivities.checkCategoryValue('[class="custom-row money-from-start"]', 1,credentials.account_name.account_name_2, '20 000')
+    commonActivities.checkCategoryMainValue('[class="custom-row revenue"]',0)
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]',0,credentials.income_item.income_item_1_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]',1,credentials.income_item.income_item_2_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]',2,credentials.income_item.income_item_3_name,0)
 
-        //Выручка
+    // Себестоимость
 
-        commonActivities.checkCategoryMainValue('[class="custom-row revenue"]', '0')
-        commonActivities.checkCategoryValue('[class="custom-row revenue"]', 0,credentials.income_item.income_item_1_name, '0')
-        commonActivities.checkCategoryValue('[class="custom-row revenue"]', 1,credentials.income_item.income_item_2_name, '0')
-        commonActivities.checkCategoryValue('[class="custom-row revenue"]', 2,credentials.income_item.income_item_3_name, '0')
-        commonActivities.checkCategoryValue('[class="custom-row revenue"]', 3,'Возмещение НДС', '0')
+    commonActivities.checkCategoryMainValue('[class="custom-row cost"]',0)
+    commonActivities.checkCategoryValue('[class="custom-row cost"]',0,credentials.expense_item_name.expense_item_2_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row cost"]',1,"Социальный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row cost"]',2,"Подоходный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row cost"]',3,"Зарплата",0)
+    commonActivities.checkCategoryValue('[class="custom-row cost"]',4,credentials.expense_item_name.expense_item_6_name,0)
 
-        //Себестоимость
+    // Маржа
 
-        commonActivities.checkCategoryMainValue('[class="custom-row cost"]', '0')
-        commonActivities.checkCategoryValue('[class="custom-row cost"]', 0,credentials.expense_item_name.expense_item_6_name, '0')
-        commonActivities.checkCategoryValue('[class="custom-row cost"]', 1,credentials.expense_item_name.expense_item_2_name, '0')
-        commonActivities.checkCategoryValue('[class="custom-row cost"]', 2,'Зарплата', '0')
-        commonActivities.checkCategoryValue('[class="custom-row cost"]', 3,'Социальный налог', '0')
-        commonActivities.checkCategoryValue('[class="custom-row cost"]', 4,'Подоходный налог', '0')
+    commonActivities.checkCategoryMainValue('[class="custom-row marginal-profit"]',0)
+    commonActivities.checkCategoryMainValue('[class="custom-row marginal-profit-efficiency"]',0)
 
-        // Общие
+    // Общие расходы
 
-        commonActivities.checkCategoryMainValue('[class="custom-row common"]', '0')
-        commonActivities.checkCategoryValue('[class="custom-row common"]', 0,credentials.expense_item_name.expense_item_4_name, '0')
-        commonActivities.checkCategoryValue('[class="custom-row common"]', 1,'Зарплата', '0')
-        commonActivities.checkCategoryValue('[class="custom-row common"]', 2,'Подоходный налог', '0')
-        commonActivities.checkCategoryValue('[class="custom-row common"]', 3,'Социальный налог', '0')
+    commonActivities.checkCategoryMainValue('[class="custom-row common"]',0)
+    commonActivities.checkCategoryValue('[class="custom-row common"]',0,credentials.expense_item_name.expense_item_4_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row common"]',1,"Зарплата",0)
+    commonActivities.checkCategoryValue('[class="custom-row common"]',2,"Социальный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row common"]',3,"Подоходный налог",0)
 
-        // Административные
+    // Валовая
 
-        commonActivities.checkCategoryMainValue('[class="custom-row administrative"]', '0')
-        commonActivities.checkCategoryValue('[class="custom-row administrative"]', 0,credentials.expense_item_name.expense_item_5_name, '0')
-        commonActivities.checkCategoryValue('[class="custom-row administrative"]', 1,credentials.expense_item_name.expense_item_1_name, '0')
-        commonActivities.checkCategoryValue('[class="custom-row administrative"]', 2,'Зарплата', '0')
-        commonActivities.checkCategoryValue('[class="custom-row administrative"]', 5,'Подоходный налог', '0')
-        commonActivities.checkCategoryValue('[class="custom-row administrative"]', 4,'Социальный налог', '0')
-        commonActivities.checkCategoryValue('[class="custom-row administrative"]', 3,'Погашение НДС', '0')
+    commonActivities.checkCategoryMainValue('[class="custom-row gross-profit"]',0)
+    commonActivities.checkCategoryMainValue('[class="custom-row gross-profit-efficiency"]',0)
 
-        // Коммерческие
+    // Административные
 
-        commonActivities.checkCategoryMainValue('[class="custom-row commercial"]', '0')
-        commonActivities.checkCategoryValue('[class="custom-row commercial"]', 0,credentials.expense_item_name.expense_item_3_name, '0')
-        commonActivities.checkCategoryValue('[class="custom-row commercial"]', 1,'Зарплата', '0')
-        commonActivities.checkCategoryValue('[class="custom-row commercial"]', 2,'Подоходный налог', '0')
-        commonActivities.checkCategoryValue('[class="custom-row commercial"]', 3,'Социальный налог', '0')
+    commonActivities.checkCategoryMainValue('[class="custom-row administrative"]',0)
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]',0,credentials.expense_item_name.expense_item_1_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]',1,credentials.expense_item_name.expense_item_5_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]',2,"Социальный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]',3,"Подоходный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]',4,"Зарплата",0)
 
-        // Послеоперационные
+    // Коммерческие
 
-        commonActivities.checkCategoryMainValue('[class="custom-row postoperative"]', '0')
-        commonActivities.checkCategoryValue('[class="custom-row postoperative"]', 0,'Проценты по кредитам', '0')
-        commonActivities.checkCategoryValue('[class="custom-row postoperative"]', 1,'Налог на прибыль', '0')
+    commonActivities.checkCategoryMainValue('[class="custom-row commercial"]',0)
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]',0,credentials.expense_item_name.expense_item_3_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]',1,"Зарплата",0)
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]',2,"Социальный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]',3,"Подоходный налог",0)
 
-        //Товары
+    // Операционная
 
-        commonActivities.checkCategoryMainValue('[class="custom-row operation-activity"]', '0')
+    commonActivities.checkCategoryMainValue('[class="custom-row operating-profit"]',0)
+    commonActivities.checkCategoryMainValue('[class="custom-row operating-profit-efficiency"]',0)
 
-                                cy.get('[class="custom-row operation-activity"]').eq(1)
-                                    .find(CSSTableContentRowProducts)
-                                    .eq(0)
-                                    .should('contain','Склад №1')
-                                    .find(CSSTableCell)
-                                    .last()
-                                    .should('have.text','0')
+    // Послеоперационные расходы
 
-                                cy.get('[class="custom-row operation-activity"]').eq(1)
-                                    .find(CSSTableContentRowProducts)
-                                    .eq(1)
-                                    .should('contain','Склад №2')
-                                    .find(CSSTableCell)
-                                    .last()
-                                    .should('have.text','0')
+    commonActivities.checkCategoryMainValue('[class="custom-row post-operating-spendings"]',0)
+    commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',0,"Проценты по кредитам",0)
+    commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',1,"Налог на прибыль",0)
+    commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',2,"Амортизация",0)
 
-                                cy.get('[class="custom-row operation-activity"]').eq(1)
-                                    .find(CSSTableContentRowProducts)
-                                    .eq(2)
-                                    .should('contain','Склад №3')
-                                    .find(CSSTableCell)
-                                    .last()
-                                    .should('have.text','0')
-        // Кредиты и займы
+    // Чистая
 
-        // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 0,credentials.credits.credit_name_1+' Поступление', '0')
-        // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 1,credentials.credits.credit_name_1+' Выбытие', '0')
-        // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 2,credentials.credits.credit_name_2+' Поступление', '0')
-        // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 3,credentials.credits.credit_name_2+' Выбытие', '0')
-        // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 4,credentials.credits.credit_name_3+' Поступление', '0')
-        // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 5,credentials.credits.credit_name_3+' Выбытие', '0')
-        // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 6,credentials.credits.credit_name_4+' Поступление', '0')
-        // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 7,credentials.credits.credit_name_4+' Выбытие', '0')
+    commonActivities.checkCategoryMainValue('[class="custom-row net-profit"]',0)
+    commonActivities.checkCategoryMainValue('[class="custom-row net-profit-efficiency"]',0)
+  }
+  report_balance_onboarding(){
+    cy.get(CSSMenuBar).find(CSSMenuPage).contains('Баланс').click()
+    cy.wait(1000)
 
-        // Дивиденды
+    //Активы
 
-        commonActivities.checkCategoryValue('[class="custom-row dividends"]', 0,'Выплата', '0')
+    cy.get('[class="custom-row assets"]')
+      .find(CSSTableCell)
+      .last()
+      .should("have.text", '42 100')
 
-        // Денег на конец месяца
+    //Товары
 
-        commonActivities.checkCategoryMainValue('[class="custom-row money-to-end"]', '30 000')
-        commonActivities.checkCategoryValue('[class="custom-row money-to-end"]', 0,credentials.account_name.account_name_1, '10 000')
-        commonActivities.checkCategoryValue('[class="custom-row money-to-end"]', 1,credentials.account_name.account_name_2, '20 000')
-    }
-    report_profits_and_loses_onboarding(){
-        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Прибыли и убытки').click()
-        cy.wait(1000)
+    cy.get('[class="custom-row stocks"]')
+      .find(CSSTableHeaderRow)
+      .find(CSSTableCell)
+      .last()
+      .should("have.text", '10 000')
 
-        // Общая выручка
+    cy.get('[class="custom-row stocks"]')
+      .find(CSSTableContentChapter)
+      .find(CSSTableContentRow)
+      .eq(0)
+      .find(CSSTableCell)
+      .last()
+      .should("have.text",'1 000')
 
-        commonActivities.checkCategoryMainValue('[class="custom-row revenue"]',0)
-        commonActivities.checkCategoryValue('[class="custom-row revenue"]',0,credentials.income_item.income_item_1_name,0)
-        commonActivities.checkCategoryValue('[class="custom-row revenue"]',1,credentials.income_item.income_item_2_name,0)
-        commonActivities.checkCategoryValue('[class="custom-row revenue"]',2,credentials.income_item.income_item_3_name,0)
+    cy.get('[class="custom-row stocks"]')
+      .find(CSSTableContentChapter)
+      .find(CSSTableContentRow)
+      .eq(1)
+      .find(CSSTableCell)
+      .last()
+      .should("have.text",'5 000')
 
-        // Себестоимость
+    cy.get('[class="custom-row stocks"]')
+      .find(CSSTableContentChapter)
+      .find(CSSTableContentRow)
+      .eq(2)
+      .find(CSSTableCell)
+      .last()
+      .should("have.text",'4 000')
 
-        commonActivities.checkCategoryMainValue('[class="custom-row cost"]',0)
-        commonActivities.checkCategoryValue('[class="custom-row cost"]',0,credentials.expense_item_name.expense_item_2_name,0)
-        commonActivities.checkCategoryValue('[class="custom-row cost"]',1,"Социальный налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row cost"]',2,"Подоходный налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row cost"]',3,"Зарплата",0)
-        commonActivities.checkCategoryValue('[class="custom-row cost"]',4,credentials.expense_item_name.expense_item_6_name,0)
+    //Деньги
 
-        // Маржа
+    cy.get('[class="custom-row funds"]')
+      .find(CSSTableHeaderRow)
+      .find(CSSTableCell)
+      .last()
+      .should('have.text', '30 000')
 
-        commonActivities.checkCategoryMainValue('[class="custom-row marginal-profit"]',0)
-        commonActivities.checkCategoryMainValue('[class="custom-row marginal-profit-efficiency"]',0)
+    cy.get('[class="custom-row funds"]')
+      .find(CSSTableContentChapter)
+      .find(CSSTableContentRow)
+      .eq(0)
+      .find(CSSTableCell)
+      .last()
+      .should("have.text",'10 000')
 
-        // Общие расходы
+    cy.get('[class="custom-row funds"]')
+      .find(CSSTableContentChapter)
+      .find(CSSTableContentRow)
+      .eq(1)
+      .find(CSSTableCell)
+      .last()
+      .should("have.text",'20 000')
 
-        commonActivities.checkCategoryMainValue('[class="custom-row common"]',0)
-        commonActivities.checkCategoryValue('[class="custom-row common"]',0,"социальный налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row common"]',1,"социальный налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row common"]',2,"социальный налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row common"]',3,"социальный налог",0)
+    //Дебиторка
 
-        // Валовая
+    cy.get('[class="custom-row accounts-receivable"]')
+      .find(CSSTableHeaderRow)
+      .find(CSSTableCell)
+      .last()
+      .should('have.text', '2 100')
 
-        commonActivities.checkCategoryMainValue('[class="custom-row gross-profit"]',0)
-        commonActivities.checkCategoryMainValue('[class="custom-row gross-profit-efficiency"]',0)
+    cy.get('[class="custom-row accounts-receivable"]')
+      .find(CSSTableContentChapter)
+      .find(CSSTableContentRow)
+      .eq(0)
+      .find(CSSTableCell)
+      .last()
+      .should("have.text",'400')
 
-        // Административные
+    cy.get('[class="custom-row accounts-receivable"]')
+      .find(CSSTableContentChapter)
+      .find(CSSTableContentRow)
+      .eq(1)
+      .find(CSSTableCell)
+      .last()
+      .should("have.text",'400')
 
-        commonActivities.checkCategoryMainValue('[class="custom-row administrative"]',0)
-        commonActivities.checkCategoryValue('[class="custom-row administrative"]',0,"социальный налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row administrative"]',1,"социальный налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row administrative"]',2,"социальный налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row administrative"]',3,"социальный налог",0)
-
-        // Коммерческие
-
-        commonActivities.checkCategoryMainValue('[class="custom-row commercial"]',0)
-        commonActivities.checkCategoryValue('[class="custom-row commercial"]',0,"социальный налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row commercial"]',1,"социальный налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row commercial"]',2,"социальный налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row commercial"]',3,"социальный налог",0)
-
-        // Операционная
-
-        commonActivities.checkCategoryMainValue('[class="custom-row operating-profit"]',0)
-        commonActivities.checkCategoryMainValue('[class="custom-row operating-profit-efficiency"]',0)
-
-        // Послеоперационные расходы
-
-        commonActivities.checkCategoryMainValue('[class="custom-row post-operating-spendings"]',0)
-        commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',0,"социальны налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',1,"социальный налог",0)
-        commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',2,"социальный налог",0)
-
-        // Чистая
-
-        commonActivities.checkCategoryMainValue('[class="custom-row net-profit"]',0)
-        commonActivities.checkCategoryMainValue('[class="custom-row net-profit-efficiency"]',0)
-
-
-    }
-    report_balance_onboarding(){
-        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Баланс').click()
-        cy.wait(1000)
-
-        //Активы
-
-                cy.get('[class="custom-row assets"]')
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text", '42 100')
-
-        //Товары
-
-                cy.get('[class="custom-row stocks"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text", '10 000')
-
-                        cy.get('[class="custom-row stocks"]')
-                            .find(CSSTableContentChapter)
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'1 000')
-
-                        cy.get('[class="custom-row stocks"]')
-                            .find(CSSTableContentChapter)
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'5 000')
-
-                        cy.get('[class="custom-row stocks"]')
-                            .find(CSSTableContentChapter)
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'4 000')
-
-        //Деньги
-
-                cy.get('[class="custom-row funds"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should('have.text', '30 000')
-
-                        cy.get('[class="custom-row funds"]')
-                            .find(CSSTableContentChapter)
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'10 000')
-
-                        cy.get('[class="custom-row funds"]')
-                            .find(CSSTableContentChapter)
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'20 000')
-
-        //Дебиторка
-
-                cy.get('[class="custom-row accounts-receivable"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should('have.text', '2 100')
-
-                        cy.get('[class="custom-row accounts-receivable"]')
-                            .find(CSSTableContentChapter)
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'400')
-
-                        cy.get('[class="custom-row accounts-receivable"]')
-                            .find(CSSTableContentChapter)
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'400')
-
-                        cy.get('[class="custom-row accounts-receivable"]')
-                            .find(CSSTableContentChapter)
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .find(CSSTableCell)
-                            .last()
-                            .should("have.text",'800')
+    cy.get('[class="custom-row accounts-receivable"]')
+      .find(CSSTableContentChapter)
+      .find(CSSTableContentRow)
+      .eq(2)
+      .find(CSSTableCell)
+      .last()
+      .should("have.text",'800')
 
                         cy.get('[class="custom-row accounts-receivable"]')
                             .find(CSSTableContentChapter)

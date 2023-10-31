@@ -23,5 +23,6 @@ it('Check all data entered during onboarding', () => {
   Checking_onboarding_data.report_balance_onboarding();
   Checking_onboarding_data.report_accounts_receivable_onboarding();
   Checking_onboarding_data.report_accounts_payable_onboarding();
+  Checking_onboarding_data.report_warehouses_and_products()
 },
 );

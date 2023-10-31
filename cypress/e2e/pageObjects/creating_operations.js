@@ -1,6 +1,5 @@
 import credentials from '../data/credentials';
 import CommonActivities from '../data/CommonActivities';
-
 const commonActivities = new CommonActivities();
 
 const CSSBurgerMenu = '[class="expand-icon"]';
@@ -60,7 +59,7 @@ class creating_operations {
     cy.wait(1000);
   }
   operations_with_doc_sell() {
-    /// //////////////С транзакцией, позицией и чекбоксом////////////////////
+    /////////////////С транзакцией, позицией и чекбоксом////////////////////
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Продажа').click();
     cy.wait(500);
     // Реквизиты
