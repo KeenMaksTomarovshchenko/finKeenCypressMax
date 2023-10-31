@@ -240,181 +240,56 @@ class checking_onboarding_data {
 
         // Маржа
 
-                cy.get('[class="custom-row marginal-profit"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
-
-                cy.get('[class="custom-row marginal-profit-efficiency"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
+        commonActivities.checkCategoryMainValue('[class="custom-row marginal-profit"]',0)
+        commonActivities.checkCategoryMainValue('[class="custom-row marginal-profit-efficiency"]',0)
 
         // Общие расходы
 
-                cy.get('[class="custom-row common"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
-
-                        cy.get('[class="custom-row common"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
-
-                        cy.get('[class="custom-row common"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
-
-                        cy.get('[class="custom-row common"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
-
-                        cy.get('[class="custom-row common"]')
-                            .find(CSSTableContentRow)
-                            .eq(3)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
+        commonActivities.checkCategoryMainValue('[class="custom-row common"]',0)
+        commonActivities.checkCategoryValue('[class="custom-row common"]',0,"социальный налог",0)
+        commonActivities.checkCategoryValue('[class="custom-row common"]',1,"социальный налог",0)
+        commonActivities.checkCategoryValue('[class="custom-row common"]',2,"социальный налог",0)
+        commonActivities.checkCategoryValue('[class="custom-row common"]',3,"социальный налог",0)
 
         // Валовая
 
-                cy.get('[class="custom-row gross-profit"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
-
-                cy.get('[class="custom-row gross-profit-efficiency"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
+        commonActivities.checkCategoryMainValue('[class="custom-row gross-profit"]',0)
+        commonActivities.checkCategoryMainValue('[class="custom-row gross-profit-efficiency"]',0)
 
         // Административные
 
-                cy.get('[class="custom-row administrative"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
-
-                        cy.get('[class="custom-row administrative"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
-
-                        cy.get('[class="custom-row administrative"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
-
-                        cy.get('[class="custom-row administrative"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
-
-                        cy.get('[class="custom-row administrative"]')
-                            .find(CSSTableContentRow)
-                            .eq(3)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
+        commonActivities.checkCategoryMainValue('[class="custom-row administrative"]',0)
+        commonActivities.checkCategoryValue('[class="custom-row administrative"]',0,"социальный налог",0)
+        commonActivities.checkCategoryValue('[class="custom-row administrative"]',1,"социальный налог",0)
+        commonActivities.checkCategoryValue('[class="custom-row administrative"]',2,"социальный налог",0)
+        commonActivities.checkCategoryValue('[class="custom-row administrative"]',3,"социальный налог",0)
 
         // Коммерческие
 
-                cy.get('[class="custom-row commercial"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
-
-                        cy.get('[class="custom-row commercial"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
-
-                        cy.get('[class="custom-row commercial"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
-
-                        cy.get('[class="custom-row commercial"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
-
-                        cy.get('[class="custom-row commercial"]')
-                            .find(CSSTableContentRow)
-                            .eq(3)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
+        commonActivities.checkCategoryMainValue('[class="custom-row commercial"]',0)
+        commonActivities.checkCategoryValue('[class="custom-row commercial"]',0,"социальный налог",0)
+        commonActivities.checkCategoryValue('[class="custom-row commercial"]',1,"социальный налог",0)
+        commonActivities.checkCategoryValue('[class="custom-row commercial"]',2,"социальный налог",0)
+        commonActivities.checkCategoryValue('[class="custom-row commercial"]',3,"социальный налог",0)
 
         // Операционная
 
-                cy.get('[class="custom-row operating-profit"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
-
-                cy.get('[class="custom-row operating-profit-efficiency"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
+        commonActivities.checkCategoryMainValue('[class="custom-row operating-profit"]',0)
+        commonActivities.checkCategoryMainValue('[class="custom-row operating-profit-efficiency"]',0)
 
         // Послеоперационные расходы
 
-                cy.get('[class="custom-row post-operating-spendings"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
-
-                        cy.get('[class="custom-row post-operating-spendings"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
-
-                        cy.get('[class="custom-row post-operating-spendings"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
-
-                        cy.get('[class="custom-row post-operating-spendings"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .find(CSSTableCell)
-                            .should('have.text','0')
+        commonActivities.checkCategoryMainValue('[class="custom-row post-operating-spendings"]',0)
+        commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',0,"социальный налог",0)
+        commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',1,"социальный налог",0)
+        commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',2,"социальный налог",0)
 
         // Чистая
 
-                cy.get('[class="custom-row net-profit"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
+        commonActivities.checkCategoryMainValue('[class="custom-row net-profit"]',0)
+        commonActivities.checkCategoryMainValue('[class="custom-row net-profit-efficiency"]',0)
 
-                cy.get('[class="custom-row net-profit-efficiency"]')
-                    .find(CSSTableHeaderRow)
-                    .find(CSSTableCell)
-                    .last()
-                    .should("have.text",'0')
+
     }
     report_balance_onboarding(){
         cy.get(CSSMenuBar).find(CSSMenuPage).contains('Баланс').click()
