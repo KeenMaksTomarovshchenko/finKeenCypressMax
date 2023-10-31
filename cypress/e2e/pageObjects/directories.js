@@ -1,29 +1,29 @@
-import credentials from "../data/credentials";
+import credentials from '../data/credentials';
 
-class directories{
-    company_data(){
+class directories {
+  company_data() {
 
-    }
-    accounts(){
+  }
+  accounts() {
 
-    }
-    income_items(){
+  }
+  income_items() {
 
-    }
-    expense_items(){
+  }
+  expense_items() {
 
-    }
-    employees(){
+  }
+  employees() {
 
-    }
-    counterparties(){
+  }
+  counterparties() {
 
-    }
-    warehouses(){
+  }
+  warehouses() {
 
-    }
-    taxes(){
+  }
+  taxes() {
 
-    }
+  }
 }
-export default directories
+export default directories;

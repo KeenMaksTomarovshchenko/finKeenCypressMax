@@ -1,27 +1,28 @@
-import onboarding from "../pageObjects/onboarding";
-import Login from "../pageObjects/login";
-const Onboarding = new onboarding()
-const login = new Login
-before(function (){
-    cy.viewport(1300, 800);
+import onboarding from '../pageObjects/onboarding';
+import Login from '../pageObjects/login';
+
+const Onboarding = new onboarding();
+const login = new Login();
+before(() => {
+  cy.viewport(1300, 800);
 });
-it ('pass onboarding', function (){
-    login.login()
-    Onboarding.page0()
-    Onboarding.page1()
-    Onboarding.page2()
-    Onboarding.page3()
-    Onboarding.page4()
-    Onboarding.page5()
-    Onboarding.page6()
-    Onboarding.page7()
-    Onboarding.page8()
-    Onboarding.page9()
-    Onboarding.page10()
-    Onboarding.page11()
-    Onboarding.page12()
-    Onboarding.page13()
-    Onboarding.page14()
-    Onboarding.page15()
-    Onboarding.GetDashboard()
-})
+it('pass onboarding', () => {
+  login.login();
+  Onboarding.page0();
+  Onboarding.page1();
+  Onboarding.page2();
+  Onboarding.page3();
+  Onboarding.page4();
+  Onboarding.page5();
+  Onboarding.page6();
+  Onboarding.page7();
+  Onboarding.page8();
+  Onboarding.page9();
+  Onboarding.page10();
+  Onboarding.page11();
+  Onboarding.page12();
+  Onboarding.page13();
+  Onboarding.page14();
+  Onboarding.page15();
+  Onboarding.GetDashboard();
+});

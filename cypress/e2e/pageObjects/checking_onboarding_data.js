@@ -1,27 +1,28 @@
-import credentials from "../data/credentials";
-import CommonActivities from "../data/CommonActivities";
+import credentials from '../data/credentials';
+import CommonActivities from '../data/CommonActivities';
+
 const commonActivities = new CommonActivities();
 
-const CSSBurgerMenu = '[class="expand-icon"]'
-const CSSMenuChapter = '[class="text-component bold"]'
-const CSSBoldGreen = '[class="text-component bold green"]'
-const CSSMenuPage = '[class="text-component"]'
-const CSSCardTitleCell = '[class="home-indicator__value"]'
-const CSSCardRow = '[class="main-indicator-card__content-row"]'
-const CSSRow = '[class="row"]'
-const CSSTableHeaderRow = '[class="item-header opened"]'
-const CSSTableContentChapter = '[class="item-content opened"]'
-const CSSTableCell = '[class="r-cell resizable"]'
-const CSSTableCellClickable = '[class="r-cell resizable clickable"]'
-const CSSTableContentRow = '[class="custom-row"]'
-const CSSTableContentRowProducts = '[class="custom-row products"]'
-const CSSSecondaryCardTitleBold = '[class="secondary-indicator-card__title-cell"]'
-const CSSSecondaryCardCell = '[class="secondary-indicator-card__content-cell"]'
-const CSSAccountName = '[class="account-name"]'
-const CSSAccountBalance = '[class="account-value"]'
-const CSSModalWindow = '[class="modal-block-wrapper"]'
-const CSSCloseButton = '[class="cross-icon-wrapper"]'
-const CSSMenuBar = '[class="side-panel"]'
+const CSSBurgerMenu = '[class="expand-icon"]';
+const CSSMenuChapter = '[class="text-component bold"]';
+const CSSBoldGreen = '[class="text-component bold green"]';
+const CSSMenuPage = '[class="text-component"]';
+const CSSCardTitleCell = '[class="home-indicator__value"]';
+const CSSCardRow = '[class="main-indicator-card__content-row"]';
+const CSSRow = '[class="row"]';
+const CSSTableHeaderRow = '[class="item-header opened"]';
+const CSSTableContentChapter = '[class="item-content opened"]';
+const CSSTableCell = '[class="r-cell resizable"]';
+const CSSTableCellClickable = '[class="r-cell resizable clickable"]';
+const CSSTableContentRow = '[class="custom-row"]';
+const CSSTableContentRowProducts = '[class="custom-row products"]';
+const CSSSecondaryCardTitleBold = '[class="secondary-indicator-card__title-cell"]';
+const CSSSecondaryCardCell = '[class="secondary-indicator-card__content-cell"]';
+const CSSAccountName = '[class="account-name"]';
+const CSSAccountBalance = '[class="account-value"]';
+const CSSModalWindow = '[class="modal-block-wrapper"]';
+const CSSCloseButton = '[class="cross-icon-wrapper"]';
+const CSSMenuBar = '[class="side-panel"]';
 
     function checkCardTitles(){
       for (let i = 0; i < 2; i++) {
@@ -31,60 +32,65 @@ const CSSMenuBar = '[class="side-panel"]'
       }
     }
 
-    function checkCardRows(){
-      for (let rowNumber = 0; rowNumber < 3; rowNumber++) {
-        cy.get(CSSCardRow).eq(rowNumber * 3).should('have.text', 'К месяцу:-');
-        cy.get(CSSCardRow).eq(rowNumber * 3 + 1).should('have.text', 'К дню:-');
-        cy.get(CSSCardRow).eq(rowNumber * 3 + 2).should('have.text', 'Прошлый период:0');
-      }
-    }
-
-    function checkSecondaryCardTitle(number, value){
-      cy.get(CSSSecondaryCardTitleBold).eq(number).should('have.text',value)
-    }
-
 class checking_onboarding_data {
+  dashboard()
+      {
 
-    dashboard(){
+        checkCardTitles();
 
-        checkCardTitles()
+        function checkCardRows() {
+          for (let rowNumber = 0; rowNumber < 3; rowNumber++) {
+            cy.get(CSSCardRow).eq(rowNumber * 3).should('have.text', 'К месяцу:-');
+            cy.get(CSSCardRow).eq(rowNumber * 3 + 1).should('have.text', 'К дню:-');
+            cy.get(CSSCardRow).eq(rowNumber * 3 + 2).should('have.text', 'Прошлый период:0');
+          }
+        }
 
-        checkCardRows()
+        checkCardRows();
 
-        cy.get(CSSSecondaryCardTitleBold).eq(1).should('contain','30 000')
-       cy.get(CSSAccountName).should(($element) => {
-            const text = $element.text();
-            expect(text).to.include(credentials.account_name.account_name_1);
-            expect(text).to.include(credentials.account_name.account_name_2);
+        cy.get(CSSSecondaryCardTitleBold).eq(1).should('contain', '30 000');
+        cy.get(CSSAccountName).should(($element) => {
+          const text = $element.text();
+          expect(text).to.include(credentials.account_name.account_name_1);
+          expect(text).to.include(credentials.account_name.account_name_2);
         });
         cy.get(CSSAccountBalance).should(($element) => {
-            const text = $element.text();
-            expect(text).to.include('10 000');
-            expect(text).to.include('20 000');
+          const text = $element.text();
+          expect(text).to.include('10 000');
+          expect(text).to.include('20 000');
         });
 
-                checkSecondaryCardTitle(3,'38 800')
-                checkSecondaryCardTitle(5,'2 100')
-                checkSecondaryCardTitle(7,'3 300')
-                checkSecondaryCardTitle(9,'0')
-                checkSecondaryCardTitle(11,'0')
-                checkSecondaryCardTitle(13,'27 800')
-                checkSecondaryCardTitle(15,'0')
-        function checkSecondaryCardCell(number){
-            for (let number = 0; number < 6; number++){
-            cy.get(CSSSecondaryCardCell).eq(number * 2 + 1).should('have.text','0')
-        }}
+        function checkSecondaryCardTitle(number, value) {
+          cy.get(CSSSecondaryCardTitleBold).eq(number).should('have.text', value);
+        }
+
+        checkSecondaryCardTitle(3, '38 800')
+        checkSecondaryCardTitle(5, '2 100')
+        checkSecondaryCardTitle(7, '3 300')
+        checkSecondaryCardTitle(9, '0')
+        checkSecondaryCardTitle(11, '0')
+        checkSecondaryCardTitle(13, '27 800')
+        checkSecondaryCardTitle(15, '0')
+
+        function checkSecondaryCardCell() {
+          for (let number = 0; number < 6; number++) {
+            cy.get(CSSSecondaryCardCell).eq(number * 2 + 1).should('have.text', '0')
+          }
+        }
+
         checkSecondaryCardCell()
-    }
-    transaction_registry_accounts_receivable(){
-        cy.get(CSSBurgerMenu).click()
-        cy.get(CSSMenuBar).find(CSSMenuChapter).contains('Реестры').click()
-        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Денежные транзакции').click()
-        cy.get(CSSRow).should('have.length',12)
-    }
-    transaction_registry_accounts_payable(){
-        cy.get(CSSRow).should('have.length',12)
-    }
+
+      }
+
+  transaction_registry_accounts_receivable() {
+    cy.get(CSSBurgerMenu).click();
+    cy.get(CSSMenuBar).find(CSSMenuChapter).contains('Реестры').click();
+    cy.get(CSSMenuBar).find(CSSMenuPage).contains('Денежные транзакции').click();
+    cy.get(CSSRow).should('have.length', 12);
+  }
+  transaction_registry_accounts_payable() {
+    cy.get(CSSRow).should('have.length', 12);
+  }
     register_of_documents_accounts_receivable(){
         cy.get(CSSMenuBar).find(CSSMenuPage).contains('Документы').click()
         cy.get(CSSRow).should('have.length',24)
@@ -1128,10 +1134,9 @@ class checking_onboarding_data {
                                 .last()
                                 .should("have.text",'500')
     }
-    report_warehouses_and_products(){
-        cy.get(CSSMenuBar).find(CSSMenuPage).contains('Товарные запасы').click()
-        cy.wait(1000)
-        
+    report_warehouses_and_products() {
+      cy.get(CSSMenuBar).find(CSSMenuPage).contains('Товарные запасы').click()
+      cy.wait(1000)
     }
 }
-export default checking_onboarding_data
+export default checking_onboarding_data;
