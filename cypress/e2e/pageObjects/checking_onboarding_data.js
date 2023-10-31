@@ -39,6 +39,10 @@ const CSSMenuBar = '[class="side-panel"]'
       }
     }
 
+    function checkSecondaryCardTitle(number, value){
+      cy.get(CSSSecondaryCardTitleBold).eq(number).should('have.text',value)
+    }
+
 class checking_onboarding_data {
 
     dashboard(){
@@ -59,9 +63,6 @@ class checking_onboarding_data {
             expect(text).to.include('20 000');
         });
 
-        function checkSecondaryCardTitle(number, value){
-            cy.get(CSSSecondaryCardTitleBold).eq(number).should('have.text',value)
-        }
                 checkSecondaryCardTitle(3,'38 800')
                 checkSecondaryCardTitle(5,'2 100')
                 checkSecondaryCardTitle(7,'3 300')
