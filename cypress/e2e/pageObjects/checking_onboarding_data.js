@@ -23,26 +23,28 @@ const CSSModalWindow = '[class="modal-block-wrapper"]'
 const CSSCloseButton = '[class="cross-icon-wrapper"]'
 const CSSMenuBar = '[class="side-panel"]'
 
+    function checkCardTitles(){
+      for (let i = 0; i < 2; i++) {
+        cy.get(CSSCardTitleCell)
+          .eq(i)
+          .should('have.text','0')
+      }
+    }
+
+    function checkCardRows(){
+      for (let rowNumber = 0; rowNumber < 3; rowNumber++) {
+        cy.get(CSSCardRow).eq(rowNumber * 3).should('have.text', 'К месяцу:-');
+        cy.get(CSSCardRow).eq(rowNumber * 3 + 1).should('have.text', 'К дню:-');
+        cy.get(CSSCardRow).eq(rowNumber * 3 + 2).should('have.text', 'Прошлый период:0');
+      }
+    }
+
 class checking_onboarding_data {
 
     dashboard(){
 
-        function checkCardTitles(number){
-            for (let number = 0; number < 3; number++) {
-            cy.get(CSSCardTitleCell)
-                .eq(number)
-                .should('have.text','0')
-        }}
         checkCardTitles()
 
-        function checkCardRows(rowNumber){
-            for (let rowNumber = 0; rowNumber < 3; rowNumber++) {
-                cy.get(CSSCardRow).eq(rowNumber * 3).should('have.text', 'К месяцу:-');
-                cy.get(CSSCardRow).eq(rowNumber * 3 + 1).should('have.text', 'К дню:-');
-                cy.get(CSSCardRow).eq(rowNumber * 3 + 2).should('have.text', 'Прошлый период:0');
-            }
-
-        }
         checkCardRows()
 
         cy.get(CSSSecondaryCardTitleBold).eq(1).should('contain','30 000')
@@ -280,7 +282,7 @@ class checking_onboarding_data {
         // Послеоперационные расходы
 
         commonActivities.checkCategoryMainValue('[class="custom-row post-operating-spendings"]',0)
-        commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',0,"социальный налог",0)
+        commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',0,"социальны налог",0)
         commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',1,"социальный налог",0)
         commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',2,"социальный налог",0)
 

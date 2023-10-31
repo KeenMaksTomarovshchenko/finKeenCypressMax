@@ -1,7 +1,3 @@
-//открытие бокового меню (проверка если открыто или не открыто)
-
-import credentials from "./credentials";
-
 class CommonActivities {
     constructor() {
         this.CSSTitle = 'h1';
