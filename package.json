@@ -13,7 +13,6 @@
   },
   "devDependencies": {
     "cypress": "^13.3.3",
-    "cypress-xpath": "^2.0.1",
-    "mocha": "^10.2.0"
+    "cypress-xpath": "^2.0.1"
   }
 }
