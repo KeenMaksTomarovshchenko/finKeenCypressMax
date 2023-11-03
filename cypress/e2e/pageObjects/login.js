@@ -1,9 +1,11 @@
 import credentials from '../data/credentials';
 
-
-const CSSInput = '.input-field';
-const CSSButton = '[class="main-button"]';
-const LoginPage = 'https://dev.fin-consult.com/login';
+  const CSSInput = '.input-field';
+  const CSSButton = '[class="main-button"]';
+  const LoginPage =
+'https://develop.fin-consult.com/login';
+//'https://staging.fin-consult.com/login'
+//    'https://app.fin-consult.com/login'
 class Login {
   login() {
     cy.visit(LoginPage);

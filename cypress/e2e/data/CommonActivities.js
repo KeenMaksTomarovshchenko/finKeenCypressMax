@@ -80,7 +80,7 @@ class CommonActivities {
     cy.get(this.CSSSubTitle).eq(0).then(($header) => {
       cy.get(this.CSSTabActive).then(($tab) => {
         if ($header.text().includes('Документ от:') &&
-                    ($tab.text().includes('Продажа') || $tab.text().includes('Покупка'))) {
+          ($tab.text().includes('Продажа') || $tab.text().includes('Покупка'))) {
           cy.get(this.CSSBlockTransaction1)
             .find(this.CSSPlusButton)
             .click();
@@ -100,10 +100,8 @@ class CommonActivities {
 
           cy.get(this.CSSSubmitButton).click();
 
-        }
-
-        else if ($header.text().includes('Операция с зарплатами') ||
-                    $header.text().includes('Операция с налогами')) {
+        } else if ($header.text().includes('Операция с зарплатами') ||
+          $header.text().includes('Операция с налогами')) {
           cy.get(this.CSSBlockTransaction2)
             .find(this.CSSPlusButton)
             .click();
@@ -122,10 +120,8 @@ class CommonActivities {
 
           cy.get(this.CSSAddButton).click();
 
-        }
-
-        else if ($header.text().includes('Документ от:') &&
-                    ($tab.text().includes('Поступление') || $tab.text().includes('Погашение'))) {
+        } else if ($header.text().includes('Документ от:') &&
+          ($tab.text().includes('Поступление') || $tab.text().includes('Погашение'))) {
           cy.get(this.CSSBlockTransaction1)
             .find(this.CSSPlusButton)
             .click();
@@ -134,7 +130,7 @@ class CommonActivities {
             .find(this.CSSDropdown).eq(0).type(`${transactionType}{enter}`);
 
           cy.get(this.CSSSubForm2)
-            .find(this.CSSDatePicker).click({ force: true });
+            .find(this.CSSDatePicker).click({force: true});
           // .invoke('val', '').type('{selectall}{backspace}')
           // .type(date, { force: true })
 
@@ -151,6 +147,7 @@ class CommonActivities {
       });
     });
   }
+
   checkToolTip() {
     cy.get(this.CSSTitle).then(($title) => {
       if ($title.text().includes('Добро пожаловать!')) {

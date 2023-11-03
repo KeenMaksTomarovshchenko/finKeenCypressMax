@@ -1,9 +1,10 @@
-import credentials, { counterparties_name, counterparties_type, employee_last_name, taxes } from '../data/credentials';
+import credentials from '../data/credentials';
 import CommonActivities from '../data/CommonActivities';
+import Login from "./login";
 
 const commonActivities = new CommonActivities();
+const login = new Login()
 
-const LoginPage = 'https://dev.fin-consult.com/login';
 const CSSInput = '.input-field';
 const CSSButton = '[class="main-button"]';
 const CSSNextButton = '[class="main-button next-btn"]';
@@ -18,20 +19,10 @@ const CSSWarehousesName = '[class="name"]';
 const CSSCheckbox = '[type="checkbox"]';
 const CSSWarehousesAdressMask = '[class="input-field input-field-mask"]';
 const CSSBigBoldGreenAmount = '[class="text-component amount big bold green"]';
+const CSSModalProductsOnboarding = '[class="upsert-product-wrapper"]'
+const CSSActionButtons = '[class="action-buttons"]'
 
 class onboarding {
-  // Логин
-  login() {
-    cy.visit(LoginPage);
-    commonActivities.checkTitle('Вход');
-    cy.wait(500);
-
-    cy.get(CSSInput).eq(0).type(credentials.email.email);
-    cy.get(CSSInput).eq(1).type(credentials.password.password);
-    cy.wait(1000);
-    cy.get(CSSButton).eq(0).click();
-  }
-
   // Приветствие
   page0() {
     commonActivities.checkTitle('Добро пожаловать');
@@ -139,9 +130,8 @@ class onboarding {
     cy.get(CSSCreateNewButton).eq(0).click();
     commonActivities.checkSubTitle('Введите статью расхода');
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(`${credentials.expense_item_category.expense_item_category_2}{enter}`);
+    cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_2 + '{enter}');
     cy.get(CSSInput).eq(0).type(credentials.expense_item_name.expense_item_2_name);
-    cy.get(CSSCheckbox).click();
     cy.get(CSSButton).click();
   }
 
@@ -149,7 +139,7 @@ class onboarding {
     cy.get(CSSCreateNewButton).eq(0).click();
     commonActivities.checkSubTitle('Введите статью расхода');
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(`${credentials.expense_item_category.expense_item_category_3}{enter}`);
+    cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_3 + '{enter}');
     cy.get(CSSInput).eq(0).type(credentials.expense_item_name.expense_item_3_name);
     cy.get(CSSButton).click();
   }
@@ -158,7 +148,7 @@ class onboarding {
     cy.get(CSSCreateNewButton).eq(0).click();
     commonActivities.checkSubTitle('Введите статью расхода');
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(`${credentials.expense_item_category.expense_item_category_4}{enter}`);
+    cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_4 + '{enter}');
     cy.get(CSSInput).eq(0).type(credentials.expense_item_name.expense_item_4_name);
     cy.get(CSSButton).click();
   }
@@ -167,7 +157,7 @@ class onboarding {
     cy.get(CSSCreateNewButton).eq(0).click();
     commonActivities.checkSubTitle('Введите статью расхода');
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(`${credentials.expense_item_category.expense_item_category_1}{enter}`);
+    cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_1 + '{enter}');
     cy.get(CSSInput).eq(0).type(credentials.expense_item_name.expense_item_5_name);
     cy.get(CSSCheckbox).click();
     cy.get(CSSButton).click();
@@ -177,7 +167,7 @@ class onboarding {
     cy.get(CSSCreateNewButton).eq(0).click();
     commonActivities.checkSubTitle('Введите статью расхода');
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(`${credentials.expense_item_category.expense_item_category_2}{enter}`);
+    cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_2 + '{enter}');
     cy.get(CSSInput).eq(0).type(credentials.expense_item_name.expense_item_6_name);
     cy.get(CSSCheckbox).click();
     cy.get(CSSButton).click();
@@ -199,15 +189,15 @@ class onboarding {
   counterparties_1_creating() {
     cy.get(CSSCreateNewButton).eq(0).click();
     commonActivities.checkSubTitle('Введите данные контрагента');
-    cy.get(CSSInput).eq(0).type(counterparties_name.counterparties_name_1);
+    cy.get(CSSInput).eq(0).type(credentials.counterparties_name.counterparties_name_1);
     cy.get(CSSButton).click();
   }
 
   counterparties_2_creating() {
     cy.get(CSSCreateNewButton).eq(0).click();
     commonActivities.checkSubTitle('Введите данные контрагента');
-    cy.get(CSSCreateNewButton).eq(16).should('contain', counterparties_type.counterparties_type_2).click();
-    cy.get(CSSInput).eq(0).type(counterparties_name.counterparties_name_2);
+    cy.get(CSSCreateNewButton).eq(16).should('contain', credentials.counterparties_type.counterparties_type_2).click();
+    cy.get(CSSInput).eq(0).type(credentials.counterparties_name.counterparties_name_2);
     cy.get(CSSButton).click();
   }
 
@@ -227,7 +217,7 @@ class onboarding {
     cy.get(CSSInput).eq(0).type(credentials.employee_first_name.employee_first_name);
     cy.get(CSSInput).eq(1).type(credentials.employee_last_name.employee_last_name_1);
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(`${credentials.expense_item_category.expense_item_category_1}{enter}`);
+    cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_1 + '{enter}');
     cy.get(CSSDropdown).eq(2).click();
     cy.get(CSSDropdown).eq(2).type(credentials.employee_status.employee_status_1);
     cy.get(CSSButton).click();
@@ -239,7 +229,7 @@ class onboarding {
     cy.get(CSSInput).eq(0).type(credentials.employee_first_name.employee_first_name);
     cy.get(CSSInput).eq(1).type(credentials.employee_last_name.employee_last_name_2);
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(`${credentials.expense_item_category.expense_item_category_2}{enter}`);
+    cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_2 + '{enter}');
     cy.get(CSSDropdown).eq(2).click();
     cy.get(CSSDropdown).eq(2).type(credentials.employee_status.employee_status_1);
     cy.get(CSSButton).click();
@@ -251,7 +241,7 @@ class onboarding {
     cy.get(CSSInput).eq(0).type(credentials.employee_first_name.employee_first_name);
     cy.get(CSSInput).eq(1).type(credentials.employee_last_name.employee_last_name_3);
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(`${credentials.expense_item_category.expense_item_category_3}{enter}`);
+    cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_3 + '{enter}');
     cy.get(CSSDropdown).eq(2).click();
     cy.get(CSSDropdown).eq(2).type(credentials.employee_status.employee_status_1);
     cy.get(CSSButton).click();
@@ -263,7 +253,7 @@ class onboarding {
     cy.get(CSSInput).eq(0).type(credentials.employee_first_name.employee_first_name);
     cy.get(CSSInput).eq(1).type(credentials.employee_last_name.employee_last_name_4);
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(`${credentials.expense_item_category.expense_item_category_4}{enter}`);
+    cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_4 + '{enter}');
     cy.get(CSSDropdown).eq(2).click();
     cy.get(CSSDropdown).eq(2).type(credentials.employee_status.employee_status_1);
     cy.get(CSSButton).click();
@@ -291,27 +281,27 @@ class onboarding {
 
     cy.get(CSSCreateNewButton).eq(1).click();
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(`${credentials.expense_item_category.expense_item_category_2}{enter}`);
+    cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_2 + '{enter}');
 
     cy.get(CSSCreateNewButton).eq(1).click();
     cy.get(CSSDropdown).eq(2).click();
-    cy.get(CSSDropdown).eq(2).type(`${credentials.expense_item_category.expense_item_category_3}{enter}`);
+    cy.get(CSSDropdown).eq(2).type(credentials.expense_item_category.expense_item_category_3 + '{enter}');
 
     cy.get(CSSCreateNewButton).eq(1).click();
     cy.get(CSSDropdown).eq(3).click();
-    cy.get(CSSDropdown).eq(3).type(`${credentials.expense_item_category.expense_item_category_4}{enter}`);
+    cy.get(CSSDropdown).eq(3).type(credentials.expense_item_category.expense_item_category_4 + '{enter}');
 
     cy.get(CSSCreateNewButton).eq(1).click();
     cy.get(CSSDropdown).eq(5).click();
-    cy.get(CSSDropdown).eq(5).type(`${credentials.expense_item_category.expense_item_category_2}{enter}`);
+    cy.get(CSSDropdown).eq(5).type(credentials.expense_item_category.expense_item_category_2 + '{enter}');
 
     cy.get(CSSCreateNewButton).eq(1).click();
     cy.get(CSSDropdown).eq(6).click();
-    cy.get(CSSDropdown).eq(6).type(`${credentials.expense_item_category.expense_item_category_3}{enter}`);
+    cy.get(CSSDropdown).eq(6).type(credentials.expense_item_category.expense_item_category_3 + '{enter}');
 
     cy.get(CSSCreateNewButton).eq(1).click();
     cy.get(CSSDropdown).eq(7).click();
-    cy.get(CSSDropdown).eq(7).type(`${credentials.expense_item_category.expense_item_category_4}{enter}`);
+    cy.get(CSSDropdown).eq(7).type(credentials.expense_item_category.expense_item_category_4 + '{enter}');
 
     commonActivities.checkToolTip();
     cy.get(CSSNextButton).click();
@@ -322,13 +312,15 @@ class onboarding {
     cy.get(CSSCreateNewButton).eq(0).click();
     cy.get(CSSWarehousesName).should('contain', 'Склад №1');
     cy.get(CSSCreateNewButton).eq(0).click();
+    cy.get(CSSModalProductsOnboarding).should('be.visible')
     cy.get(CSSInput).eq(0).type(credentials.product_name.product_1_name);
     cy.get(CSSDropdown).eq(0).click();
-    cy.get(CSSDropdown).eq(0).type(`a{backspace}${credentials.units.unit_1.toLowerCase()}`);
+    cy.get(CSSDropdown).eq(0).type('a' + '{backspace}' + credentials.units.unit_1 + '{enter}');
     cy.get(CSSInput).eq(1).type('100');
     cy.get(CSSInput).eq(2).type('10');
-    cy.get(CSSGreenButton).click({ force: true });
-    cy.wait(500);
+    cy.get(CSSActionButtons)
+      .find(CSSGreenButton).click();
+    cy.wait(5000);
   }
 
   waterhouse_2_creating() {
@@ -336,40 +328,45 @@ class onboarding {
     cy.get(CSSWarehousesName).should('contain', 'Склад №2');
     cy.get(CSSCheckbox).eq(1).click();
     cy.get(CSSCreateNewButton).eq(1).click();
+    cy.get(CSSModalProductsOnboarding).should('be.visible')
     cy.get(CSSInput).eq(0).type(credentials.product_name.product_2_name);
     cy.wait(500);
     cy.get(CSSWarehousesAdressMask).type('11.A.111');
     cy.get(CSSDropdown).eq(0).click();
-    cy.get(CSSDropdown).eq(0).type(`a{backspace}${credentials.units.unit_2}`);
+    cy.get(CSSDropdown).eq(0).type('a' + '{backspace}' + credentials.units.unit_2 + '{enter}');
     cy.get(CSSInput).eq(2).type('200');
     cy.get(CSSInput).eq(3).type('10');
-    cy.get(CSSGreenButton).click({ force: true });
+    cy.get(CSSActionButtons)
+      .find(CSSGreenButton).click();
 
-    cy.wait(1000);
+    cy.wait(5000);
 
     cy.get(CSSCreateNewButton).eq(1).click();
+    cy.get(CSSModalProductsOnboarding).should('be.visible')
     cy.get(CSSInput).eq(0).type(credentials.product_name.product_3_name);
     cy.wait(500);
     cy.get(CSSWarehousesAdressMask).type('22.B.222');
     cy.get(CSSDropdown).eq(0).click();
-    cy.get(CSSDropdown).eq(0).type(`a{backspace}${credentials.units.unit_3}`);
+    cy.get(CSSDropdown).eq(0).type('a' + '{backspace}' + credentials.units.unit_3 + '{enter}');
     cy.get(CSSInput).eq(2).type('300');
     cy.get(CSSInput).eq(3).type('10');
-    cy.get(CSSGreenButton).click({ force: true });
-    cy.wait(500);
+    cy.get(CSSActionButtons)
+      .find(CSSGreenButton).click();
+    cy.wait(5000);
   }
 
   waterhouse_3_creating() {
     cy.get(CSSCreateNewButton).eq(2).click();
     cy.get(CSSWarehousesName).should('contain', 'Склад №3');
     cy.get(CSSCreateNewButton).eq(2).click();
+    cy.get(CSSModalProductsOnboarding).should('be.visible')
     cy.get(CSSInput).eq(0).type(credentials.product_name.product_4_name);
     cy.wait(500);
     cy.get(CSSDropdown).eq(0).click();
-    cy.get(CSSDropdown).eq(0).type(`a{backspace}${credentials.units.unit_4.toLowerCase()}`);
+    cy.get(CSSDropdown).eq(0).type('a' + '{backspace}' + credentials.units.unit_4 + '{enter}');
     cy.get(CSSInput).eq(1).type('400');
     cy.get(CSSInput).eq(2).type('10');
-    cy.get(CSSGreenButton).click({ force: true });
+    cy.get(CSSGreenButton).click();
   }
 
   page10() {
@@ -660,7 +657,7 @@ class onboarding {
     commonActivities.checkTitle('Кредиты и займы');
     cy.get(CSSCreateNewButton).eq(0).click();
     cy.get(CSSInput).eq(0).type(credentials.credits.credit_name_1);
-    cy.get(CSSDropdown).eq(0).type(`${credentials.counterparties_name.counterparties_name_1}{enter}`);
+    cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
     cy.get(CSSInput).eq(1).type('0001');
     cy.get(CSSInput).eq(2).type('1100');
     cy.get(CSSDatepicker).click();
@@ -669,7 +666,7 @@ class onboarding {
 
     cy.get(CSSCreateNewButton).eq(0).click();
     cy.get(CSSInput).eq(0).type(credentials.credits.credit_name_2);
-    cy.get(CSSDropdown).eq(0).type(`${credentials.counterparties_name.counterparties_name_1}{enter}`);
+    cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
     cy.get(CSSInput).eq(1).type('0002');
     cy.get(CSSInput).eq(2).type('2200');
     cy.get(CSSDatepicker).click();
@@ -679,7 +676,7 @@ class onboarding {
 
     cy.get(CSSCreateNewButton).eq(0).click();
     cy.get(CSSInput).eq(0).type(credentials.credits.credit_name_3);
-    cy.get(CSSDropdown).eq(0).type(`${credentials.counterparties_name.counterparties_name_2}{enter}`);
+    cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_2 + '{enter}');
     cy.get(CSSInput).eq(1).type('0003');
     cy.get(CSSInput).eq(2).type('3300');
     cy.get(CSSDatepicker).click();
@@ -689,7 +686,7 @@ class onboarding {
 
     cy.get(CSSCreateNewButton).eq(0).click();
     cy.get(CSSInput).eq(0).type(credentials.credits.credit_name_4);
-    cy.get(CSSDropdown).eq(0).type(`${credentials.counterparties_name.counterparties_name_2}{enter}`);
+    cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_2 + '{enter}');
     cy.get(CSSInput).eq(1).type('0004');
     cy.get(CSSInput).eq(2).type('4400');
     cy.get(CSSDatepicker).click();
@@ -718,7 +715,10 @@ class onboarding {
   }
 
   GetDashboard() {
-    cy.url().should('eq', 'https://dev.fin-consult.com/home');
+    cy.url().should('eq', //'//https://staging.fin-consult.com/login'
+    'https://develop.fin-consult.com/login'
+    // 'https://app.fin-consult.com/login'
+    )
   }
 }
 export default onboarding;

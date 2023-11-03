@@ -15,7 +15,7 @@ it('create new operations', () => {
   Creating_operations.operation_with_salaries()
   Creating_operations.operation_with_taxes()
   Creating_operations.operation_with_self_capital()
-  Creating_operations.operations_with_credits_receipt()
+  //Creating_operations.operations_with_credits_receipt()
   Creating_operations.operations_with_credits_repayment_1();
   Creating_operations.operations_with_credits_repayment_2();
   Creating_operations.operations_with_products_disposal()

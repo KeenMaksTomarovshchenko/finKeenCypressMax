@@ -1,4 +1,3 @@
-import credentials from '../data/credentials';
 
 class directories {
   company_data() {
