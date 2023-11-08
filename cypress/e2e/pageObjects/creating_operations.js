@@ -241,10 +241,10 @@ class creating_operations {
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Зарплата').click();
     // Реквизиты
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name_trim.employee_full_name_1 + '{enter}');
+    cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name.employee_full_name_1 + '{enter}');
     // Начисление
     cy.get(CSSCreateNewButton).eq(2).click();
-    cy.get(CSSDropdownValue).eq(2).should('contain', credentials.employee_full_name_trim.employee_full_name_1);
+    cy.get(CSSDropdownValue).eq(2).should('contain', credentials.employee_full_name.employee_full_name_1);
     cy.get(CSSInput).eq(1).type('150');
     cy.get(CSSGreenButton).click();
     // Транзакции
@@ -257,10 +257,10 @@ class creating_operations {
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Зарплата').click();
     // Реквизиты
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name_trim.employee_full_name_1 + '{enter}');
+    cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name.employee_full_name_1 + '{enter}');
     // Начисление
     cy.get(CSSCreateNewButton).eq(2).click();
-    cy.get(CSSDropdownValue).eq(2).should('contain', credentials.employee_full_name_trim.employee_full_name_1);
+    cy.get(CSSDropdownValue).eq(2).should('contain', credentials.employee_full_name.employee_full_name_1);
     cy.get(CSSInput).eq(1).type('150');
     cy.get(CSSGreenButton).click();
     cy.wait(500);
@@ -271,7 +271,7 @@ class creating_operations {
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Зарплата').click();
     // Реквизиты
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name_trim.employee_full_name_1 + '{enter}');
+    cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name.employee_full_name_1 + '{enter}');
     // Транзакции
     commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '150');
     cy.wait(500);

@@ -95,10 +95,10 @@ module.exports = {
     product_4_name: 'Товар 4, склад 3',
   },
   units: {
-    unit_1: 'шт{enter}',
-    unit_2: 'кг{enter}',
-    unit_3: 'л{enter}',
-    unit_4: 'ящик{enter}',
+    unit_1: 'Шт',
+    unit_2: 'Кг',
+    unit_3: 'Л',
+    unit_4: 'Ящик',
   },
   taxes: {
     social_tax: 'Социальный налог',

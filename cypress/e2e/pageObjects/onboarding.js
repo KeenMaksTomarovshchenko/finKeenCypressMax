@@ -21,6 +21,11 @@ const CSSWarehousesAdressMask = '[class="input-field input-field-mask"]';
 const CSSBigBoldGreenAmount = '[class="text-component amount big bold green"]';
 const CSSModalProductsOnboarding = '[class="upsert-product-wrapper"]'
 const CSSActionButtons = '[class="action-buttons"]'
+const CSSDropdownValue = '[class="text-component option-text-wrapper"]';
+
+const CSSDashboardPage = 'https://develop.fin-consult.com/home';
+//'https://staging.fin-consult.com/home'
+//    'https://app.fin-consult.com/home'
 
 class onboarding {
   // Приветствие
@@ -313,14 +318,15 @@ class onboarding {
     cy.get(CSSWarehousesName).should('contain', 'Склад №1');
     cy.get(CSSCreateNewButton).eq(0).click();
     cy.get(CSSModalProductsOnboarding).should('be.visible')
+    cy.get(CSSDropdown).eq(0).type(credentials.units.unit_1)
+    cy.get(CSSDropdownValue).eq(0).click();
     cy.get(CSSInput).eq(0).type(credentials.product_name.product_1_name);
     cy.get(CSSDropdown).eq(0).click();
-    cy.get(CSSDropdown).eq(0).type('a' + '{backspace}' + credentials.units.unit_1 + '{enter}');
     cy.get(CSSInput).eq(1).type('100');
+    cy.wait(500)
     cy.get(CSSInput).eq(2).type('10');
     cy.get(CSSActionButtons)
       .find(CSSGreenButton).click();
-    cy.wait(5000);
   }
 
   waterhouse_2_creating() {
@@ -329,59 +335,65 @@ class onboarding {
     cy.get(CSSCheckbox).eq(1).click();
     cy.get(CSSCreateNewButton).eq(1).click();
     cy.get(CSSModalProductsOnboarding).should('be.visible')
+    cy.get(CSSDropdown).eq(0).type(credentials.units.unit_2);
+    cy.get(CSSDropdownValue).eq(0).click();
     cy.get(CSSInput).eq(0).type(credentials.product_name.product_2_name);
-    cy.wait(500);
     cy.get(CSSWarehousesAdressMask).type('11.A.111');
     cy.get(CSSDropdown).eq(0).click();
-    cy.get(CSSDropdown).eq(0).type('a' + '{backspace}' + credentials.units.unit_2 + '{enter}');
     cy.get(CSSInput).eq(2).type('200');
     cy.get(CSSInput).eq(3).type('10');
     cy.get(CSSActionButtons)
       .find(CSSGreenButton).click();
 
-    cy.wait(5000);
+    cy.wait(2000);
 
     cy.get(CSSCreateNewButton).eq(1).click();
     cy.get(CSSModalProductsOnboarding).should('be.visible')
+    cy.get(CSSDropdown).eq(0).type(credentials.units.unit_3)
+    cy.get(CSSDropdownValue).eq(0).click();
     cy.get(CSSInput).eq(0).type(credentials.product_name.product_3_name);
-    cy.wait(500);
     cy.get(CSSWarehousesAdressMask).type('22.B.222');
     cy.get(CSSDropdown).eq(0).click();
-    cy.get(CSSDropdown).eq(0).type('a' + '{backspace}' + credentials.units.unit_3 + '{enter}');
+    cy.get(CSSDropdown).eq(0).type(credentials.units.unit_3);
+    cy.get(CSSDropdownValue).eq(0).click();
     cy.get(CSSInput).eq(2).type('300');
     cy.get(CSSInput).eq(3).type('10');
     cy.get(CSSActionButtons)
       .find(CSSGreenButton).click();
-    cy.wait(5000);
   }
 
   waterhouse_3_creating() {
     cy.get(CSSCreateNewButton).eq(2).click();
     cy.get(CSSWarehousesName).should('contain', 'Склад №3');
     cy.get(CSSCreateNewButton).eq(2).click();
+    cy.get(CSSDropdown).eq(0).type(credentials.units.unit_4)
+    cy.get(CSSDropdownValue).eq(0).click();
     cy.get(CSSModalProductsOnboarding).should('be.visible')
     cy.get(CSSInput).eq(0).type(credentials.product_name.product_4_name);
-    cy.wait(500);
     cy.get(CSSDropdown).eq(0).click();
-    cy.get(CSSDropdown).eq(0).type('a' + '{backspace}' + credentials.units.unit_4 + '{enter}');
+    cy.get(CSSDropdown).eq(0).type(credentials.units.unit_4);
+    cy.get(CSSDropdownValue).eq(0).click();
+    cy.wait(500)
     cy.get(CSSInput).eq(1).type('400');
     cy.get(CSSInput).eq(2).type('10');
-    cy.get(CSSGreenButton).click();
+    cy.get(CSSActionButtons)
+      .find(CSSGreenButton).click();
   }
 
   page10() {
     commonActivities.checkTitle('Склады');
     this.waterhouse_1_creating();
-    cy.wait(1000);
+    cy.wait(2000);
     this.waterhouse_2_creating();
-    cy.wait(1000);
+    cy.wait(2000);
     this.waterhouse_3_creating();
-    cy.wait(1000);
+    cy.wait(2000);
     commonActivities.checkToolTip();
     cy.get(CSSNextButton).click();
   }
 
   /// //////////////Кредиторская задолженность////////////////////////////
+
   // Задолженность перед поставщиками
   DebtToSuppliers() {
     cy.get(CSSCreateNewButton).eq(0).click();
@@ -400,7 +412,7 @@ class onboarding {
     commonActivities.checkModalWindow('Задолженность перед поставщиками');
     commonActivities.fillInAccountsPaybaleAndReceivable(credentials.counterparties_name.counterparties_name_1, credentials.expense_item_name.expense_item_4_name, credentials.expense_item_category.expense_item_category_4, '100');
 
-    /// /
+    /////
 
     cy.get(CSSCreateNewButton).eq(0).click();
     commonActivities.checkModalWindow('Задолженность перед поставщиками');
@@ -715,10 +727,7 @@ class onboarding {
   }
 
   GetDashboard() {
-    cy.url().should('eq', //'//https://staging.fin-consult.com/login'
-    'https://develop.fin-consult.com/login'
-    // 'https://app.fin-consult.com/login'
-    )
+    cy.url().should('eq', CSSDashboardPage)
   }
 }
 export default onboarding;
