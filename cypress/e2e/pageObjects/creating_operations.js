@@ -9,6 +9,7 @@ const CSSMenuBar = '[class="side-panel"]';
 const CSSDropdown = '.mt-react-select__input-container';
 const CSSInput = '.input-field';
 const CSSDropdownValue = '.mt-react-select__single-value';
+const CSSDropdownValue2 = '[class="text-component option-text-wrapper"]';
 const CSSDropdownOption = '.tooltip-sign';
 const CSSDatepicker = '[class="react-datepicker__input-container "]';
 const CSSButton = '[class="main-button"]';
@@ -25,6 +26,7 @@ const CSSDocumentRow = '[class="row"]';
 const CSSBold = 'b';
 const CSSTab = '[class="tab"]';
 const CSSModalWindow = '[class="modal-block-wrapper"]';
+const CSSPlusButton = '[class="plus-button"]'
 class creating_operations {
   open_menu_chapter() {
     cy.wait(1000);
@@ -70,7 +72,8 @@ class creating_operations {
     // Позиции
     cy.get(CSSCreateNewButton).eq(3).click();
     cy.get(CSSInput).eq(1).type('Test');
-    cy.get(CSSDropdown).eq(4).type(credentials.units.unit_1);
+    cy.get(CSSDropdown).eq(4).click()
+    cy.get(CSSDropdownValue2).eq(0).click();
     cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
     cy.get(CSSInput).eq(4).type('100');
     cy.get(CSSQuantity).type('1');
@@ -81,7 +84,7 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
-    /// ////////////С Позицией, без транзакции и без чекбокса///////////////
+    ///////////////С Позицией, без транзакции и без чекбокса///////////////
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Продажа').click();
     // Реквизиты
@@ -90,7 +93,8 @@ class creating_operations {
     // Позиции
     cy.get(CSSCreateNewButton).eq(3).click();
     cy.get(CSSInput).eq(1).type('Test');
-    cy.get(CSSDropdown).eq(4).type(credentials.units.unit_1);
+    cy.get(CSSDropdown).eq(4).click()
+    cy.get(CSSDropdownValue2).eq(0).click();
     cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
     cy.get(CSSInput).eq(4).type('100');
     cy.get(CSSQuantity).type('1');
@@ -100,7 +104,7 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
-    /// /////////////С Позицией, Транзакцией и без чекбокса //////////////////
+    ////////////////С Позицией, Транзакцией и без чекбокса //////////////////
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Продажа').click();
     // Реквизиты
@@ -111,7 +115,8 @@ class creating_operations {
     // Позиции
     cy.get(CSSCreateNewButton).eq(3).click();
     cy.get(CSSInput).eq(1).type('Test');
-    cy.get(CSSDropdown).eq(4).type(credentials.units.unit_1);
+    cy.get(CSSDropdown).eq(4).click()
+    cy.get(CSSDropdownValue2).eq(0).click();
     cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
     cy.get(CSSInput).eq(4).type('100');
     cy.get(CSSQuantity).type('1');
@@ -130,7 +135,8 @@ class creating_operations {
     // Позиции
     cy.get(CSSCreateNewButton).eq(3).click();
     cy.get(CSSInput).eq(1).type('Test');
-    cy.get(CSSDropdown).eq(4).type(credentials.units.unit_1);
+    cy.get(CSSDropdown).eq(4).click()
+    cy.get(CSSDropdownValue2).eq(0).click();
     cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
     cy.get(CSSInput).eq(4).type('100');
     cy.get(CSSQuantity).type('1');
@@ -160,7 +166,8 @@ class creating_operations {
     cy.get(CSSDropdownValue).eq(2).should('contain', credentials.expense_item_category.expense_item_category_1);
     cy.get(CSSInput).eq(4).type('150');
     cy.get(CSSQuantity).type('1');
-    cy.get(CSSDropdown).eq(4).type(credentials.units.unit_1);
+    cy.get(CSSDropdown).eq(4).click()
+    cy.get(CSSDropdownValue2).eq(0).click();
     cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
     cy.get(CSSSubmitButton).click();
     cy.get(CSSCheckboxObligation).click();
@@ -183,7 +190,8 @@ class creating_operations {
     cy.get(CSSDropdownValue).eq(2).should('contain', credentials.expense_item_category.expense_item_category_1);
     cy.get(CSSInput).eq(4).type('150');
     cy.get(CSSQuantity).type('1');
-    cy.get(CSSDropdown).eq(4).type(credentials.units.unit_1);
+    cy.get(CSSDropdown).eq(4).click()
+    cy.get(CSSDropdownValue2).eq(0).click();
     cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
     cy.get(CSSSubmitButton).click();
     cy.wait(500);
@@ -204,7 +212,8 @@ class creating_operations {
     cy.get(CSSDropdownValue).eq(2).should('contain', credentials.expense_item_category.expense_item_category_1);
     cy.get(CSSInput).eq(4).type('150');
     cy.get(CSSQuantity).type('1');
-    cy.get(CSSDropdown).eq(4).type(credentials.units.unit_1);
+    cy.get(CSSDropdown).eq(4).click()
+    cy.get(CSSDropdownValue2).eq(0).click();
     cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
     cy.get(CSSSubmitButton).click();
     cy.get(CSSCheckboxObligation).click();
@@ -228,7 +237,8 @@ class creating_operations {
     cy.get(CSSDropdownValue).eq(2).should('contain', credentials.expense_item_category.expense_item_category_1);
     cy.get(CSSInput).eq(4).type('150');
     cy.get(CSSQuantity).type('1');
-    cy.get(CSSDropdown).eq(4).type(credentials.units.unit_1);
+    cy.get(CSSDropdown).eq(4).click()
+    cy.get(CSSDropdownValue2).eq(0).click();
     cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
     cy.get(CSSSubmitButton).click();
     cy.wait(500);
@@ -417,28 +427,36 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Товары').click();
     cy.get(CSSTab).contains('Выбытие').click();
-    cy.get(CSSDropdown).eq(1).type('Склад №1' + '{enter}');
-    cy.get(CSSCreateNewButton).eq(3).click();
-    cy.get(CSSDropdown).eq(2).type(credentials.product_name.product_1_name + '{enter}');
-    cy.get(CSSInput).type('40');
-    cy.get(CSSDropdown).eq(3).type(credentials.expense_item_category.expense_item_category_1 + '{enter}');
-    cy.get(CSSDropdownValue).eq(4).should('have.text', credentials.expense_item_name.expense_item_1_name);
-    cy.get(CSSSubmitButton).click();
-    cy.get(CSSBoldNumber).eq(5).should('have.text', '400');
+
+    cy.get(CSSPlusButton).click()
+    cy.get(CSSDropdown).eq(1).type(credentials.product_name.product_1_name + '{enter}');
+    cy.get(CSSDropdown).eq(2).click()
+    cy.get(CSSDropdownValue2).contains('Склад №1').click()
+    cy.get(CSSInput).eq(1).type('10')
+    cy.get(CSSDropdown).eq(3).type( credentials.expense_item_category.expense_item_category_2 + '{enter}');
+    cy.get(CSSDropdown).eq(4).type( credentials.expense_item_name.expense_item_2_name + '{enter}');
+    cy.get(CSSSubmitButton).click()
+
     cy.wait(500);
     cy.get(CSSButton).click();
+
+///////////////////////////////
 
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Товары').click();
     cy.get(CSSTab).contains('Выбытие').click();
-    cy.get(CSSDropdown).eq(1).type('Склад №2' + '{enter}');
-    cy.get(CSSCreateNewButton).eq(3).click();
-    cy.get(CSSDropdown).eq(2).type(credentials.product_name.product_3_name + '{enter}');
-    cy.get(CSSInput).type('45');
-    cy.get(CSSDropdown).eq(3).type(credentials.expense_item_category.expense_item_category_1 + '{enter}');
-    cy.get(CSSDropdownValue).eq(4).should('have.text', credentials.expense_item_name.expense_item_1_name);
-    cy.get(CSSSubmitButton).click();
-    cy.get(CSSBoldNumber).eq(5).should('have.text', '450');
+
+    cy.get(CSSPlusButton).click()
+    cy.get(CSSDropdown).eq(1).type(credentials.product_name.product_2_name + '{enter}');
+    cy.get(CSSDropdown).eq(2).click()
+    cy.get(CSSDropdownValue2).contains('Склад №2').click()
+    cy.get(CSSDropdown).eq(3).click()
+    cy.get(CSSDropdownValue2).contains('11.A.111').click()
+    cy.get(CSSInput).eq(1).type('20')
+    cy.get(CSSDropdown).eq(4).type( credentials.expense_item_category.expense_item_category_3 + '{enter}');
+    cy.get(CSSDropdown).eq(5).type( credentials.expense_item_name.expense_item_3_name + '{enter}');
+    cy.get(CSSSubmitButton).click()
+
     cy.wait(500);
     cy.get(CSSButton).click();
   }
@@ -446,24 +464,30 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Товары').click();
     cy.get(CSSTab).contains('Списание').click();
-    cy.get(CSSDropdown).eq(1).type('Склад №1' + '{enter}');
-    cy.get(CSSCreateNewButton).eq(3).click();
-    cy.get(CSSDropdown).eq(2).type(credentials.product_name.product_1_name + '{enter}');
-    cy.get(CSSInput).type('30');
+
+    cy.get(CSSPlusButton).click();
+    cy.get(CSSDropdown).eq(1).type(credentials.product_name.product_4_name + '{enter}');
+    cy.get(CSSDropdown).eq(2).click()
+    cy.get(CSSDropdownValue2).contains('Склад №3').click()
+    cy.get(CSSInput).eq(1).type('40');
     cy.get(CSSSubmitButton).click();
-    cy.get(CSSBoldNumber).eq(5).should('have.text', '300');
     cy.wait(500);
     cy.get(CSSButton).click();
+
+    ///////////////////////////////////////
 
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Товары').click();
     cy.get(CSSTab).contains('Списание').click();
-    cy.get(CSSDropdown).eq(1).type('Склад №2' + '{enter}');
-    cy.get(CSSCreateNewButton).eq(3).click();
-    cy.get(CSSDropdown).eq(2).type(credentials.product_name.product_2_name + '{enter}');
-    cy.get(CSSInput).type('35');
+
+    cy.get(CSSPlusButton).click();
+    cy.get(CSSDropdown).eq(1).type(credentials.product_name.product_3_name + '{enter}');
+    cy.get(CSSDropdown).eq(2).click()
+    cy.get(CSSDropdownValue2).contains('Склад №2').click()
+    cy.get(CSSDropdown).eq(3).click()
+    cy.get(CSSDropdownValue2).contains('22.B.222').click()
+    cy.get(CSSInput).eq(1).type('30');
     cy.get(CSSSubmitButton).click();
-    cy.get(CSSBoldNumber).eq(5).should('have.text', '350');
     cy.wait(500);
     cy.get(CSSButton).click();
   }

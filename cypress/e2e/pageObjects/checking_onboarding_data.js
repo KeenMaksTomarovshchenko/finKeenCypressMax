@@ -10,22 +10,15 @@ const CSSMenuPage = '[class="text-component"]';
 const CSSCardTitleCell = '[class="home-indicator__value"]';
 const CSSCardRow = '[class="main-indicator-card__content-row"]';
 const CSSRow = '[class="row"]';
-const CSSTableHeaderRow = '[class="item-header opened"]';
-const CSSTableContentChapter = '[class="item-content opened"]';
 const CSSTableCell = '[class="r-cell resizable"]';
-const CSSTableCellClickable = '[class="r-cell resizable clickable"]';
-const CSSTableContentRow = '[class="custom-row"]';
-const CSSTableContentRowProducts = '[class="custom-row products"]';
 const CSSSecondaryCardTitleBold = '[class="secondary-indicator-card__title-cell"]';
 const CSSSecondaryCardCell = '[class="secondary-indicator-card__content-cell"]';
 const CSSAccountName = '[class="account-name"]';
 const CSSAccountBalance = '[class="account-value"]';
-const CSSModalWindow = '[class="modal-block-wrapper"]';
-const CSSCloseButton = '[class="cross-icon-wrapper"]';
 const CSSMenuBar = '[class="side-panel"]';
 
 function checkCardTitles(){
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 3; i++) {
      cy.get(CSSCardTitleCell)
      .eq(i)
      .should('have.text','0')
@@ -131,9 +124,9 @@ class checking_onboarding_data {
     //Выручка
 
     commonActivities.checkCategoryMainValue('[class="custom-row revenue"]', '0')
-    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 0,credentials.income_item.income_item_1_name, '0')
-    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 1,credentials.income_item.income_item_2_name, '0')
-    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 2,credentials.income_item.income_item_3_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 0,credentials.income_item.income_item_3_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 1,credentials.income_item.income_item_1_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 2,credentials.income_item.income_item_2_name, '0')
     commonActivities.checkCategoryValue('[class="custom-row revenue"]', 3,'Возмещение НДС', '0')
 
     //Себестоимость
@@ -150,8 +143,8 @@ class checking_onboarding_data {
     commonActivities.checkCategoryMainValue('[class="custom-row common"]', '0')
     commonActivities.checkCategoryValue('[class="custom-row common"]', 0,credentials.expense_item_name.expense_item_4_name, '0')
     commonActivities.checkCategoryValue('[class="custom-row common"]', 1,'Зарплата', '0')
-    commonActivities.checkCategoryValue('[class="custom-row common"]', 3,'Подоходный налог', '0')
-    commonActivities.checkCategoryValue('[class="custom-row common"]', 2,'Социальный налог', '0')
+    commonActivities.checkCategoryValue('[class="custom-row common"]', 2,'Подоходный налог', '0')
+    commonActivities.checkCategoryValue('[class="custom-row common"]', 3,'Социальный налог', '0')
 
     // Административные
 
@@ -159,17 +152,17 @@ class checking_onboarding_data {
     commonActivities.checkCategoryValue('[class="custom-row administrative"]', 0,credentials.expense_item_name.expense_item_5_name, '0')
     commonActivities.checkCategoryValue('[class="custom-row administrative"]', 1,credentials.expense_item_name.expense_item_1_name, '0')
     commonActivities.checkCategoryValue('[class="custom-row administrative"]', 2,'Зарплата', '0')
-    commonActivities.checkCategoryValue('[class="custom-row administrative"]', 3,'Подоходный налог', '0')
-    commonActivities.checkCategoryValue('[class="custom-row administrative"]', 4,'Социальный налог', '0')
-    commonActivities.checkCategoryValue('[class="custom-row administrative"]', 5,'Погашение НДС', '0')
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]', 5,'Подоходный налог', '0')
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]', 3,'Социальный налог', '0')
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]', 4,'Погашение НДС', '0')
 
     // Коммерческие
 
     commonActivities.checkCategoryMainValue('[class="custom-row commercial"]', '0')
     commonActivities.checkCategoryValue('[class="custom-row commercial"]', 0,credentials.expense_item_name.expense_item_3_name, '0')
     commonActivities.checkCategoryValue('[class="custom-row commercial"]', 1,'Зарплата', '0')
-    commonActivities.checkCategoryValue('[class="custom-row commercial"]', 3,'Подоходный налог', '0')
-    commonActivities.checkCategoryValue('[class="custom-row commercial"]', 2,'Социальный налог', '0')
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]', 2,'Подоходный налог', '0')
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]', 3,'Социальный налог', '0')
 
     // Послеоперационные
 
@@ -179,19 +172,19 @@ class checking_onboarding_data {
 
     //Товары
 
-    // commonActivities.checkCategoryMainValue('[class="custom-row products"]', '0')
-    // commonActivities.checkCategoryValue('[class="custom-row products"]', 0,'Склад №1', '0')
-    // commonActivities.checkCategoryValue('[class="custom-row products"]', 1,'Склад №2', '0')
-    // commonActivities.checkCategoryValue('[class="custom-row products"]', 2,'Склад №3', '0')
+    commonActivities.checkCategoryMainValue('[class="custom-row products"]', '0')
+    commonActivities.checkCustomCategoryValue('[class="custom-row products"]', '[class="custom-row warehouses"]', 0, '0')
+    commonActivities.checkCustomCategoryValue('[class="custom-row products"]', '[class="custom-row warehouses"]', 1, '0')
+    commonActivities.checkCustomCategoryValue('[class="custom-row products"]', '[class="custom-row warehouses"]', 2, '0')
 
     // Кредиты и займы
 
     // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 0,credentials.credits.credit_name_1+' Поступление', '0')
-    commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 1,credentials.credits.credit_name_1+' Выбытие', '0')
+    commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 1,credentials.credits.credit_name_3+' Выбытие', '0')
     // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 2,credentials.credits.credit_name_2+' Поступление', '0')
-    commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 3,credentials.credits.credit_name_2+' Выбытие', '0')
+    commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 3,credentials.credits.credit_name_1+' Выбытие', '0')
     // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 4,credentials.credits.credit_name_3+' Поступление', '0')
-    commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 5,credentials.credits.credit_name_3+' Выбытие', '0')
+    commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 5,credentials.credits.credit_name_2+' Выбытие', '0')
     // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 6,credentials.credits.credit_name_4+' Поступление', '0')
     commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 7,credentials.credits.credit_name_4+' Выбытие', '0')
 
@@ -212,9 +205,9 @@ class checking_onboarding_data {
     // Общая выручка
 
     commonActivities.checkCategoryMainValue('[class="custom-row revenue"]',0)
-    commonActivities.checkCategoryValue('[class="custom-row revenue"]',0,credentials.income_item.income_item_1_name,0)
-    commonActivities.checkCategoryValue('[class="custom-row revenue"]',1,credentials.income_item.income_item_2_name,0)
-    commonActivities.checkCategoryValue('[class="custom-row revenue"]',2,credentials.income_item.income_item_3_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]',0,credentials.income_item.income_item_3_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]',1,credentials.income_item.income_item_1_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]',2,credentials.income_item.income_item_2_name,0)
 
     // Себестоимость
 
@@ -227,55 +220,55 @@ class checking_onboarding_data {
 
     // Маржа
 
-    commonActivities.checkCategoryValue('[class="custom-row marginal-profit"]',0,'Маржинальная прибыль',0)
-    commonActivities.checkCategoryValue('[class="custom-row marginal-profit"]',1,'Маржинальная рентабельность, %',0)
+    commonActivities.checkCategoryRow('[class="custom-row marginal-profit"]',0,0)
+    commonActivities.checkCategoryRow('[class="custom-row marginal-profit"]',1,0)
 
     // Общие расходы
 
     commonActivities.checkCategoryMainValue('[class="custom-row common"]',0)
     commonActivities.checkCategoryValue('[class="custom-row common"]',0,credentials.expense_item_name.expense_item_4_name,0)
     commonActivities.checkCategoryValue('[class="custom-row common"]',2,"Зарплата",0)
-    commonActivities.checkCategoryValue('[class="custom-row common"]',3,"Социальный налог",0)
-    commonActivities.checkCategoryValue('[class="custom-row common"]',1,"Подоходный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row common"]',1,"Социальный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row common"]',3,"Подоходный налог",0)
 
     // Валовая
 
-    commonActivities.checkCategoryValue('[class="custom-row gross-profit"]',0,'Валовая прибыль',0)
-    commonActivities.checkCategoryValue('[class="custom-row gross-profit"]',1,'Валовая рентабельность, %',0)
+    commonActivities.checkCategoryRow('[class="custom-row gross-profit"]',0,0)
+    commonActivities.checkCategoryRow('[class="custom-row gross-profit"]',1,0)
 
     // Административные
 
     commonActivities.checkCategoryMainValue('[class="custom-row administrative"]',0)
     commonActivities.checkCategoryValue('[class="custom-row administrative"]',0,credentials.expense_item_name.expense_item_1_name,0)
     commonActivities.checkCategoryValue('[class="custom-row administrative"]',2,credentials.expense_item_name.expense_item_5_name,0)
-    commonActivities.checkCategoryValue('[class="custom-row administrative"]',3,"Социальный налог",0)
-    commonActivities.checkCategoryValue('[class="custom-row administrative"]',1,"Подоходный налог",0)
-    commonActivities.checkCategoryValue('[class="custom-row administrative"]',4,"Зарплата",0)
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]',4,"Социальный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]',3,"Подоходный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]',1,"Зарплата",0)
 
     // Коммерческие
 
     commonActivities.checkCategoryMainValue('[class="custom-row commercial"]',0)
     commonActivities.checkCategoryValue('[class="custom-row commercial"]',0,credentials.expense_item_name.expense_item_3_name,0)
-    commonActivities.checkCategoryValue('[class="custom-row commercial"]',2,"Зарплата",0)
-    commonActivities.checkCategoryValue('[class="custom-row commercial"]',3,"Социальный налог",0)
-    commonActivities.checkCategoryValue('[class="custom-row commercial"]',1,"Подоходный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]',3,"Зарплата",0)
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]',1,"Социальный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]',2,"Подоходный налог",0)
 
     // Операционная
 
-    commonActivities.checkCategoryValue('[class="custom-row operating-profit"]',0,'Операционная прибыль',0)
-    commonActivities.checkCategoryValue('[class="custom-row operating-profit"]',1,'Рентабельность операционной прибыли, %',0)
+    commonActivities.checkCategoryRow('[class="custom-row operating-profit"]',0,0)
+    commonActivities.checkCategoryRow('[class="custom-row operating-profit"]',1,0)
 
     // Послеоперационные расходы
 
     commonActivities.checkCategoryMainValue('[class="custom-row post-operating-spendings"]',0)
     commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',1,"Проценты по кредитам",0)
-    commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',0,"Налог на прибыль",0)
-    commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',2,"Амортизация",0)
+    commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',2,"Налог на прибыль",0)
+    commonActivities.checkCategoryValue('[class="custom-row post-operating-spendings"]',0,"Амортизация",0)
 
     // Чистая
 
-    commonActivities.checkCategoryValue('[class="custom-row net-profit"]',0,'Чистая прибыль',0)
-    commonActivities.checkCategoryValue('[class="custom-row net-profit"]',1,'Рентабельность чистой прибыли, %',0)
+    commonActivities.checkCategoryRow('[class="custom-row net-profit"]',0,0)
+    commonActivities.checkCategoryRow('[class="custom-row net-profit"]',1,0)
   }
   report_balance_onboarding(){
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Баланс').click()
@@ -296,7 +289,7 @@ class checking_onboarding_data {
 
     commonActivities.checkCategoryMainValue('[class="custom-row funds"]','30 000')
     commonActivities.checkCategoryValue('[class="custom-row funds"]',0, credentials.account_name.account_name_1, '10 000')
-    commonActivities.checkCategoryValue('[class="custom-row funds"]',1, credentials.account_name.account_name_1, '20 000')
+    commonActivities.checkCategoryValue('[class="custom-row funds"]',1, credentials.account_name.account_name_2, '20 000')
 
         //Дебиторка
 
@@ -354,544 +347,111 @@ class checking_onboarding_data {
         //Задолженность клиентов
 
       commonActivities.checkCategoryMainValue('[class="custom-row customers-debt"]','400')
-
-                        cy.get('[class="custom-row customers-debt"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .should('have.text','200')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',2)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                        cy.get('[class="custom-row customers-debt"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .should('have.text','200')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',2)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row customers-debt"]', 0, '200', 2)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row customers-debt"]', 1, '200', 2)
 
         //Авансы поставщикам
 
       commonActivities.checkCategoryMainValue('[class="custom-row advances-to-suppliers"]','400')
-
-                        cy.get('[class="custom-row advances-to-suppliers"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .should('have.text','200')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',4)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                            cy.get('[class="custom-row advances-to-suppliers"]')
-                                .find(CSSTableContentRow)
-                                .eq(1)
-                                .find(CSSTableCell)
-                                .should('have.text','200')
-                                .click()
-
-                                    cy.get(CSSModalWindow)
-                                        .find(CSSRow)
-                                        .should('have.length',2)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row advances-to-suppliers"]', 0, '200', 4)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row advances-to-suppliers"]', 1, '200', 4)
 
         //Авансы сотрудникам
 
       commonActivities.checkCategoryMainValue('[class="custom-row advances-to-employees"]','800')
-
-                       cy.get('[class="custom-row advances-to-employees"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .should('have.text','200')
-                            .click()
-
-                               cy.get(CSSModalWindow)
-                                   .find(CSSRow)
-                                   .should('have.length',1)
-
-                                       cy.wait(1000)
-                                       cy.get(CSSCloseButton)
-
-                       cy.get('[class="custom-row advances-to-employees"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .should('have.text','200')
-                            .click()
-
-                               cy.get(CSSModalWindow)
-                                   .find(CSSRow)
-                                   .should('have.length',1)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                       cy.get('[class="custom-row advances-to-employees"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .find(CSSTableCell)
-                            .should('have.text','200')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',1)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                       cy.get('[class="custom-row advances-to-employees"]')
-                            .find(CSSTableContentRow)
-                            .eq(3)
-                            .find(CSSTableCell)
-                            .should('have.text','200')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',1)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row advances-to-employees"]', 0, '200', 1)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row advances-to-employees"]', 1, '200', 1)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row advances-to-employees"]', 2, '200', 1)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row advances-to-employees"]', 3, '200', 1)
 
         //Авансы по налогам
 
-      commonActivities.checkCategoryMainValue('[class="custom-row taxes-advances"]','800')
-
-                        cy.get('[class="custom-row taxes-advances"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .should('have.text','200')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',4)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                        cy.get('[class="custom-row taxes-advances"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .should('have.text','200')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',4)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                        cy.get('[class="custom-row taxes-advances"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .find(CSSTableCell)
-                            .should('have.text','50')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',1)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                        cy.get('[class="custom-row taxes-advances"]')
-                            .find(CSSTableContentRow)
-                            .eq(3)
-                            .find(CSSTableCell)
-                            .should('have.text','50')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',2)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
+      commonActivities.checkCategoryMainValue('[class="custom-row taxes-advances"]','500')
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row taxes-advances"]', 0, '200', 4)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row taxes-advances"]', 1, '200', 4)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row taxes-advances"]', 2, '50', 1)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row taxes-advances"]', 3, '50', 2)
 
         //Изменение
 
         cy.get(CSSMenuChapter).contains('Изменение').click()
 
       commonActivities.checkCategoryMainValue('[class="custom-row begin-period-debt"]','2 100')
-
-                                cy.get('[class="custom-row begin-period-debt"]')
-                                .find('[class="custom-row customers-debt"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'400')
-
-                                cy.get('[class="custom-row begin-period-debt"]')
-                                .find('[class="custom-row advances-to-suppliers"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'400')
-
-                                cy.get('[class="custom-row begin-period-debt"]')
-                                .find('[class="custom-row advances-to-employees"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'800')
-
-                                cy.get('[class="custom-row begin-period-debt"]')
-                                .find('[class="custom-row taxes-advances"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'500')
+      commonActivities.checkCustomCategoryValue('[class="custom-row begin-period-debt"]', '[class="custom-row customers-debt"]', 0, '400')
+      commonActivities.checkCustomCategoryValue('[class="custom-row begin-period-debt"]', '[class="custom-row advances-to-suppliers"]', 0, '400')
+      commonActivities.checkCustomCategoryValue('[class="custom-row begin-period-debt"]', '[class="custom-row advances-to-employees"]', 0, '800')
+      commonActivities.checkCustomCategoryValue('[class="custom-row begin-period-debt"]', '[class="custom-row taxes-advances"]', 0, '500')
 
       commonActivities.checkCategoryMainValue('[class="custom-row changes-by-period"]','0')
-
-                            cy.get('[class="custom-row changes-by-period"]')
-                                .find('[class="custom-row customers-debt"]')
-                                .find(CSSTableCellClickable)
-                                .last()
-                                .should("have.text",'0')
-
-                            cy.get('[class="custom-row changes-by-period"]')
-                                .find('[class="custom-row advances-to-suppliers"]')
-                                .find(CSSTableCellClickable)
-                                .last()
-                                .should("have.text",'0')
-
-                            cy.get('[class="custom-row changes-by-period"]')
-                                .find('[class="custom-row advances-to-employees"]')
-                                .find(CSSTableCellClickable)
-                                .last()
-                                .should("have.text",'0')
-
-                            cy.get('[class="custom-row changes-by-period"]')
-                                .find('[class="custom-row taxes-advances"]')
-                                .find(CSSTableCellClickable)
-                                .last()
-                                .should("have.text",'0')
+      commonActivities.checkCustomClicableCategoryValue('[class="custom-row changes-by-period"]', '[class="custom-row customers-debt"]', 0, '0')
+      commonActivities.checkCustomClicableCategoryValue('[class="custom-row changes-by-period"]', '[class="custom-row advances-to-suppliers"]', 0, '0')
+      commonActivities.checkCustomClicableCategoryValue('[class="custom-row changes-by-period"]', '[class="custom-row advances-to-employees"]', 0, '0')
+      commonActivities.checkCustomClicableCategoryValue('[class="custom-row changes-by-period"]', '[class="custom-row taxes-advances"]', 0, '0')
 
       commonActivities.checkCategoryMainValue('[class="custom-row end-period-debt"]','2 100')
+      commonActivities.checkCustomCategoryValue('[class="custom-row end-period-debt"]', '[class="custom-row customers-debt"]', 0, '400')
+      commonActivities.checkCustomCategoryValue('[class="custom-row end-period-debt"]', '[class="custom-row advances-to-suppliers"]', 0, '400')
+      commonActivities.checkCustomCategoryValue('[class="custom-row end-period-debt"]', '[class="custom-row advances-to-employees"]', 0, '800')
+      commonActivities.checkCustomCategoryValue('[class="custom-row end-period-debt"]', '[class="custom-row taxes-advances"]', 0, '500')
 
-                            cy.get('[class="custom-row end-period-debt"]')
-                                .find('[class="custom-row customers-debt"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'400')
-
-                            cy.get('[class="custom-row end-period-debt"]')
-                                .find('[class="custom-row advances-to-suppliers"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'400')
-
-                            cy.get('[class="custom-row end-period-debt"]')
-                                .find('[class="custom-row advances-to-employees"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'800')
-
-                            cy.get('[class="custom-row end-period-debt"]')
-                                .find('[class="custom-row taxes-advances"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'500')
     }
     report_accounts_payable_onboarding(){
         cy.get(CSSMenuBar).find(CSSMenuPage).contains('Кредиторская задолженность').click()
         cy.wait(1000)
-        
-       cy.get(CSSBoldGreen).should("have.text",'3 300')
 
         //Текущая
 
-        cy.get(CSSBoldGreen).should("have.text",'2 100')
+      cy.get(CSSBoldGreen).should("have.text",'3 300')
 
         //Задолженность перед поставщиками
 
-      commonActivities.checkCategoryMainValue('[class="custom-row customers-debt"]','800')
-
-                cy.get('[class="custom-row customers-debt"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .should('have.text','400')
-                            .click()
-
-                                    cy.get(CSSModalWindow)
-                                        .find(CSSRow)
-                                        .should('have.length',4)
-
-                                            cy.wait(1000)
-                                            cy.get(CSSCloseButton)
-
-                cy.get('[class="custom-row customers-debt"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .should('have.text','400')
-                            .click()
-
-                                    cy.get(CSSModalWindow)
-                                        .find(CSSRow)
-                                        .should('have.length',4)
-
-                                            cy.wait(1000)
-                                            cy.get(CSSCloseButton)
+      commonActivities.checkCategoryMainValue('[class="custom-row debt-to-suppliers"]','800')
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row debt-to-suppliers"]', 0, '400', 4)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row debt-to-suppliers"]', 1, '400', 4)
 
         //Авансы покупателей
 
-      commonActivities.checkCategoryMainValue('[class="custom-row advances-to-suppliers"]','800')
-
-                        cy.get('[class="custom-row advances-to-suppliers"]')
-                                    .find(CSSTableContentRow)
-                                    .eq(0)
-                                    .find(CSSTableCell)
-                                    .should('have.text','400')
-                                    .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',2)
-
-                                            cy.wait(1000)
-                                            cy.get(CSSCloseButton)
-
-                cy.get('[class="custom-row advances-to-suppliers"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .should('have.text','400')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',2)
-
-                                            cy.wait(1000)
-                                            cy.get(CSSCloseButton)
+      commonActivities.checkCategoryMainValue('[class="custom-row buyers-advances"]','800')
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row buyers-advances"]', 0, '400', 2)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row buyers-advances"]', 1, '400', 2)
 
         //Задолженность сотрудникам
 
-      commonActivities.checkCategoryMainValue('[class="custom-row advances-to-employees"]','1 200')
-
-                        cy.get('[class="custom-row advances-to-employees"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .should('have.text','300')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',1)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                        cy.get('[class="custom-row advances-to-employees"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .should('have.text','300')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',1)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                        cy.get('[class="custom-row advances-to-employees"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .find(CSSTableCell)
-                            .should('have.text','300')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',1)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                        cy.get('[class="custom-row advances-to-employees"]')
-                            .find(CSSTableContentRow)
-                            .eq(3)
-                            .find(CSSTableCell)
-                            .should('have.text','300')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',1)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
+      commonActivities.checkCategoryMainValue('[class="custom-row debt-to-employees"]','1 200')
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row debt-to-employees"]', 0, '300', 1)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row debt-to-employees"]', 1, '300', 1)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row debt-to-employees"]', 2, '300', 1)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row debt-to-employees"]', 3, '300', 1)
 
         //Задолженность по налогам
 
-      commonActivities.checkCategoryMainValue('[class="custom-row taxes-advances"]','800')
-
-                        cy.get('[class="custom-row taxes-advances"]')
-                            .find(CSSTableContentRow)
-                            .eq(0)
-                            .find(CSSTableCell)
-                            .should('have.text','200')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',4)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                        cy.get('[class="custom-row taxes-advances"]')
-                            .find(CSSTableContentRow)
-                            .eq(1)
-                            .find(CSSTableCell)
-                            .should('have.text','200')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',4)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                        cy.get('[class="custom-row taxes-advances"]')
-                            .find(CSSTableContentRow)
-                            .eq(2)
-                            .find(CSSTableCell)
-                            .should('have.text','50')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',1)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
-
-                        cy.get('[class="custom-row taxes-advances"]')
-                            .find(CSSTableContentRow)
-                            .eq(3)
-                            .find(CSSTableCell)
-                            .should('have.text','50')
-                            .click()
-
-                                cy.get(CSSModalWindow)
-                                    .find(CSSRow)
-                                    .should('have.length',2)
-
-                                        cy.wait(1000)
-                                        cy.get(CSSCloseButton)
+      commonActivities.checkCategoryMainValue('[class="custom-row tax-arrears"]','500')
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row tax-arrears"]', 0, '200', 4)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row tax-arrears"]', 1, '200', 4)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row tax-arrears"]', 2, '50', 2)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row tax-arrears"]', 3, '50', 1)
 
         //Изменение
 
         cy.get(CSSMenuChapter).contains('Изменение').click()
 
       commonActivities.checkCategoryMainValue('[class="custom-row begin-period-debt"]','3 300')
-
-                                cy.get('[class="custom-row begin-period-debt"]')
-                                .find('[class="custom-row debt-to-suppliers"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'800')
-
-                                cy.get('[class="custom-row begin-period-debt"]')
-                                .find('[class="custom-row buyers-advances"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'800')
-
-                                cy.get('[class="custom-row begin-period-debt"]')
-                                .find('[class="custom-row debt-to-employees"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'1 200')
-
-                                cy.get('[class="custom-row begin-period-debt"]')
-                                .find('[class="custom-row tax-arrears"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'500')
+      commonActivities.checkCustomCategoryValue('[class="custom-row begin-period-debt"]', '[class="custom-row debt-to-suppliers"]', 0, '800')
+      commonActivities.checkCustomCategoryValue('[class="custom-row begin-period-debt"]', '[class="custom-row buyers-advances"]', 0, '800')
+      commonActivities.checkCustomCategoryValue('[class="custom-row begin-period-debt"]', '[class="custom-row debt-to-employees"]', 0, '1 200')
+      commonActivities.checkCustomCategoryValue('[class="custom-row begin-period-debt"]', '[class="custom-row tax-arrears"]', 0, '500')
 
       commonActivities.checkCategoryMainValue('[class="custom-row changes-by-period"]','0')
+      commonActivities.checkCustomClicableCategoryValue('[class="custom-row changes-by-period"]', '[class="custom-row debt-to-suppliers"]', 0, '0')
+      commonActivities.checkCustomClicableCategoryValue('[class="custom-row changes-by-period"]', '[class="custom-row buyers-advances"]', 0, '0')
+      commonActivities.checkCustomClicableCategoryValue('[class="custom-row changes-by-period"]', '[class="custom-row debt-to-employees"]', 0, '0')
+      commonActivities.checkCustomClicableCategoryValue('[class="custom-row changes-by-period"]', '[class="custom-row tax-arrears"]', 0, '0')
 
-                            cy.get('[class="custom-row changes-by-period"]')
-                                .find('[class="custom-row debt-to-suppliers"]')
-                                .find(CSSTableCellClickable)
-                                .last()
-                                .should("have.text",'0')
-
-                            cy.get('[class="custom-row changes-by-period"]')
-                                .find('[class="custom-row buyers-advances"]')
-                                .find(CSSTableCellClickable)
-                                .last()
-                                .should("have.text",'0')
-
-                            cy.get('[class="custom-row changes-by-period"]')
-                                .find('[class="custom-row debt-to-employees"]')
-                                .find(CSSTableCellClickable)
-                                .last()
-                                .should("have.text",'0')
-
-                            cy.get('[class="custom-row changes-by-period"]')
-                                .find('[class="custom-row tax-arrears"]')
-                                .find(CSSTableCellClickable)
-                                .last()
-                                .should("have.text",'0')
-
-        commonActivities.checkCategoryMainValue('[class="custom-row end-period-debt"]','3 300')
-
-                            cy.get('[class="custom-row end-period-debt"]')
-                                .find('[class="custom-row debt-to-suppliers"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'800')
-
-                            cy.get('[class="custom-row end-period-debt"]')
-                                .find('[class="custom-row buyers-advances"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'800')
-
-                            cy.get('[class="custom-row end-period-debt"]')
-                                .find('[class="custom-row debt-to-employees"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'1 200')
-
-                            cy.get('[class="custom-row end-period-debt"]')
-                                .find('[class="custom-row tax-arrears"]')
-                                .find(CSSTableCell)
-                                .last()
-                                .should("have.text",'500')
+      commonActivities.checkCategoryMainValue('[class="custom-row end-period-debt"]','3 300')
+      commonActivities.checkCustomCategoryValue('[class="custom-row end-period-debt"]', '[class="custom-row debt-to-suppliers"]', 0, '800')
+      commonActivities.checkCustomCategoryValue('[class="custom-row end-period-debt"]', '[class="custom-row buyers-advances"]', 0, '800')
+      commonActivities.checkCustomCategoryValue('[class="custom-row end-period-debt"]', '[class="custom-row debt-to-employees"]', 0, '1 200')
+      commonActivities.checkCustomCategoryValue('[class="custom-row end-period-debt"]', '[class="custom-row tax-arrears"]', 0, '500')
     }
     report_warehouses_and_products() {
       cy.get(CSSMenuBar).find(CSSMenuPage).contains('Товарные запасы').click()

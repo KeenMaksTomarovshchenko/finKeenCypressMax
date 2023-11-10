@@ -4,14 +4,14 @@ module.exports = {
   },
   email: {
     email:
-    //'user.test.keen1@gmail.com',
+    'user.test.keen1@gmail.com',
     //'user.test.keen1+4@gmail.com',
-    'cogep33170@naymedia.com'
+    //'cogep33170@naymedia.com'
   },
   password: {
     password:
-    //'Test123!',
-    '11111'
+    'Test123!',
+    //'11111'
   },
   textLink: {
     textLinkCreateNewAccount: 'Создать аккаунт',

@@ -22,6 +22,9 @@ class CommonActivities {
     this.CSSTableHeaderRow = '[class="item-header opened"]';
     this.CSSTableContentRow = '[class="custom-row"]';
     this.CSSTableCell = '[class="r-cell resizable"]';
+    this.CSSTableCellClicable = '[class="r-cell resizable clickable"]'
+    this.CSSCloseButton = '[class="cross-icon-wrapper"]';
+    this.CSSRow = '[class="row"]';
   }
 
   CurrentDate() {
@@ -177,6 +180,48 @@ class CommonActivities {
       .find(this.CSSTableCell)
       .last()
       .should('have.text', expectedValue);
+  }
+
+  checkCustomCategoryValue(categorySelector, rowSelector, i, expectedValue){
+    cy.get(categorySelector)
+      .find(rowSelector)
+      .eq(i)
+      .find(this.CSSTableCell)
+      .last()
+      .should("have.text",expectedValue)
+  }
+
+  checkCustomClicableCategoryValue(categorySelector, rowSelector, i, expectedValue){
+    cy.get(categorySelector)
+      .find(rowSelector)
+      .eq(i)
+      .find(this.CSSTableCellClicable)
+      .last()
+      .should("have.text",expectedValue)
+  }
+
+  checkClickAndGetModalWindow(categorySelector, i, expectedValue, rowsNumber){
+    cy.get(categorySelector)
+      .find(this.CSSTableContentRow)
+      .eq(i)
+      .find(this.CSSTableCell)
+      .should('have.text',expectedValue)
+      .click()
+
+    cy.get(this.CSSModalWindow)
+      .find(this.CSSRow)
+      .should('have.length',rowsNumber)
+
+    cy.wait(1000)
+    cy.get(this.CSSCloseButton).click()
+  }
+
+  checkCategoryRow(categorySelector, i, expectedValue){
+    cy.get(categorySelector)
+      .eq(0)
+      .find(this.CSSTableCell)
+      .last()
+      .should('have.text',expectedValue)
   }
 }
 export default CommonActivities;
