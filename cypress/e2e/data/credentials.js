@@ -4,14 +4,14 @@ module.exports = {
   },
   email: {
     email:
-    'user.test.keen1@gmail.com',
+    //'user.test.keen1@gmail.com',
     //'user.test.keen1+4@gmail.com',
-    //'cogep33170@naymedia.com'
+    'cogep33170@naymedia.com'
   },
   password: {
     password:
-    'Test123!',
-    //'11111'
+    //'Test123!',
+    '11111'
   },
   textLink: {
     textLinkCreateNewAccount: 'Создать аккаунт',
@@ -95,7 +95,7 @@ module.exports = {
     product_4_name: 'Товар 4, склад 3',
   },
   units: {
-    unit_1: 'Шт',
+    unit_1: 'шт.',
     unit_2: 'Кг',
     unit_3: 'Л',
     unit_4: 'Ящик',

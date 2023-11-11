@@ -23,8 +23,8 @@ const CSSModalProductsOnboarding = '[class="upsert-product-wrapper"]'
 const CSSActionButtons = '[class="action-buttons"]'
 const CSSDropdownValue = '[class="text-component option-text-wrapper"]';
 
-const CSSDashboardPage = //'https://develop.fin-consult.com/home';
-'https://staging.fin-consult.com/home'
+const CSSDashboardPage = 'https://develop.fin-consult.com/home';
+//'https://staging.fin-consult.com/home'
 // 'https://app.fin-consult.com/home'
 
 class onboarding {

@@ -16,6 +16,7 @@ const CSSSecondaryCardCell = '[class="secondary-indicator-card__content-cell"]';
 const CSSAccountName = '[class="account-name"]';
 const CSSAccountBalance = '[class="account-value"]';
 const CSSMenuBar = '[class="side-panel"]';
+const CSSSortableSell = '[class="h-cell sortable"]'
 
 function checkCardTitles(){
   for (let i = 0; i < 3; i++) {
@@ -124,9 +125,9 @@ class checking_onboarding_data {
     //Выручка
 
     commonActivities.checkCategoryMainValue('[class="custom-row revenue"]', '0')
-    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 0,credentials.income_item.income_item_3_name, '0')
-    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 1,credentials.income_item.income_item_1_name, '0')
-    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 2,credentials.income_item.income_item_2_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 0,credentials.income_item.income_item_1_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 1,credentials.income_item.income_item_2_name, '0')
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]', 2,credentials.income_item.income_item_3_name, '0')
     commonActivities.checkCategoryValue('[class="custom-row revenue"]', 3,'Возмещение НДС', '0')
 
     //Себестоимость
@@ -182,11 +183,11 @@ class checking_onboarding_data {
     // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 0,credentials.credits.credit_name_1+' Поступление', '0')
     commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 1,credentials.credits.credit_name_3+' Выбытие', '0')
     // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 2,credentials.credits.credit_name_2+' Поступление', '0')
-    commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 3,credentials.credits.credit_name_1+' Выбытие', '0')
+    commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 3,credentials.credits.credit_name_4+' Выбытие', '0')
     // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 4,credentials.credits.credit_name_3+' Поступление', '0')
     commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 5,credentials.credits.credit_name_2+' Выбытие', '0')
     // commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 6,credentials.credits.credit_name_4+' Поступление', '0')
-    commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 7,credentials.credits.credit_name_4+' Выбытие', '0')
+    commonActivities.checkCategoryValue('[class="custom-row credits-and-loans"]', 7,credentials.credits.credit_name_1+' Выбытие', '0')
 
     // Дивиденды
 
@@ -205,18 +206,18 @@ class checking_onboarding_data {
     // Общая выручка
 
     commonActivities.checkCategoryMainValue('[class="custom-row revenue"]',0)
-    commonActivities.checkCategoryValue('[class="custom-row revenue"]',0,credentials.income_item.income_item_3_name,0)
-    commonActivities.checkCategoryValue('[class="custom-row revenue"]',1,credentials.income_item.income_item_1_name,0)
-    commonActivities.checkCategoryValue('[class="custom-row revenue"]',2,credentials.income_item.income_item_2_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]',0,credentials.income_item.income_item_1_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]',1,credentials.income_item.income_item_2_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row revenue"]',2,credentials.income_item.income_item_3_name,0)
 
     // Себестоимость
 
     commonActivities.checkCategoryMainValue('[class="custom-row cost"]',0)
     commonActivities.checkCategoryValue('[class="custom-row cost"]',0,credentials.expense_item_name.expense_item_2_name,0)
-    commonActivities.checkCategoryValue('[class="custom-row cost"]',2,"Социальный налог",0)
-    commonActivities.checkCategoryValue('[class="custom-row cost"]',3,"Подоходный налог",0)
-    commonActivities.checkCategoryValue('[class="custom-row cost"]',1,"Зарплата",0)
-    commonActivities.checkCategoryValue('[class="custom-row cost"]',4,credentials.expense_item_name.expense_item_6_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row cost"]',3,"Социальный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row cost"]',1,"Подоходный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row cost"]',4,"Зарплата",0)
+    commonActivities.checkCategoryValue('[class="custom-row cost"]',2,credentials.expense_item_name.expense_item_6_name,0)
 
     // Маржа
 
@@ -227,9 +228,9 @@ class checking_onboarding_data {
 
     commonActivities.checkCategoryMainValue('[class="custom-row common"]',0)
     commonActivities.checkCategoryValue('[class="custom-row common"]',0,credentials.expense_item_name.expense_item_4_name,0)
-    commonActivities.checkCategoryValue('[class="custom-row common"]',2,"Зарплата",0)
-    commonActivities.checkCategoryValue('[class="custom-row common"]',1,"Социальный налог",0)
-    commonActivities.checkCategoryValue('[class="custom-row common"]',3,"Подоходный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row common"]',3,"Зарплата",0)
+    commonActivities.checkCategoryValue('[class="custom-row common"]',2,"Социальный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row common"]',1,"Подоходный налог",0)
 
     // Валовая
 
@@ -240,18 +241,18 @@ class checking_onboarding_data {
 
     commonActivities.checkCategoryMainValue('[class="custom-row administrative"]',0)
     commonActivities.checkCategoryValue('[class="custom-row administrative"]',0,credentials.expense_item_name.expense_item_1_name,0)
-    commonActivities.checkCategoryValue('[class="custom-row administrative"]',2,credentials.expense_item_name.expense_item_5_name,0)
-    commonActivities.checkCategoryValue('[class="custom-row administrative"]',4,"Социальный налог",0)
-    commonActivities.checkCategoryValue('[class="custom-row administrative"]',3,"Подоходный налог",0)
-    commonActivities.checkCategoryValue('[class="custom-row administrative"]',1,"Зарплата",0)
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]',4,credentials.expense_item_name.expense_item_5_name,0)
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]',3,"Социальный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]',1,"Подоходный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row administrative"]',2,"Зарплата",0)
 
     // Коммерческие
 
     commonActivities.checkCategoryMainValue('[class="custom-row commercial"]',0)
     commonActivities.checkCategoryValue('[class="custom-row commercial"]',0,credentials.expense_item_name.expense_item_3_name,0)
-    commonActivities.checkCategoryValue('[class="custom-row commercial"]',3,"Зарплата",0)
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]',2,"Зарплата",0)
     commonActivities.checkCategoryValue('[class="custom-row commercial"]',1,"Социальный налог",0)
-    commonActivities.checkCategoryValue('[class="custom-row commercial"]',2,"Подоходный налог",0)
+    commonActivities.checkCategoryValue('[class="custom-row commercial"]',3,"Подоходный налог",0)
 
     // Операционная
 
@@ -312,14 +313,14 @@ class checking_onboarding_data {
         //Кредиты (долгосрочные)
 
     commonActivities.checkCategoryMainValue('[class="custom-row long-term"]','6 600')
-    commonActivities.checkCategoryValue('[class="custom-row long-term"]',0,credentials.credits.credit_name_2, '2 200')
-    commonActivities.checkCategoryValue('[class="custom-row long-term"]',1,credentials.credits.credit_name_4, '4 400')
+    commonActivities.checkCategoryValue('[class="custom-row long-term"]',0,credentials.credits.credit_name_4, '4 400')
+    commonActivities.checkCategoryValue('[class="custom-row long-term"]',1,credentials.credits.credit_name_2, '2 200')
 
         //Кредиты (краткосрочные)
 
     commonActivities.checkCategoryMainValue('[class="custom-row short-term"]','4 400')
-    commonActivities.checkCategoryValue('[class="custom-row short-term"]',0,credentials.credits.credit_name_1, '1 100')
-    commonActivities.checkCategoryValue('[class="custom-row short-term"]',1,credentials.credits.credit_name_3, '3 300')
+    commonActivities.checkCategoryValue('[class="custom-row short-term"]',0,credentials.credits.credit_name_3, '3 300')
+    commonActivities.checkCategoryValue('[class="custom-row short-term"]',1,credentials.credits.credit_name_1, '1 100')
 
         //Кредиторская задолженность
 
@@ -428,8 +429,8 @@ class checking_onboarding_data {
       commonActivities.checkCategoryMainValue('[class="custom-row tax-arrears"]','500')
       commonActivities.checkClickAndGetModalWindow('[class="custom-row tax-arrears"]', 0, '200', 4)
       commonActivities.checkClickAndGetModalWindow('[class="custom-row tax-arrears"]', 1, '200', 4)
-      commonActivities.checkClickAndGetModalWindow('[class="custom-row tax-arrears"]', 2, '50', 2)
-      commonActivities.checkClickAndGetModalWindow('[class="custom-row tax-arrears"]', 3, '50', 1)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row tax-arrears"]', 2, '50', 1)
+      commonActivities.checkClickAndGetModalWindow('[class="custom-row tax-arrears"]', 3, '50', 2)
 
         //Изменение
 
@@ -456,6 +457,51 @@ class checking_onboarding_data {
     report_warehouses_and_products() {
       cy.get(CSSMenuBar).find(CSSMenuPage).contains('Товарные запасы').click()
       cy.wait(1000)
+
+      /////Текущая//////
+
+      cy.get(CSSMenuChapter).contains('Текущая').click()
+
+      cy.get(CSSBoldGreen).should('have.text','10 000')
+      cy.get(CSSMenuChapter).eq(2).should('have.text','10 000')
+
+      cy.get(CSSSortableSell).contains('Наименование').click()
+
+      commonActivities.checkRowAndSells(0, 'Склад №1',credentials.product_name.product_1_name,credentials.units.unit_1,'100','10','1 000')
+      commonActivities.checkRowAndSells(1, 'Склад №2',credentials.product_name.product_2_name,credentials.units.unit_2,'200','10','2 000')
+      commonActivities.checkRowAndSells(2, 'Склад №2',credentials.product_name.product_3_name,credentials.units.unit_3,'300','10','3 000')
+      commonActivities.checkRowAndSells(3, 'Склад №3',credentials.product_name.product_4_name,credentials.units.unit_4,'400','10','4 000')
+
+      /////Изменение/////
+
+      cy.get(CSSMenuChapter).contains('Изменение').click()
+      cy.get(CSSBoldGreen).should('have.text','10 000')
+
+      commonActivities.checkCategoryMainValue('[class="custom-row products-before-period"]', '10 000')
+      commonActivities.checkCustomCategoryValue('[class="custom-row products-before-period"]','[class="custom-row"]',0,'1 000')
+      commonActivities.checkCustomCategoryValue('[class="custom-row products-before-period"]','[class="custom-row"]',1,'5 000')
+      commonActivities.checkCustomCategoryValue('[class="custom-row products-before-period"]','[class="custom-row"]',2,'4 000')
+
+      commonActivities.checkCategoryMainValue('[class="custom-row incomes-to-warehouses"]', '0')
+      commonActivities.checkCustomCategoryValue('[class="custom-row incomes-to-warehouses"]','[class="custom-row"]',0,'0')
+      commonActivities.checkCustomCategoryValue('[class="custom-row incomes-to-warehouses"]','[class="custom-row"]',1,'0')
+      commonActivities.checkCustomCategoryValue('[class="custom-row incomes-to-warehouses"]','[class="custom-row"]',2,'0')
+
+      commonActivities.checkCategoryMainValue('[class="custom-row expenses-from-warehouses"]', '0')
+      commonActivities.checkCustomCategoryValue('[class="custom-row expenses-from-warehouses"]','[class="custom-row"]',0,'0')
+      commonActivities.checkCustomCategoryValue('[class="custom-row expenses-from-warehouses"]','[class="custom-row"]',1,'0')
+      commonActivities.checkCustomCategoryValue('[class="custom-row expenses-from-warehouses"]','[class="custom-row"]',2,'0')
+
+      commonActivities.checkCategoryMainValue('[class="custom-row changes-by-period""]', '0')
+      commonActivities.checkCustomCategoryValue('[class="custom-row changes-by-period""]','[class="custom-row"]',0,'0')
+      commonActivities.checkCustomCategoryValue('[class="custom-row changes-by-period""]','[class="custom-row"]',1,'0')
+      commonActivities.checkCustomCategoryValue('[class="custom-row changes-by-period""]','[class="custom-row"]',2,'0')
+
+      commonActivities.checkCategoryMainValue('[class="custom-row products-after-period""]', '10 000')
+      commonActivities.checkCustomCategoryValue('[class="custom-row products-after-period""]','[class="custom-row"]',0,'1 000')
+      commonActivities.checkCustomCategoryValue('[class="custom-row products-after-period""]','[class="custom-row"]',1,'5 000')
+      commonActivities.checkCustomCategoryValue('[class="custom-row products-after-period""]','[class="custom-row"]',2,'4 000')
+
     }
 }
 export default checking_onboarding_data;

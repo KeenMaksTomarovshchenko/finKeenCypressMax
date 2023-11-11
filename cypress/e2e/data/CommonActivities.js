@@ -25,6 +25,7 @@ class CommonActivities {
     this.CSSTableCellClicable = '[class="r-cell resizable clickable"]'
     this.CSSCloseButton = '[class="cross-icon-wrapper"]';
     this.CSSRow = '[class="row"]';
+    this.CSSSell = '[class="r-cell"]'
   }
 
   CurrentDate() {
@@ -222,6 +223,38 @@ class CommonActivities {
       .find(this.CSSTableCell)
       .last()
       .should('have.text',expectedValue)
+  }
+
+  checkRowAndSells(rowIndex, sell_1_text, sell_2_text, sell_3_text, sell_4_text, sell_5_text, sell_6_text){
+    cy.get(this.CSSRow)
+      .eq(rowIndex)
+      .find(this.CSSSell)
+      .eq(0).should('have.text',sell_1_text)
+
+    cy.get(this.CSSRow)
+      .eq(rowIndex)
+      .find(this.CSSSell)
+      .eq(1).should('have.text',sell_2_text)
+
+    cy.get(this.CSSRow)
+      .eq(rowIndex)
+      .find(this.CSSSell)
+      .eq(2).should('have.text',sell_3_text)
+
+    cy.get(this.CSSRow)
+      .eq(rowIndex)
+      .find(this.CSSSell)
+      .eq(3).should('have.text',sell_4_text)
+
+    cy.get(this.CSSRow)
+      .eq(rowIndex)
+      .find(this.CSSSell)
+      .eq(4).should('have.text',sell_5_text)
+
+    cy.get(this.CSSRow)
+      .eq(rowIndex)
+      .find(this.CSSSell)
+      .eq(5).should('have.text',sell_6_text)
   }
 }
 export default CommonActivities;
