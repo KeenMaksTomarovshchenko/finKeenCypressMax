@@ -19,7 +19,6 @@ const CSSGreenButton = '[class="main-button add-btn"]';
 const CSSQuantity = '[name="quantity"]';
 const CSSCheckboxObligation = '[name="obligationFulfilled"]';
 const CSSAccountNameAndBalance = '[class="text-component option-text-wrapper"]';
-const CSSBoldNumber = '[class="text-component bold"]';
 const CSSHugeBoldGreen = '[class="text-component amount huge bold green"]';
 const CSSBoldGreenNumber = '[class="text-component bold amount"]';
 const CSSDocumentRow = '[class="row"]';
@@ -262,7 +261,9 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
-    /// ///////////////С Начислением и без транзакции//////////////////////
+
+    //////////////////С Начислением и без транзакции//////////////////////
+
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Зарплата').click();
     // Реквизиты
@@ -276,7 +277,9 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
-    /// ///////////////Без Начисления и с транзакцией//////////////////////
+
+    //////////////////Без Начисления и с транзакцией//////////////////////
+
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Зарплата').click();
     // Реквизиты

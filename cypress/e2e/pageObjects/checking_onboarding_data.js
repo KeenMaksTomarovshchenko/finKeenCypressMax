@@ -394,7 +394,6 @@ class checking_onboarding_data {
       commonActivities.checkCustomCategoryValue('[class="custom-row end-period-debt"]', '[class="custom-row advances-to-suppliers"]', 0, '400')
       commonActivities.checkCustomCategoryValue('[class="custom-row end-period-debt"]', '[class="custom-row advances-to-employees"]', 0, '800')
       commonActivities.checkCustomCategoryValue('[class="custom-row end-period-debt"]', '[class="custom-row taxes-advances"]', 0, '500')
-
     }
     report_accounts_payable_onboarding(){
         cy.get(CSSMenuBar).find(CSSMenuPage).contains('Кредиторская задолженность').click()

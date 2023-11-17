@@ -10,7 +10,9 @@ it('check reports after operations', () => {
   login.login();
   Reports_after_operations.dashboard();
   Reports_after_operations.flow_of_fund();
+  Reports_after_operations.profits_and_loses()
   Reports_after_operations.balance();
   Reports_after_operations.accounts_receivable();
   Reports_after_operations.accounts_payable();
+  Reports_after_operations.warehouses_and_products()
 });

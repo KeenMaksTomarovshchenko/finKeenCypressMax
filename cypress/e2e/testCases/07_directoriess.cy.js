@@ -12,7 +12,6 @@ before(() => {
 
 it('check all directories for adding, deleting, changing and correspondence onboarding data', () => {
   login.login();
-  commonActivities.open_side_menu();
   Directories.company_data();
   Directories.accounts();
   Directories.income_items();
