@@ -6,7 +6,8 @@ module.exports = {
     email:
     //'user.test.keen1@gmail.com',
     //'user.test.keen1+4@gmail.com',
-    'cogep33170@naymedia.com',
+    //'hagol72576@eachart.com',
+      'cogep33170@naymedia.com'
   },
   password: {
     password:

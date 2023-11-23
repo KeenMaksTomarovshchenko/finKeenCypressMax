@@ -8,8 +8,8 @@ before(() => {
 });
 it('pass onboarding', () => {
   login.login();
-    // Onboarding.page0();
-    // Onboarding.page1();
+  Onboarding.page0();
+  Onboarding.page1();
   Onboarding.page2();
   Onboarding.page3();
   Onboarding.page4();

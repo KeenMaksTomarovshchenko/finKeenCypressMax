@@ -67,14 +67,14 @@ class creating_operations {
     cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
     cy.get(CSSDropdown).eq(1).type('Invoice' + '{enter}');
     // Транзакции
-    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '100');
+    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '101');
     // Позиции
     cy.get(CSSCreateNewButton).eq(3).click();
     cy.get(CSSInput).eq(1).type('Test');
     cy.get(CSSDropdown).eq(4).click()
     cy.get(CSSDropdownValue2).eq(0).click();
     cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
-    cy.get(CSSInput).eq(4).type('100');
+    cy.get(CSSInput).eq(4).type('101');
     cy.get(CSSQuantity).type('1');
     cy.get(CSSDropdown).eq(3).type(credentials.income_item.income_item_1_name + '{enter}');
     cy.get(CSSDropdownValue).eq(2).should('contain', 'Выручка');
@@ -83,7 +83,9 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
     ///////////////С Позицией, без транзакции и без чекбокса///////////////
+
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Продажа').click();
     // Реквизиты
@@ -95,7 +97,7 @@ class creating_operations {
     cy.get(CSSDropdown).eq(4).click()
     cy.get(CSSDropdownValue2).eq(0).click();
     cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
-    cy.get(CSSInput).eq(4).type('100');
+    cy.get(CSSInput).eq(4).type('102');
     cy.get(CSSQuantity).type('1');
     cy.get(CSSDropdown).eq(3).type(credentials.income_item.income_item_1_name + '{enter}');
     cy.get(CSSDropdownValue).eq(2).should('contain', 'Выручка');
@@ -103,21 +105,23 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
     ////////////////С Позицией, Транзакцией и без чекбокса //////////////////
+
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Продажа').click();
     // Реквизиты
     cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
     cy.get(CSSDropdown).eq(1).type('Invoice' + '{enter}');
     // Транзакции
-    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '100');
+    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '103');
     // Позиции
     cy.get(CSSCreateNewButton).eq(3).click();
     cy.get(CSSInput).eq(1).type('Test');
     cy.get(CSSDropdown).eq(4).click()
     cy.get(CSSDropdownValue2).eq(0).click();
     cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
-    cy.get(CSSInput).eq(4).type('100');
+    cy.get(CSSInput).eq(4).type('103');
     cy.get(CSSQuantity).type('1');
     cy.get(CSSDropdown).eq(3).type(credentials.income_item.income_item_1_name + '{enter}');
     cy.get(CSSDropdownValue).eq(2).should('contain', 'Выручка');
@@ -125,7 +129,9 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
     /// //////////////С Позицией, чекбоксом и без транзакции//////////////////
+
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Продажа').click();
     // Реквизиты
@@ -137,9 +143,9 @@ class creating_operations {
     cy.get(CSSDropdown).eq(4).click()
     cy.get(CSSDropdownValue2).eq(0).click();
     cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
-    cy.get(CSSInput).eq(4).type('100');
+    cy.get(CSSInput).eq(4).type('104');
     cy.get(CSSQuantity).type('1');
-    cy.get(CSSDropdown).eq(3).type(`${credentials.income_item.income_item_1_name}{enter}`);
+    cy.get(CSSDropdown).eq(3).type(credentials.income_item.income_item_1_name+ '{enter}');
     cy.get(CSSDropdownValue).eq(2).should('contain', 'Выручка');
     cy.get(CSSSubmitButton).click();
     cy.get(CSSCheckboxObligation).click();
@@ -148,7 +154,9 @@ class creating_operations {
     cy.wait(1000);
   }
   operation_with_doc_buy() {
-    /// ////////////////С транзакцией, позицией и чекбоксом////////////////////
+
+    ///////////////////С транзакцией, позицией и чекбоксом////////////////////
+
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Покупка').click();
     // Реквизиты
@@ -156,14 +164,14 @@ class creating_operations {
     cy.get(CSSDropdown).eq(1).type('Invoice' + '{enter}');
     cy.get(CSSInput).eq(0).type('01');
     // Транзакции
-    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '150');
+    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '151');
     // Позиции
     cy.get(CSSCreateNewButton).eq(3).click();
     cy.get(CSSInput).eq(1).type('Test');
     cy.get(CSSDropdown).eq(3).click();
     cy.get(CSSDropdownOption).contains(credentials.expense_item_name.expense_item_1_name).click();
     cy.get(CSSDropdownValue).eq(2).should('contain', credentials.expense_item_category.expense_item_category_1);
-    cy.get(CSSInput).eq(4).type('150');
+    cy.get(CSSInput).eq(4).type('151');
     cy.get(CSSQuantity).type('1');
     cy.get(CSSDropdown).eq(4).click()
     cy.get(CSSDropdownValue2).eq(0).click();
@@ -174,7 +182,8 @@ class creating_operations {
     cy.get(CSSButton).click();
     cy.wait(1000);
 
-    /// ////////////С Позицией, без транзакции и без чекбокса///////////////
+    ///////////////С Позицией, без транзакции и без чекбокса///////////////
+
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Покупка').click();
     // Реквизиты
@@ -187,7 +196,7 @@ class creating_operations {
     cy.get(CSSDropdown).eq(3).click();
     cy.get(CSSDropdownOption).contains(credentials.expense_item_name.expense_item_1_name).click();
     cy.get(CSSDropdownValue).eq(2).should('contain', credentials.expense_item_category.expense_item_category_1);
-    cy.get(CSSInput).eq(4).type('150');
+    cy.get(CSSInput).eq(4).type('152');
     cy.get(CSSQuantity).type('1');
     cy.get(CSSDropdown).eq(4).click()
     cy.get(CSSDropdownValue2).eq(0).click();
@@ -196,7 +205,9 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
     /// //////////////С Позицией, чекбоксом и без транзакции//////////////////
+
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Покупка').click();
     // Реквизиты
@@ -209,7 +220,7 @@ class creating_operations {
     cy.get(CSSDropdown).eq(3).click();
     cy.get(CSSDropdownOption).contains(credentials.expense_item_name.expense_item_1_name).click();
     cy.get(CSSDropdownValue).eq(2).should('contain', credentials.expense_item_category.expense_item_category_1);
-    cy.get(CSSInput).eq(4).type('150');
+    cy.get(CSSInput).eq(4).type('153');
     cy.get(CSSQuantity).type('1');
     cy.get(CSSDropdown).eq(4).click()
     cy.get(CSSDropdownValue2).eq(0).click();
@@ -219,7 +230,9 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
-    /// /////////////С Позицией, Транзакцией и без чекбокса ///////////////////
+
+    ////////////////С Позицией, Транзакцией и без чекбокса ///////////////////
+
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Покупка').click();
     // Реквизиты
@@ -227,14 +240,118 @@ class creating_operations {
     cy.get(CSSDropdown).eq(1).type('Invoice' + '{enter}');
     cy.get(CSSInput).eq(0).type('04');
     // Транзакции
-    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '150');
+    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '154');
     // Позиции
     cy.get(CSSCreateNewButton).eq(3).click();
     cy.get(CSSInput).eq(1).type('Test');
     cy.get(CSSDropdown).eq(3).click();
     cy.get(CSSDropdownOption).contains(credentials.expense_item_name.expense_item_1_name).click();
     cy.get(CSSDropdownValue).eq(2).should('contain', credentials.expense_item_category.expense_item_category_1);
-    cy.get(CSSInput).eq(4).type('150');
+    cy.get(CSSInput).eq(4).type('154');
+    cy.get(CSSQuantity).type('1');
+    cy.get(CSSDropdown).eq(4).click()
+    cy.get(CSSDropdownValue2).eq(0).click();
+    cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
+    cy.get(CSSSubmitButton).click();
+    cy.wait(500);
+    cy.get(CSSButton).click();
+    cy.wait(1000);
+
+    /////////////////////////////Спец статья расхода/////////////////////////////
+
+    ///////////////////С транзакцией, позицией и чекбоксом////////////////////
+
+    cy.wait(500);
+    cy.get(CSSMenuBar).find(CSSMenuPage).contains('Покупка').click();
+    // Реквизиты
+    cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
+    cy.get(CSSDropdown).eq(1).type('Invoice' + '{enter}');
+    cy.get(CSSInput).eq(0).type('05');
+    // Транзакции
+    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '160');
+    // Позиции
+    cy.get(CSSCreateNewButton).eq(3).click();
+    cy.get(CSSInput).eq(1).type('Test');
+    cy.get(CSSDropdown).eq(3).click();
+    cy.get(CSSDropdownOption).contains(credentials.expense_item_name.expense_item_5_name).click({force: true});
+    cy.get(CSSDropdownValue).eq(2).should('contain', credentials.expense_item_category.expense_item_category_1);
+    cy.get(CSSInput).eq(4).type('160');
+    cy.get(CSSQuantity).type('1');
+    cy.get(CSSDropdown).eq(4).click()
+    cy.get(CSSDropdownValue2).eq(0).click();
+    cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
+    cy.get(CSSSubmitButton).click();
+    cy.get(CSSCheckboxObligation).click();
+    cy.wait(500);
+    cy.get(CSSButton).click();
+    cy.wait(1000);
+
+    /// ////////////С Позицией, без транзакции и без чекбокса///////////////
+
+    cy.wait(500);
+    cy.get(CSSMenuBar).find(CSSMenuPage).contains('Покупка').click();
+    // Реквизиты
+    cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
+    cy.get(CSSDropdown).eq(1).type('Invoice' + '{enter}');
+    cy.get(CSSInput).eq(0).type('06');
+    // Позиции
+    cy.get(CSSCreateNewButton).eq(3).click();
+    cy.get(CSSInput).eq(1).type('Test');
+    cy.get(CSSDropdown).eq(3).click();
+    cy.get(CSSDropdownOption).contains(credentials.expense_item_name.expense_item_5_name).click({force: true});
+    cy.get(CSSDropdownValue).eq(2).should('contain', credentials.expense_item_category.expense_item_category_1);
+    cy.get(CSSInput).eq(4).type('161');
+    cy.get(CSSQuantity).type('1');
+    cy.get(CSSDropdown).eq(4).click()
+    cy.get(CSSDropdownValue2).eq(0).click();
+    cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
+    cy.get(CSSSubmitButton).click();
+    cy.wait(500);
+    cy.get(CSSButton).click();
+    cy.wait(1000);
+
+    /// //////////////С Позицией, чекбоксом и без транзакции//////////////////
+
+    cy.wait(500);
+    cy.get(CSSMenuBar).find(CSSMenuPage).contains('Покупка').click();
+    // Реквизиты
+    cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
+    cy.get(CSSDropdown).eq(1).type('Invoice' + '{enter}');
+    cy.get(CSSInput).eq(0).type('07');
+    // Позиции
+    cy.get(CSSCreateNewButton).eq(3).click();
+    cy.get(CSSInput).eq(1).type('Test');
+    cy.get(CSSDropdown).eq(3).click();
+    cy.get(CSSDropdownOption).contains(credentials.expense_item_name.expense_item_5_name).click({force: true});
+    cy.get(CSSDropdownValue).eq(2).should('contain', credentials.expense_item_category.expense_item_category_1);
+    cy.get(CSSInput).eq(4).type('162');
+    cy.get(CSSQuantity).type('1');
+    cy.get(CSSDropdown).eq(4).click()
+    cy.get(CSSDropdownValue2).eq(0).click();
+    cy.get(CSSDropdown).eq(5).type('25' + '{enter}');
+    cy.get(CSSSubmitButton).click();
+    cy.get(CSSCheckboxObligation).click();
+    cy.wait(500);
+    cy.get(CSSButton).click();
+    cy.wait(1000);
+
+    /// /////////////С Позицией, Транзакцией и без чекбокса ///////////////////
+
+    cy.wait(500);
+    cy.get(CSSMenuBar).find(CSSMenuPage).contains('Покупка').click();
+    // Реквизиты
+    cy.get(CSSDropdown).eq(0).type(credentials.counterparties_name.counterparties_name_1 + '{enter}');
+    cy.get(CSSDropdown).eq(1).type('Invoice' + '{enter}');
+    cy.get(CSSInput).eq(0).type('08');
+    // Транзакции
+    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_2, '163');
+    // Позиции
+    cy.get(CSSCreateNewButton).eq(3).click();
+    cy.get(CSSInput).eq(1).type('Test');
+    cy.get(CSSDropdown).eq(3).click();
+    cy.get(CSSDropdownOption).contains(credentials.expense_item_name.expense_item_5_name).click({force: true});
+    cy.get(CSSDropdownValue).eq(2).should('contain', credentials.expense_item_category.expense_item_category_1);
+    cy.get(CSSInput).eq(4).type('163');
     cy.get(CSSQuantity).type('1');
     cy.get(CSSDropdown).eq(4).click()
     cy.get(CSSDropdownValue2).eq(0).click();
@@ -245,14 +362,16 @@ class creating_operations {
     cy.wait(1000);
   }
   operation_with_salaries() {
-    /// ///////////////С Начислением и с транзакцией//////////////////////
+
+    //////////////////С Начислением и с транзакцией//////////////////////
+
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Зарплата').click();
     // Реквизиты
     cy.get(CSSDropdown).eq(1).click();
     cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name.employee_full_name_1 + '{enter}');
     // Начисление
-    cy.get(CSSCreateNewButton).eq(2).click();
+    cy.get(CSSCreateNewButton).contains('Добавить').eq(0).click();
     cy.get(CSSDropdownValue).eq(2).should('contain', credentials.employee_full_name.employee_full_name_1);
     cy.get(CSSInput).eq(1).type('150');
     cy.get(CSSGreenButton).click();
@@ -268,10 +387,10 @@ class creating_operations {
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Зарплата').click();
     // Реквизиты
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name.employee_full_name_1 + '{enter}');
+    cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name.employee_full_name_2 + '{enter}');
     // Начисление
     cy.get(CSSCreateNewButton).eq(2).click();
-    cy.get(CSSDropdownValue).eq(2).should('contain', credentials.employee_full_name.employee_full_name_1);
+    cy.get(CSSDropdownValue).eq(2).should('contain', credentials.employee_full_name.employee_full_name_2);
     cy.get(CSSInput).eq(1).type('150');
     cy.get(CSSGreenButton).click();
     cy.wait(500);
@@ -284,7 +403,7 @@ class creating_operations {
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Зарплата').click();
     // Реквизиты
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name.employee_full_name_1 + '{enter}');
+    cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name.employee_full_name_3 + '{enter}');
     // Транзакции
     commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '150');
     cy.wait(500);
@@ -292,7 +411,9 @@ class creating_operations {
     cy.wait(1000);
   }
   operation_with_taxes() {
-    /// ///////////////С Начислением и с транзакцией//////////////////////
+
+    //////////////////С Начислением и с транзакцией//////////////////////
+
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Налог').click();
     // Реквизиты
@@ -304,25 +425,27 @@ class creating_operations {
     cy.get(CSSCreateNewButton).eq(2).click();
     cy.get(CSSDropdownValue).eq(1).should('contain', credentials.taxes.social_tax);
     cy.get(CSSDropdown).eq(3).type(credentials.expense_item_category.expense_item_category_1 + '{enter}');
-    cy.get(CSSInput).eq(0).type('150');
+    cy.get(CSSInput).eq(0).type('151');
     cy.get(CSSGreenButton).click();
     // Транзакция
-    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '150');
+    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '151');
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
     //////////////////С Начислением и без транзакции//////////////////////
+
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Налог').click();
     // Реквизиты
     cy.get(CSSDropdown).eq(0).click();
     cy.get(CSSDropdown).eq(0).type('Декларация' + '{enter}');
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(`${credentials.taxes.social_tax}{enter}`);
+    cy.get(CSSDropdown).eq(1).type(`${credentials.taxes.profit_tax}{enter}`);
     // Начисление
     cy.get(CSSCreateNewButton).eq(2).click();
-    cy.get(CSSDropdownValue).eq(1).should('contain', credentials.taxes.social_tax);
-    cy.get(CSSDropdown).eq(3).type(`${credentials.expense_item_category.expense_item_category_1}{enter}`);
+    cy.get(CSSDropdownValue).eq(1).should('contain', credentials.taxes.profit_tax);
+    cy.get(CSSDropdown).eq(3).type(credentials.expense_item_category.expense_item_category_1+'{enter}');
     cy.get(CSSInput).eq(0).type('150');
     cy.get(CSSGreenButton).click();
     cy.wait(500);
@@ -335,9 +458,9 @@ class creating_operations {
     cy.get(CSSDropdown).eq(0).click();
     cy.get(CSSDropdown).eq(0).type('Декларация' + '{enter}');
     cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(`${credentials.taxes.social_tax}{enter}`);
+    cy.get(CSSDropdown).eq(1).type(credentials.taxes.income_tax+'{enter}');
     // Транзакция
-    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '150');
+    commonActivities.createTransactionForOperations(commonActivities.CurrentDate(), credentials.account_name.account_name_1, '152');
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);

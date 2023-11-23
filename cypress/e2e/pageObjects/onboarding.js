@@ -223,8 +223,6 @@ class onboarding {
     cy.get(CSSInput).eq(1).type(credentials.employee_last_name.employee_last_name_1);
     cy.get(CSSDropdown).eq(1).click();
     cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_1 + '{enter}');
-    cy.get(CSSDropdown).eq(2).click();
-    cy.get(CSSDropdown).eq(2).type(credentials.employee_status.employee_status_1);
     cy.get(CSSButton).click();
   }
 
@@ -235,8 +233,6 @@ class onboarding {
     cy.get(CSSInput).eq(1).type(credentials.employee_last_name.employee_last_name_2);
     cy.get(CSSDropdown).eq(1).click();
     cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_2 + '{enter}');
-    cy.get(CSSDropdown).eq(2).click();
-    cy.get(CSSDropdown).eq(2).type(credentials.employee_status.employee_status_1);
     cy.get(CSSButton).click();
   }
 
@@ -247,8 +243,6 @@ class onboarding {
     cy.get(CSSInput).eq(1).type(credentials.employee_last_name.employee_last_name_3);
     cy.get(CSSDropdown).eq(1).click();
     cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_3 + '{enter}');
-    cy.get(CSSDropdown).eq(2).click();
-    cy.get(CSSDropdown).eq(2).type(credentials.employee_status.employee_status_1);
     cy.get(CSSButton).click();
   }
 
@@ -259,8 +253,6 @@ class onboarding {
     cy.get(CSSInput).eq(1).type(credentials.employee_last_name.employee_last_name_4);
     cy.get(CSSDropdown).eq(1).click();
     cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_4 + '{enter}');
-    cy.get(CSSDropdown).eq(2).click();
-    cy.get(CSSDropdown).eq(2).type(credentials.employee_status.employee_status_1);
     cy.get(CSSButton).click();
   }
 
@@ -345,8 +337,6 @@ class onboarding {
     cy.get(CSSActionButtons)
       .find(CSSGreenButton).click();
 
-    cy.wait(2000);
-
     cy.get(CSSCreateNewButton).eq(1).click();
     cy.get(CSSModalProductsOnboarding).should('be.visible')
     cy.get(CSSDropdown).eq(0).type(credentials.units.unit_3)
@@ -383,11 +373,8 @@ class onboarding {
   page10() {
     commonActivities.checkTitle('Склады');
     this.waterhouse_1_creating();
-    cy.wait(2000);
     this.waterhouse_2_creating();
-    cy.wait(2000);
     this.waterhouse_3_creating();
-    cy.wait(2000);
     commonActivities.checkToolTip();
     cy.get(CSSNextButton).click();
   }
