@@ -1,5 +1,12 @@
-import credentials from '../data/credentials';
+import credentials, {
+  account_name,
+  counterparties_name,
+  current_month_year,
+  document_status,
+  employee_full_name, employee_full_name_trim
+} from '../data/credentials';
 import CommonActivities from '../data/CommonActivities';
+import {checkForRemovedStyleOptions} from "cypress/mount-utils";
 const commonActivities = new CommonActivities();
 
 const CSSBurgerMenu = '[class="expand-icon"]';
@@ -35,16 +42,18 @@ class creating_operations {
   }
   money_transaction() {
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Перемещение денег').click();
-    cy.get(CSSDropdown).eq(1).type(credentials.account_name.account_name_1 + '{enter}');
-    cy.get(CSSDropdownValue).eq(1).should('contain', credentials.account_name.account_name_1 + ' / 10 000');
+    cy.get(CSSDropdown).eq(1).type(account_name.account_name_1 + '{enter}');
+    cy.get(CSSDropdownValue).eq(1).should('contain', account_name.account_name_1 + ' / 10 000');
     cy.get(CSSInput).eq(1).type('1000');
-    cy.get(CSSDropdown).eq(2).type(credentials.account_name.account_name_2 + '{enter}');
-    cy.get(CSSDropdownValue).eq(2).should('contain', credentials.account_name.account_name_2 + ' / 20 000');
+    cy.get(CSSDropdown).eq(2).type(account_name.account_name_2 + '{enter}');
+    cy.get(CSSDropdownValue).eq(2).should('contain', account_name.account_name_2 + ' / 20 000');
     cy.get(CSSBoldGreenNumber).should('contain', '21 000');
     cy.wait(1000);
     cy.get(CSSButton).click();
 
     cy.wait(1000);
+    commonActivities.checkDocInRegister(0,'Расход', account_name.account_name_1,'1000','-','Перемещение', 'Пе 1/11/23',document_status.status_finished)
+    commonActivities.checkDocInRegister(1,'Приход', account_name.account_name_2,'1000','-','Перемещение', 'Пе 1/11/23',document_status.status_finished)
 
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Перемещение денег').click();
     cy.wait(1000);
@@ -58,6 +67,9 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
+    commonActivities.checkDocInRegister(0,'Расход', account_name.account_name_2,'1000','-','Перемещение', 'Пе 2/11/23',document_status.status_finished)
+    commonActivities.checkDocInRegister(1,'Приход', account_name.account_name_1,'1000','-','Перемещение', 'Пе 2/11/23',document_status.status_finished)
   }
   operations_with_doc_sell() {
     /////////////////С транзакцией, позицией и чекбоксом////////////////////
@@ -84,6 +96,8 @@ class creating_operations {
     cy.get(CSSButton).click();
     cy.wait(1000);
 
+    commonActivities.checkDocInRegister(0,'Продажа', 0,'101', counterparties_name.counterparties_name_1, 'Invoice','In 1/'+current_month_year.month_year,document_status.status_finished,0,0,0,0,0,0,0,0,0,0)
+
     ///////////////С Позицией, без транзакции и без чекбокса///////////////
 
     cy.wait(500);
@@ -105,6 +119,8 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
+    commonActivities.checkDocInRegister(0,'Продажа', 0,'102', counterparties_name.counterparties_name_1, 'Invoice','In 2/'+current_month_year.month_year,document_status.status_unfinished,0,0,0,0,0,0,0,0,0,0)
 
     ////////////////С Позицией, Транзакцией и без чекбокса //////////////////
 
@@ -130,6 +146,8 @@ class creating_operations {
     cy.get(CSSButton).click();
     cy.wait(1000);
 
+    commonActivities.checkDocInRegister(0,'Продажа', 0,'103', counterparties_name.counterparties_name_1, 'Invoice','In 3/'+current_month_year.month_year,document_status.status_unfinished,0,0,0,0,0,0,0,0,0,0)
+
     /// //////////////С Позицией, чекбоксом и без транзакции//////////////////
 
     cy.wait(500);
@@ -152,6 +170,8 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
+    commonActivities.checkDocInRegister(0,'Продажа', 0,'104', counterparties_name.counterparties_name_1, 'Invoice','In 4/'+current_month_year.month_year,document_status.status_unfinished,0,0,0,0,0,0,0,0,0,0)
   }
   operation_with_doc_buy() {
 
@@ -182,6 +202,7 @@ class creating_operations {
     cy.get(CSSButton).click();
     cy.wait(1000);
 
+    commonActivities.checkDocInRegister(0,'Покупка', 0,'151', counterparties_name.counterparties_name_1, 'Invoice','01',document_status.status_finished,0,0,0,0,0,0,0,0,0,0)
     ///////////////С Позицией, без транзакции и без чекбокса///////////////
 
     cy.wait(500);
@@ -206,7 +227,9 @@ class creating_operations {
     cy.get(CSSButton).click();
     cy.wait(1000);
 
-    /// //////////////С Позицией, чекбоксом и без транзакции//////////////////
+    commonActivities.checkDocInRegister(0,'Покупка', 0,'152', counterparties_name.counterparties_name_1, 'Invoice','02',document_status.status_unfinished,0,0,0,0,0,0,0,0,0,0)
+
+    /////////////////С Позицией, чекбоксом и без транзакции//////////////////
 
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Покупка').click();
@@ -230,6 +253,8 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
+    commonActivities.checkDocInRegister(0,'Покупка', 0,'153', counterparties_name.counterparties_name_1, 'Invoice','03',document_status.status_unfinished,0,0,0,0,0,0,0,0,0,0)
 
     ////////////////С Позицией, Транзакцией и без чекбокса ///////////////////
 
@@ -256,6 +281,8 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
+    commonActivities.checkDocInRegister(0,'Покупка', 0,'154', counterparties_name.counterparties_name_1, 'Invoice','04',document_status.status_unfinished,0,0,0,0,0,0,0,0,0,0)
 
     /////////////////////////////Спец статья расхода/////////////////////////////
 
@@ -286,7 +313,9 @@ class creating_operations {
     cy.get(CSSButton).click();
     cy.wait(1000);
 
-    /// ////////////С Позицией, без транзакции и без чекбокса///////////////
+    commonActivities.checkDocInRegister(0,'Покупка', 0,'160', counterparties_name.counterparties_name_1, 'Invoice','05',document_status.status_finished,0,0,0,0,0,0,0,0,0,0)
+
+    ///////////////С Позицией, без транзакции и без чекбокса///////////////
 
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Покупка').click();
@@ -310,7 +339,9 @@ class creating_operations {
     cy.get(CSSButton).click();
     cy.wait(1000);
 
-    /// //////////////С Позицией, чекбоксом и без транзакции//////////////////
+    commonActivities.checkDocInRegister(0,'Покупка', 0,'161', counterparties_name.counterparties_name_1, 'Invoice','06',document_status.status_unfinished,0,0,0,0,0,0,0,0,0,0)
+
+    /////////////////С Позицией, чекбоксом и без транзакции//////////////////
 
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Покупка').click();
@@ -335,7 +366,9 @@ class creating_operations {
     cy.get(CSSButton).click();
     cy.wait(1000);
 
-    /// /////////////С Позицией, Транзакцией и без чекбокса ///////////////////
+    commonActivities.checkDocInRegister(0,'Покупка', 0,'162', counterparties_name.counterparties_name_1, 'Invoice','07',document_status.status_unfinished,0,0,0,0,0,0,0,0,0,0)
+
+    ////////////////С Позицией, Транзакцией и без чекбокса ///////////////////
 
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Покупка').click();
@@ -360,6 +393,8 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
+    commonActivities.checkDocInRegister(0,'Покупка', 0,'163', counterparties_name.counterparties_name_1, 'Invoice','08',document_status.status_unfinished,0,0,0,0,0,0,0,0,0,0)
   }
   operation_with_salaries() {
 
@@ -381,6 +416,9 @@ class creating_operations {
     cy.get(CSSButton).click();
     cy.wait(1000);
 
+    commonActivities.checkDocInRegister(0,'Выплата',account_name.account_name_1,'150','-','-','-',document_status.status_finished,current_month_year.month_year_text)
+    commonActivities.checkDocInRegister(1,'Начисление','-','150','-','-','-',document_status.status_finished,current_month_year.month_year_text)
+
     //////////////////С Начислением и без транзакции//////////////////////
 
     cy.wait(500);
@@ -389,13 +427,15 @@ class creating_operations {
     cy.get(CSSDropdown).eq(1).click();
     cy.get(CSSDropdown).eq(1).type(credentials.employee_full_name.employee_full_name_2 + '{enter}');
     // Начисление
-    cy.get(CSSCreateNewButton).eq(2).click();
+    cy.get(CSSPlusButton).eq(0).click();
     cy.get(CSSDropdownValue).eq(2).should('contain', credentials.employee_full_name.employee_full_name_2);
     cy.get(CSSInput).eq(1).type('150');
     cy.get(CSSGreenButton).click();
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
+    commonActivities.checkDocInRegister(0,'Начисление','-','150','-','-','-',document_status.status_unfinished, current_month_year.month_year_text, employee_full_name_trim.employee_full_name_2)
 
     //////////////////Без Начисления и с транзакцией//////////////////////
 
@@ -409,6 +449,8 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSButton).click();
     cy.wait(1000);
+
+    commonActivities.checkDocInRegister(0,'Аванс',account_name.account_name_1,'150','-','-','-',document_status.status_unfinished, current_month_year.month_year_text, employee_full_name_trim.employee_full_name_3)
   }
   operation_with_taxes() {
 
@@ -417,8 +459,7 @@ class creating_operations {
     cy.wait(500);
     cy.get(CSSMenuBar).find(CSSMenuPage).contains('Налог').click();
     // Реквизиты
-    cy.get(CSSDropdown).eq(0).click();
-    cy.get(CSSDropdown).eq(0).type('Декларация' + '{enter}');
+    cy.get(CSSDropdownValue).eq(0).should('contain','Декларация');
     cy.get(CSSDropdown).eq(1).click();
     cy.get(CSSDropdown).eq(1).type(credentials.taxes.social_tax + '{enter}');
     // Начисление

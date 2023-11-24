@@ -81,76 +81,134 @@ class CommonActivities {
   }
 
   createTransactionForOperations(date, account, value, transactionType) {
-    cy.get(this.CSSSubTitle).eq(0).then(($header) => {
-      cy.get(this.CSSTabActive).then(($tab) => {
-        if ($header.text().includes('Документ от:') &&
-          ($tab.text().includes('Продажа') || $tab.text().includes('Покупка'))) {
-          cy.get(this.CSSBlockTransaction1)
-            .find(this.CSSPlusButton)
-            .click();
+    cy.url().then((url) => {
+      if (url.includes('/operations/document/new?tab=issued') || url.includes('operations/document/new?tab=received')) {
+        cy.get(this.CSSBlockTransaction1)
+          .find(this.CSSPlusButton)
+          .click();
 
-          cy.get(this.CSSSubForm1)
-            .find(this.CSSDatePicker)
-            .invoke('val', '').type('{selectall}{backspace}')
-            .type(date);
+        cy.get(this.CSSSubForm1)
+          .find(this.CSSDatePicker)
+          .invoke('val', '')
+          .type('{selectall}{backspace}')
+          .type(date);
 
-          cy.get(this.CSSSubForm1)
-            .find(this.CSSDropdown)
-            .type(`${account}{enter}`);
+        cy.get(this.CSSSubForm1)
+          .find(this.CSSDropdown)
+          .type(account + '{enter}');
 
-          cy.get(this.CSSInput)
-            .eq(1)
-            .type(value);
+        cy.get(this.CSSInput)
+          .eq(1)
+          .type(value);
 
-          cy.get(this.CSSSubmitButton).click();
+        cy.get(this.CSSSubmitButton).click();
+      } else if (url.includes('operations/salaries/new') || url.includes('operations/taxes/new')) {
+        cy.get(this.CSSBlockTransaction2)
+          .find(this.CSSPlusButton)
+          .click();
 
-        } else if ($header.text().includes('Операция с зарплатами') ||
-          $header.text().includes('Операция с налогами')) {
-          cy.get(this.CSSBlockTransaction2)
-            .find(this.CSSPlusButton)
-            .click();
-          cy.get(this.CSSSubForm2)
-            .find(this.CSSDatePicker)
-            .invoke('val', '').type('{selectall}{backspace}')
-            .type(date);
+        cy.get(this.CSSSubForm2)
+          .find(this.CSSDatePicker)
+          .invoke('val', '')
+          .type('{selectall}{backspace}')
+          .type(date);
 
-          cy.get(this.CSSSubForm2)
-            .find(this.CSSDropdown).eq(1)
-            .type(`${account}{enter}`);
+        cy.get(this.CSSSubForm2)
+          .find(this.CSSDropdown)
+          .eq(1)
+          .type(account + '{enter}');
 
-          cy.get(this.CSSInput)
-            .eq(0)
-            .type(value);
+        cy.get(this.CSSInput)
+          .eq(0)
+          .type(value);
 
-          cy.get(this.CSSAddButton).click();
+        cy.get(this.CSSAddButton).click();
+      } else if (url.includes('operations/credits/new')) {
+        cy.get(this.CSSBlockTransaction1)
+          .find(this.CSSPlusButton)
+          .click();
 
-        } else if ($header.text().includes('Документ от:') &&
-          ($tab.text().includes('Поступление') || $tab.text().includes('Погашение'))) {
-          cy.get(this.CSSBlockTransaction1)
-            .find(this.CSSPlusButton)
-            .click();
+        cy.get(this.CSSSubForm2)
+          .find(this.CSSDropdown)
+          .eq(0)
+          .type(`${transactionType}{enter}`);
 
-          cy.get(this.CSSSubForm2)
-            .find(this.CSSDropdown).eq(0).type(`${transactionType}{enter}`);
+        cy.get(this.CSSSubForm2)
+          .find(this.CSSDatePicker)
+          .click({ force: true });
 
-          cy.get(this.CSSSubForm2)
-            .find(this.CSSDatePicker).click({force: true});
-          // .invoke('val', '').type('{selectall}{backspace}')
-          // .type(date, { force: true })
+        cy.get(this.CSSSubForm2)
+          .find(this.CSSDropdown)
+          .eq(1)
+          .type(account + '{enter}');
 
-          cy.get(this.CSSSubForm2)
-            .find(this.CSSDropdown).eq(1)
-            .type(`${account}{enter}`);
+        cy.get(this.CSSInput)
+          .eq(0)
+          .type(value);
 
-          cy.get(this.CSSInput)
-            .eq(0)
-            .type(value);
-
-          cy.get(this.CSSAddButton).click();
-        }
-      });
+        cy.get(this.CSSAddButton).click();
+      }
     });
   }
+
+  checkDocInRegister(i,operationType,account,value,counterparty,docType,number,status,period,employee,tax,productName,warehouse,adres,units,quantity,price,cost){cy.url().then((url) => {
+    if (url.includes('registers/money')) {
+
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(0).should('contain',operationType)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(1).should('contain',this.CurrentDate())
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(2).should('contain',account)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(3).should('contain',value)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(4).should('contain',counterparty)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(5).should('contain',docType)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(6).should('contain',number)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(7).should('contain',status)
+
+    } else if (url.includes('registers/document')) {
+
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(0).should('contain',operationType)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(1).should('contain',this.CurrentDate())
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(2).should('contain',counterparty)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(3).should('contain',docType)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(4).should('contain',number)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(5).should('contain',value)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(6).should('contain',status)
+
+    } else if (url.includes('registers/salaries')) {
+
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(0).should('contain',operationType)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(1).should('contain',this.CurrentDate())
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(2).should('contain',period)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(3).should('contain',employee)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(4).should('contain',account)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(5).should('contain',value)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(6).should('contain',status)
+
+    } else if (url.includes('registers/taxes')) {
+
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(0).should('contain',operationType)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(1).should('contain',this.CurrentDate())
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(2).should('contain',period)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(3).should('contain',tax)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(4).should('contain',account)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(5).should('contain',value)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(6).should('contain',status)
+
+    } else if (url.includes('registers/products')) {
+
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(0).should('contain',operationType)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(1).should('contain',number)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(2).should('contain',this.CurrentDate())
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(3).should('contain',productName)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(4).should('contain',warehouse)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(5).should('contain',adres)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(6).should('contain',units)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(7).should('contain',quantity)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(8).should('contain',price)
+      cy.get(this.CSSRow).eq(i).find(this.CSSSell).eq(9).should('contain',cost)
+    }
+  })
+  }
+
 
   checkToolTip() {
     cy.get(this.CSSTitle).then(($title) => {

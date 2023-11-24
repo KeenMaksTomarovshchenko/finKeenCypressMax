@@ -22,6 +22,11 @@ const CSSBigBoldGreenAmount = '[class="text-component amount big bold green"]';
 const CSSModalProductsOnboarding = '[class="upsert-product-wrapper"]'
 const CSSActionButtons = '[class="action-buttons"]'
 const CSSDropdownValue = '[class="text-component option-text-wrapper"]';
+const CSSTextButton = '[class="unstyled-button add-btn"]'
+const CSSLeftBlock = '[class="left-block"]'
+const CSSTotalBlock = '[class="total-block"]'
+const CSSValuesBlock = '[class="values-part"]'
+const CSSBigBoldText = '[class="text-component big bold"]'
 
 const CSSDashboardPage = 'https://develop.fin-consult.com/home';
 //'https://staging.fin-consult.com/home'
@@ -40,8 +45,37 @@ class onboarding {
   page1() {
     commonActivities.checkTitle('Финансовое моделирование');
     cy.wait(500);
+
+    cy.get(CSSLeftBlock).eq(0).find(CSSTextButton).contains('Добавить статью выручки +').click()
+    cy.get(CSSLeftBlock).eq(0).find(CSSInput).eq(0).type(credentials.income_item.income_item_3_name)
+    cy.get(CSSLeftBlock).eq(0).find(CSSInput).eq(1).type('100')
+
+    cy.get(CSSTotalBlock).eq(0).find(CSSValuesBlock).find(CSSBigBoldText).eq(0).should('have.text','100')
+    cy.get(CSSTotalBlock).eq(0).find(CSSValuesBlock).find(CSSBigBoldText).eq(1).should('have.text','100%')
+
+    cy.get(CSSLeftBlock).eq(2).find(CSSTextButton).contains('Добавить статью общих +').click()
+    cy.get(CSSLeftBlock).eq(2).find(CSSInput).eq(0).type(credentials.expense_item_name.expense_item_4_name)
+    cy.get(CSSLeftBlock).eq(2).find(CSSInput).eq(1).type('0')
+
+    cy.get(CSSTotalBlock).eq(1).find(CSSValuesBlock).find(CSSBigBoldText).eq(0).should('have.text','100')
+    cy.get(CSSTotalBlock).eq(1).find(CSSValuesBlock).find(CSSBigBoldText).eq(1).should('have.text','100%')
+
+    cy.get(CSSLeftBlock).eq(4).find(CSSTextButton).contains('Добавить статью коммерческих +').click()
+    cy.get(CSSLeftBlock).eq(4).find(CSSInput).eq(0).type(credentials.expense_item_name.expense_item_3_name)
+    cy.get(CSSLeftBlock).eq(4).find(CSSInput).eq(1).type('60')
+
+    cy.get(CSSTotalBlock).eq(2).find(CSSValuesBlock).find(CSSBigBoldText).eq(0).should('have.text','40')
+    cy.get(CSSTotalBlock).eq(2).find(CSSValuesBlock).find(CSSBigBoldText).eq(1).should('have.text','40%')
+
+    cy.get(CSSLeftBlock).eq(5).find(CSSInput).eq(1).type('3')
+    cy.get(CSSLeftBlock).eq(5).find(CSSInput).eq(3).type('4')
+    cy.get(CSSLeftBlock).eq(5).find(CSSInput).eq(5).type('5')
+
+    cy.get(CSSTotalBlock).eq(3).find(CSSValuesBlock).find(CSSBigBoldText).eq(0).should('have.text','28')
+    cy.get(CSSTotalBlock).eq(3).find(CSSValuesBlock).find(CSSBigBoldText).eq(1).should('have.text','28,00%')
+
     commonActivities.checkToolTip();
-    cy.get(CSSSkipButton).eq(1).click();
+    cy.get(CSSButton).contains('Перенести статьи в онбординг').click();
   }
 
   // Данные фирмы
@@ -107,18 +141,10 @@ class onboarding {
     cy.get(CSSButton).click();
   }
 
-  income_item_3_creating() {
-    cy.get(CSSCreateNewButton).eq(0).click();
-    commonActivities.checkSubTitle('Введите статью дохода');
-    cy.get(CSSInput).eq(0).type(credentials.income_item.income_item_3_name);
-    cy.get(CSSButton).click();
-  }
-
   page5() {
     commonActivities.checkTitle('Статьи доходов');
     this.income_item_1_creating();
     this.income_item_2_creating();
-    this.income_item_3_creating();
     commonActivities.checkToolTip();
     cy.get(CSSNextButton).click();
   }
@@ -137,24 +163,6 @@ class onboarding {
     cy.get(CSSDropdown).eq(1).click();
     cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_2 + '{enter}');
     cy.get(CSSInput).eq(0).type(credentials.expense_item_name.expense_item_2_name);
-    cy.get(CSSButton).click();
-  }
-
-  expense_item_3_creating() {
-    cy.get(CSSCreateNewButton).eq(0).click();
-    commonActivities.checkSubTitle('Введите статью расхода');
-    cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_3 + '{enter}');
-    cy.get(CSSInput).eq(0).type(credentials.expense_item_name.expense_item_3_name);
-    cy.get(CSSButton).click();
-  }
-
-  expense_item_4_creating() {
-    cy.get(CSSCreateNewButton).eq(0).click();
-    commonActivities.checkSubTitle('Введите статью расхода');
-    cy.get(CSSDropdown).eq(1).click();
-    cy.get(CSSDropdown).eq(1).type(credentials.expense_item_category.expense_item_category_4 + '{enter}');
-    cy.get(CSSInput).eq(0).type(credentials.expense_item_name.expense_item_4_name);
     cy.get(CSSButton).click();
   }
 
@@ -182,8 +190,6 @@ class onboarding {
     commonActivities.checkTitle('Статьи расходов');
     this.expense_item_1_creating();
     this.expense_item_2_creating();
-    this.expense_item_3_creating();
-    this.expense_item_4_creating();
     this.expense_item_5_creating();
     this.expense_item_6_creating();
     commonActivities.checkToolTip();

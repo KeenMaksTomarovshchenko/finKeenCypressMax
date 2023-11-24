@@ -17,6 +17,10 @@ module.exports = {
   textLink: {
     textLinkCreateNewAccount: 'Создать аккаунт',
   },
+  current_month_year: {
+    month_year: '11/23',
+    month_year_text: 'Нояб. 2023'
+  },
   company_full_name: {
     company_full_name: 'Test_company',
   },
@@ -115,4 +119,8 @@ module.exports = {
     credit_name_5: 'Кредит 5 долгосрочный',
     credit_name_6: 'Кредит 6 краткосрочный',
   },
+  document_status:{
+    status_finished:'Завершена',
+    status_unfinished:'Не завершена'
+  }
 };
